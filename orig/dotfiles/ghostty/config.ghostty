@@ -1,0 +1,55 @@
+#---------------------------------------------------------------------------------------------------
+# Ghostty Configuration
+#---------------------------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------
+# Appearance
+#---------------------------------------------------------------------------------------------------
+
+# Fonts ------------------------------------------
+
+font-size                     = 14
+
+font-family                   = "CommitMono Nerd Font"
+font-family-bold              = "CommitMono Nerd Font Bold"
+font-family-italic            = "CommitMono Nerd Font Italic"
+font-family-bold-italic       = "CommitMono Nerd Font Bold Italic"
+
+# Theme ------------------------------------------
+theme                         = "Nord Wave"
+
+# Color of Window Background
+background                    = "#1e1e1e"
+
+# Color of Window Foreground
+#foreground                   = ""
+
+# Background Image in Terminal (PNG or JPEG)
+#background-image             = ""
+
+# Background Image Position in Terminal Window
+#background-image-position    = ""
+
+# Background Image Fit in Terminal Window
+#background-image-fit         = ""
+
+# Background Image Repitition
+#background-image-repeat      = ""
+
+# Cursor -----------------------------------------
+
+# Cursor Style (block, bar, underline, block_hollow)
+cursor-style                  = "block"
+
+# Cursor Blink (true, false)
+cursor-style-blink            = "true"
+
+# Cursor Color
+#cursor-color                 = ""
+
+# Cursor Text Color
+#cursor-text                  = ""
+
+# Cursor Transparency (0 = Transparent, 1 = Opaque)
+#cursor-opacity               = ""
+
