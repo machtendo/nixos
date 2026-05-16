@@ -12,5 +12,5 @@
     { inherit inputs; }
 #    (inputs.import-tree ./profiles)
 #    (inputs.import-tree ./modules)
-    (inputs.import-tree ./hosts);
+    (inputs.import-tree ./hosts/mediarr);
 }
