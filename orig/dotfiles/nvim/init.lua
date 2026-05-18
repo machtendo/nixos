@@ -9,9 +9,8 @@
 -- Install Plugins -------------------------------
 
 vim.pack.add({
-  "https://github.com/machtendo/nord-wave.nvim",                  -- nord-wave.nvim       : colorscheme
-  "https://github.com/thesimonho/kanagawa-paper.nvim",            -- kanagawa-paper.nvim  : colorscheme
-  "https://github.com/nvim-tree/nvim-web-devicons",               -- nvim-web-devicons    : NerdFonts for Neovim Plugins
+  	"https://github.com/shaunsingh/nord.nvim"			-- nord.nvim		: colorscheme: nord
+	"https://github.com/nvim-tree/nvim-web-devicons",               -- nvim-web-devicons    : NerdFonts for Neovim Plugins
   "https://github.com/folke/which-key.nvim",                      -- which-key            : Keymapping Display
   "https://github.com/lewis6991/gitsigns.nvim",                   -- gitsigns.nvim        : Git Buffer Integration
 	"https://github.com/echasnovski/mini.nvim",                     -- mini.nvim            : Modular Neovim Enhancements
@@ -41,8 +40,7 @@ local function packadd(name)
 	vim.cmd("packadd " .. name)
 end
 
-packadd("nord-wave.nvim")
-packadd("kanagawa-paper.nvim")
+packadd("nord.nvim")
 packadd("nvim-web-devicons")
 packadd("which-key.nvim")
 packadd("nvim-treesitter")
