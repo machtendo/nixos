@@ -9,7 +9,7 @@
 -- Install Plugins -------------------------------
 
 vim.pack.add({
-  "https://github.com/machtendo/nord-wave.nvim",                   -- nord-wave.nvim       : colorscheme
+  "https://github.com/machtendo/nord-wave.nvim",                  -- nord-wave.nvim       : colorscheme
   "https://github.com/thesimonho/kanagawa-paper.nvim",            -- kanagawa-paper.nvim  : colorscheme
   "https://github.com/nvim-tree/nvim-web-devicons",               -- nvim-web-devicons    : NerdFonts for Neovim Plugins
   "https://github.com/folke/which-key.nvim",                      -- which-key            : Keymapping Display
@@ -64,7 +64,7 @@ packadd("LuaSnip")
 
 -- Theme -----------------------------------------
 vim.opt.termguicolors   = true          -- Enable Rich Color
-vim.cmd.colorscheme("nord")   -- Set Theme
+vim.cmd.colorscheme("nord")             -- Set Theme
 
 -- Transparency ----------------------------------
 
@@ -277,19 +277,19 @@ end
 local function mode_icon()
   local mode = vim.fn.mode()
   local modes = {
-    n       = "\u{f121}  NORMAL",
-    i       = "\u{f11c}  INSERT",
+    n       = "\u{f121}   NORMAL",
+    i       = "\u{f11c}   INSERT",
     v       = "\u{f0168}  VISUAL",
     V       = "\u{f0168}  V-LINE",
     ["\22"] = "\u{f0168}  V-BLOCK",
-    c       = "\u{f120}  COMMAND",
-    s       = "\u{f0c5}  SELECT",
-    S       = "\u{f0c5}  S-LINE",
-    ["\19"] = "\u{f0c5}  S-BLOCK",
-    r       = "\u{f044}  REPLACE",
-    R       = "\u{f044}  REPLACE",
-    ["!"]   = "\u{f489}  SHELL",
-    t       = "\u{f120}  TERMINAL",
+    c       = "\u{f120}   COMMAND",
+    s       = "\u{f0c5}   SELECT",
+    S       = "\u{f0c5}   S-LINE",
+    ["\19"] = "\u{f0c5}   S-BLOCK",
+    r       = "\u{f044}   REPLACE",
+    R       = "\u{f044}   REPLACE",
+    ["!"]   = "\u{f489}   SHELL",
+    t       = "\u{f120}   TERMINAL",
   }
   return modes[mode] or (" \u{f059} " .. mode)
 end
