@@ -9,7 +9,7 @@
 -- Install Plugins -------------------------------
 
 vim.pack.add({
-  	"https://github.com/shaunsingh/nord.nvim"			-- nord.nvim		: colorscheme: nord
+  "https://github.com/shaunsingh/nord.nvim",			                -- nord.nvim		: colorscheme: nord
 	"https://github.com/nvim-tree/nvim-web-devicons",               -- nvim-web-devicons    : NerdFonts for Neovim Plugins
   "https://github.com/folke/which-key.nvim",                      -- which-key            : Keymapping Display
   "https://github.com/lewis6991/gitsigns.nvim",                   -- gitsigns.nvim        : Git Buffer Integration
@@ -61,8 +61,9 @@ packadd("LuaSnip")
 ----------------------------------------------------------------------------------------------------
 
 -- Theme -----------------------------------------
-vim.opt.termguicolors   = true          -- Enable Rich Color
-vim.cmd.colorscheme("nord")             -- Set Theme
+vim.opt.termguicolors   = true                        -- Enable Rich Color
+vim.cmd.colorscheme("nord")                           -- Set Theme
+vim.api.nvim_set_hl(0, "Normal", { bg = "#212121" })  -- Override Background Color
 
 -- Transparency ----------------------------------
 
