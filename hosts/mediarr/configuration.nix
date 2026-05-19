@@ -5,10 +5,8 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.mediarrConfiguration = { pkgs, lib, ... }: {
-    # import any other modules here
+    # Import Modules
     imports = [
-      self.nixosModules.mediarrHardware
-      self.nixosModules.baseConfiguration
     ];
 
     # Enable Flakes
@@ -19,7 +17,7 @@
     boot.loader.grub.device = "/dev/sda";
     boot.loader.grub.useOSProber = true;
 
-    networking.hostName = "nixos"; # Define your hostname.
+    networking.hostName = "mediarr"; # Define your hostname.
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
@@ -27,14 +25,6 @@
 
     # Enable networking
     networking.networkmanager.enable = true;
-
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.nix = {
-      isNormalUser = true;
-      description = "nix";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [];
-    };
 
     # List packages installed in system profile. To search, run:
     environment.systemPackages = with pkgs; [
@@ -55,3 +45,7 @@
     system.stateVersion = "25.11";
   };
 }
+
+#---------------------------------------------------------------------------------------------------
+# End
+#---------------------------------------------------------------------------------------------------
