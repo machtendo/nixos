@@ -13,7 +13,6 @@
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake
-  hlsearch
 
     { inherit inputs; }
     #(inputs.import-tree ./profiles)
