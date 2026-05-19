@@ -27,7 +27,7 @@
     networking.networkmanager.enable = true;
 
     # Hostname
-    networking.hostName = "mediarr"; # Define your hostname.
+    networking.hostName = "mediarr";
 
     # Network Proxy
     # networking.proxy.default = "http://user:password@proxy:port/";
