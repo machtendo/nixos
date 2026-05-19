@@ -13,10 +13,16 @@
     # Enable Flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    # Set your time zone.
+    # Keyboard Settings
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+
+    # Time Zone
     time.timeZone = "America/Chicago";
 
-    # Select internationalisation properties.
+    # Locale
     i18n.defaultLocale = "en_US.UTF-8";
 
     i18n.extraLocaleSettings = {
@@ -31,17 +37,17 @@
       LC_TIME = "en_US.UTF-8";
     };
 
-    # Configure keymap in X11
-    services.xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
+    # Packages -----------------------------------
 
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
 
-    # System Compatibility Version
-    #system.stateVersion = "25.11";
+    # Packages (System)
+    environment.systemPackages = with pkgs; [
+      neovim        # Neovim - Text Editor
+      wget
+      git
+    ];
 
   };
 }

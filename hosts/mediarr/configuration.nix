@@ -7,42 +7,48 @@
   flake.nixosModules.mediarrConfiguration = { pkgs, lib, ... }: {
     # Import Modules
     imports = [
+      # Host Configuration
+      self.nixosModules.mediarrHardware
+
+      # Modules
+      self.nixosModules.baseConfiguration
     ];
 
-    # Enable Flakes
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    system.stateVersion = "25.11";
 
     # Bootloader.
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda";
     boot.loader.grub.useOSProber = true;
 
+    # Networking ---------------------------------
+
+    # Enable Networking
+    networking.networkmanager.enable = true;
+
+    # Hostname
     networking.hostName = "mediarr"; # Define your hostname.
 
-    # Configure network proxy if necessary
+    # Network Proxy
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-    # Enable networking
-    networking.networkmanager.enable = true;
-
-    # List packages installed in system profile. To search, run:
-    environment.systemPackages = with pkgs; [
-      neovim        # Neovim - Text Editor
-      wget
-      git
-    ];
-
-    # List services that you want to enable:
-    services.openssh.enable = true;     # OpenSSH Server
-
-    # Open ports in the firewall.
+    # Firewall
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
 
-    system.stateVersion = "25.11";
+    # Packages  ----------------------------------
+
+    # Packages (System)
+    environment.systemPackages = with pkgs; [
+    # ...
+    ];
+
+    # Services
+    services.openssh.enable = true;     # OpenSSH Server
+
   };
 }
 

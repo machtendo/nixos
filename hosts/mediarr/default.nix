@@ -7,10 +7,6 @@
     modules = [
       # Host Configuration
       self.nixosModules.mediarrConfiguration
-      self.nixosModules.mediarrHardware
-
-      # Modules
-      self.nixosModules.baseConfiguration
     ];
   };
 }
