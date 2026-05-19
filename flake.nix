@@ -1,3 +1,7 @@
+#---------------------------------------------------------------------------------------------------
+# Flake: Entrypoint
+#---------------------------------------------------------------------------------------------------
+
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -9,8 +13,14 @@
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake
+  hlsearch
+
     { inherit inputs; }
-    (inputs.import-tree ./profiles)
+    #(inputs.import-tree ./profiles)
     (inputs.import-tree ./modules)
-    (inputs.import-tree ./hosts/mediarr);
+    (inputs.import-tree ./hosts);
 }
+
+#---------------------------------------------------------------------------------------------------
+# End
+#---------------------------------------------------------------------------------------------------
