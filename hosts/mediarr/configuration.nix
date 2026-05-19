@@ -14,9 +14,6 @@
       self.nixosModules.baseConfiguration
     ];
 
-    # Enable Flakes
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
     system.stateVersion = "25.11";
 
     # Bootloader.
