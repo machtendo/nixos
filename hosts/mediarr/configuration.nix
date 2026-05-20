@@ -11,7 +11,8 @@
       self.nixosModules.mediarrHardware
 
       # Modules
-      ./modules/common/base.nix
+      self.nixosModules.baseConfiguration
+
     ];
 
     system.stateVersion = "25.11";
