@@ -12,7 +12,6 @@
 
       # Modules
       self.nixosModules.baseConfiguration
-
     ];
 
     system.stateVersion = "25.11";

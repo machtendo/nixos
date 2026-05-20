@@ -12,20 +12,36 @@
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = inputs@{ self, nixpkgs, flake-parts, import-tree, ... }:
 
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "aarch64-darwin"
-      ];
+  flake-parts.lib.mkFlake { inherit inputs; } {
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake
+    systems = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "aarch64-darwin"
+    ];
 
-    { inherit inputs; }
-    #(inputs.import-tree ./profiles),
-    (inputs.import-tree ./);
-    #(inputs.import-tree ./hosts);
+    imports = [
+      (import-tree ./modules/)
+    ];
+
+    flake = {
+      nixosConfigurations = {
+        mediarr = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+
+          specialArgs = {
+            inherit inputs;
+          };
+
+          modules = [
+            ./hosts/mediarr/configuration.nix
+          ];
+        };
+      };
+    };
+  };
 }
 
 #---------------------------------------------------------------------------------------------------
