@@ -23,7 +23,7 @@
     ];
 
     imports = [
-      (import-tree ./modules/)
+      (import-tree ./modules)
     ];
 
     flake = {
