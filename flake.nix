@@ -30,7 +30,7 @@
       nixosConfigurations = {
         mediarr = nixpkgs.lib.nixosSystem {
           #system = "x86_64-linux";
-          system = "aarch64-darwin"
+          system = "aarch64-darwin";
 
           specialArgs = {
             inherit inputs;
