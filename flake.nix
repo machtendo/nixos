@@ -22,9 +22,9 @@
       "aarch64-darwin"
     ];
 
-    imports = [
-      (import-tree ./modules)
-    ];
+#    imports = [
+#      (import-tree ./modules)
+#    ];
 
     flake = {
       nixosConfigurations = {
