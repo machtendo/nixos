@@ -16,8 +16,8 @@
 
     { inherit inputs; }
     #(inputs.import-tree ./profiles),
-    (inputs.import-tree ./modules/common)
-    (inputs.import-tree ./hosts);
+    (inputs.import-tree ./modules/common);
+    #(inputs.import-tree ./hosts);
 }
 
 #---------------------------------------------------------------------------------------------------
