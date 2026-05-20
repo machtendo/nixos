@@ -12,11 +12,19 @@
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 
+    flake-parts.lib.mkFlake { inherit inputs; } {
+
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+
   outputs = inputs: inputs.flake-parts.lib.mkFlake
 
     { inherit inputs; }
     #(inputs.import-tree ./profiles),
-    (inputs.import-tree ./modules/common);
+    (inputs.import-tree ./);
     #(inputs.import-tree ./hosts);
 }
 
