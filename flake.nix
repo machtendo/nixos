@@ -9,12 +9,12 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
-    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+    #wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 
   outputs = inputs@{ self, nixpkgs, flake-parts, import-tree, ... }:
 
-  flake-parts.lib.mkFlake { inherit inputs; } {
+  inputs.flake-parts.lib.mkFlake { inherit inputs; } {
 
     systems = [
       "x86_64-linux"
@@ -23,7 +23,7 @@
     ];
 
     imports = [
-      (import-tree ./modules)
+      (inputs.import-tree ./modules)
     ];
 
     flake = {
