@@ -9,7 +9,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
-    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+    #wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 
   outputs = inputs@{ self, nixpkgs, flake-parts, import-tree, ... }:
@@ -22,9 +22,9 @@
       "aarch64-darwin"
     ];
 
-#    imports = [
-#      (import-tree ./modules)
-#    ];
+    imports = [
+      (import-tree ./modules)
+    ];
 
     flake = {
       nixosConfigurations = {
@@ -33,11 +33,12 @@
           #system = "aarch64-darwin";
 
           specialArgs = {
-            inherit inputs;
+            inherit inputs outputs;
           };
 
           modules = [
-            ./hosts/mediarr/configuration.nix
+            ./modules/hosts/mediarr/configuration.nix
+            ./modules/common/base.nix
           ];
         };
       };

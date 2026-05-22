@@ -13,7 +13,7 @@
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.nix = {
       isNormalUser = true;
-      description = "nix";
+      description = "jas";
       extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs; [];
 
