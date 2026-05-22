@@ -34,7 +34,7 @@
           system = "aarch64-linux";
 
           specialArgs = {
-            inherit inputs outputs;
+            inherit inputs;
           };
 
           modules = [
