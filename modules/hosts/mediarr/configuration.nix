@@ -8,7 +8,7 @@
     modules = [
       self.nixosModules.hostMediarr
     ];
- #};
+  }
 
   flake.nixosModules.mediarrConfiguration = { pkgs, lib, ... }: {
     # Import Modules
