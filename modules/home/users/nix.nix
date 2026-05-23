@@ -14,9 +14,9 @@
     users.users.nix = {
       isNormalUser = true;
       description = "nix";
+      initialPassword = "password";
       extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs; [];
-
     };
   };
 }

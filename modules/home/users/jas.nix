@@ -14,9 +14,9 @@
     users.users.jas = {
       isNormalUser = true;
       description = "jas";
+      initialPassword = "password";
       extraGroups = [ "networkmanager" "wheel" ];
       packages = with pkgs; [];
-
     };
   };
 }
