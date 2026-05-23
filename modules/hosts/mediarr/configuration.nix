@@ -4,6 +4,12 @@
 
 { self, inputs, ... }: {
 
+  flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
+    modules = [
+      self.nixosModules.hostMediarr
+    ];
+  };
+
   flake.nixosModules.mediarrConfiguration = { pkgs, lib, ... }: {
     # Import Modules
     imports = [
