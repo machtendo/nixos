@@ -7,7 +7,7 @@
   flake.nixosModules.baseConfiguration = { pkgs, lib, ... }: {
     # import any other modules here
     imports = [
-    # ...
+      # ...
     ];
 
     # Enable Flakes
@@ -48,7 +48,6 @@
       wget
       git
     ];
-
   };
 }
 
