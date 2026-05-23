@@ -8,7 +8,7 @@
     modules = [
       self.nixosModules.hostMediarr
     ];
-  }
+  };
 
   flake.nixosModules.mediarrConfiguration = { pkgs, lib, ... }: {
     # Import Modules
@@ -56,7 +56,7 @@
     services.openssh.enable = true;     # OpenSSH Server
 
   };
-};
+}
 
 #---------------------------------------------------------------------------------------------------
 # End
