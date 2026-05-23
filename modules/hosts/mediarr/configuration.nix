@@ -10,7 +10,7 @@
     ];
   };
 
-  flake.nixosModules.mediarrConfiguration = { pkgs, lib, ... }: {
+  flake.nixosModules.hostMediarr = { pkgs, lib, ... }: {
     # Import Modules
     imports = [
       # Host Configuration
