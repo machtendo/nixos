@@ -14,10 +14,14 @@
     # Import Modules
     imports = [
       # Host Configuration
+      self.nixosModules.baseConfiguration
       self.nixosModules.mediarrHardware
 
+      # Users
+      self.nixosModules.userJas
+
       # Modules
-      self.nixosModules.baseConfiguration
+
     ];
 
     system.stateVersion = "25.11";
