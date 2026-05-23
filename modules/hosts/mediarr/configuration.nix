@@ -17,9 +17,6 @@
       self.nixosModules.baseConfiguration
       self.nixosModules.mediarrHardware
 
-      # Users
-      self.nixosModules.userJas
-
       # Modules
 
     ];
