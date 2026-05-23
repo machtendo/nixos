@@ -50,12 +50,11 @@
 
     # Packages (System)
     environment.systemPackages = with pkgs; [
-    # ...
+     # ...
     ];
 
     # Services
     services.openssh.enable = true;     # OpenSSH Server
-
   };
 }
 
