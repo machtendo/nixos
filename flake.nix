@@ -29,7 +29,7 @@
       toList (fileFilter isNixModule path);
 
     mkFlake = inputs.flake-parts.lib.mkFlake {inherit inputs;};
-  in
+      in
     mkFlake {imports = importTree ./.;};
 }
 
