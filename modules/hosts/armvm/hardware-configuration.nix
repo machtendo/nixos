@@ -7,7 +7,7 @@
 # to /etc/nixos/configuration.nix instead.
 
 { self, inputs, ... }: {
-  flake.nixosModules.ArmvmHardware = { config, lib, pkgs, modulesPath, ... }: {
+  flake.nixosModules.armvmHardware = { config, lib, pkgs, modulesPath, ... }: {
     imports = [
       (modulesPath + "/profiles/qemu-guest.nix")
     ];
