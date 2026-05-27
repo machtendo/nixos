@@ -15,11 +15,40 @@ font-family-bold              = "CommitMono Nerd Font Bold"
 font-family-italic            = "CommitMono Nerd Font Italic"
 font-family-bold-italic       = "CommitMono Nerd Font Bold Italic"
 
+font-style-italic             = false
+font-style-bold-italic        = false
+
 # Theme ------------------------------------------
-theme                         = "Nord Wave"
+
+#theme                         = ""
+
+# kanagawa-dragon
+
+palette = 0=#0d0c0c
+palette = 1=#c4746e
+palette = 2=#8a9a7b
+palette = 3=#c4b28a
+palette = 4=#8ba4b0
+palette = 5=#a292a3
+palette = 6=#8ea4a2
+palette = 7=#c8c093
+palette = 8=#a6a69c
+palette = 9=#e46876
+palette = 10=#87a987
+palette = 11=#e6c384
+palette = 12=#7fb4ca
+palette = 13=#938aa9
+palette = 14=#7aa89f
+palette = 15=#c5c9c5
+
+background = 181616
+foreground = c5c9c5
+cursor-color = c8c093
+selection-background = 2d4f67
+selection-foreground = c8c093
 
 # Color of Window Background
-background                    = "#1e1e1e"
+#background                    = "#1e1e1e"
 
 # Color of Window Foreground
 #foreground                   = ""
@@ -37,6 +66,9 @@ background                    = "#1e1e1e"
 #background-image-repeat      = ""
 
 # Cursor -----------------------------------------
+
+# Cursor Settings Enforced
+shell-integration-features = no-cursor
 
 # Cursor Style (block, bar, underline, block_hollow)
 cursor-style                  = "block"
