@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.baseConfiguration = { pkgs, lib, ... }: {
+  flake.nixosModules.userNix = { pkgs, lib, ... }: {
     # import any other modules here
     imports = [
       # ...

@@ -17,6 +17,10 @@
       self.nixosModules.baseConfiguration
       self.nixosModules.armvmHardware
 
+      # User Configuration
+      self.nixosModules.userNix
+      self.nixosModules.userJas
+
       # Modules
 
     ];
