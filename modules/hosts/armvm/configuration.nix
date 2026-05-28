@@ -4,8 +4,8 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosConfigurations.host-armvm-cfg = inputs.nixpkgs.lib.nixosSystem {
-    modules = [
+  flake.nixosModules.host-armvm-cfg = { pkgs, ... } {
+    imports = [
       # ...
     ];
 
