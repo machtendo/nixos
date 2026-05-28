@@ -37,6 +37,18 @@
       LC_TIME = "en_US.UTF-8";
     };
 
+# Optimization ---------------------------------
+
+  # Optimize Nix-Store During Rebuilds
+    nix.settings.auto-optimise-store = true;
+
+  # Purge Unused Nix-Store Entries
+    nix.gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+
     # Packages -----------------------------------
 
     # Allow unfree packages
