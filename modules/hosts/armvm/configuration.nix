@@ -6,7 +6,7 @@
 
   flake.nixosConfigurations.host-armvm-cfg = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.hostArmvm
+      # ...
     ];
 
     system.stateVersion = "25.11";
