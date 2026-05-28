@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.userJas = { pkgs, lib, ... }: {
+  flake.nixosModules.user-jas = { pkgs, lib, ... }: {
     # import any other modules here
     imports = [
       # ...

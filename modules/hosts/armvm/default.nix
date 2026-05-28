@@ -1,12 +1,27 @@
 #---------------------------------------------------------------------------------------------------
-# Host Definition: mediarr
+# Host Definition: armvm
 #---------------------------------------------------------------------------------------------------
 
 { self, inputs, ... }: {
-  flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.armvm = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       # Host Configuration
-      self.nixosModules.mediarrConfiguration
+      self.nixosModules.host-armvm
+    ];
+  };
+
+  flake.nixosModules.host-armvm = { self, inputs, ... }: {
+    imports = [
+      # Host Configuration
+      seld.nixosModules.host-armvm-cfg
+      self.nixosModules.host-armvm-hw
+
+      # User Configuration
+      self.nixosModules.user-nix
+      self.nixosModules.user-jas
+
+      # Modules
+      self.nixosModules.config-base
     ];
   };
 }
