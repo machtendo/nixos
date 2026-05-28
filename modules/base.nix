@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.baseConfiguration = { pkgs, lib, ... }: {
+  flake.nixosModules.config-base = { pkgs, lib, ... }: {
     # import any other modules here
     imports = [
       # ...
@@ -37,12 +37,12 @@
       LC_TIME = "en_US.UTF-8";
     };
 
-# Optimization ---------------------------------
+    # Optimization ---------------------------------
 
-  # Optimize Nix-Store During Rebuilds
+    # Optimize Nix-Store During Rebuilds
     nix.settings.auto-optimise-store = true;
 
-  # Purge Unused Nix-Store Entries
+    # Purge Unused Nix-Store Entries
     nix.gc = {
       automatic = true;
       dates = "weekly";

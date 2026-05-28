@@ -13,8 +13,8 @@
   flake.nixosModules.host-armvm = { self, inputs, ... }: {
     imports = [
       # Host Configuration
-      inputs.nixosModules.host-armvm-cfg
-      inputs.nixosModules.host-armvm-hw
+      self.nixosModules.host-armvm-cfg
+      self.nixosModules.host-armvm-hw
 
       # User Configuration
       self.nixosModules.user-nix
