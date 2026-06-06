@@ -4,9 +4,9 @@
 
 { inputs, self, ... }: {
 
-  flake.nixosConfigurations.host-mediarr-cfg = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.host-mediarr-cfg = { pkgs, ... }: {
     modules = [
-      self.nixosModules.hostMediarr
+      self.nixosModules.host-mediarr
     ];
 
     system.stateVersion = "25.11";
