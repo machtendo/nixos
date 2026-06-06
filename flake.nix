@@ -30,7 +30,7 @@
 
     mkFlake = inputs.flake-parts.lib.mkFlake {inherit inputs;};
       in
-    mkFlake {imports = importTree ./modules/;};
+    mkFlake {imports = importTree ./modules;};
 }
 
 #---------------------------------------------------------------------------------------------------
