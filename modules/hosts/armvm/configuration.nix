@@ -2,7 +2,7 @@
 # Host Configuration: armvm
 #---------------------------------------------------------------------------------------------------
 
-{ self, inputs, ... }: {
+{ inputs, ... }: {
 
   flake.nixosModules.host-armvm-cfg = { pkgs, ... }: {
     imports = [
