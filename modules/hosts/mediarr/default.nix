@@ -9,7 +9,7 @@
       self.nixosModules.mediarrConfiguration
     ];
   };
-}
+
 
   flake.nixosModules.host-armvm = { inputs, self, ... }: {
     imports = [
@@ -25,6 +25,8 @@
       self.nixosModules.config-base
 
     ];
+  };
+}
 
 #---------------------------------------------------------------------------------------------------
 # End
