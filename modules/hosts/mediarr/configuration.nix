@@ -10,21 +10,6 @@
     ];
   };
 
-  flake.nixosModules.hostMediarr = { pkgs, ... }: {
-    # Import Modules
-    imports = [
-      # Host Configuration
-      self.nixosModules.config-base
-      self.nixosModules.mediarrHardware
-
-      # User Configuration
-      self.nixosModules.userNix
-      self.nixosModules.userJas
-
-      # Modules
-
-    ];
-
     system.stateVersion = "25.11";
 
     # Bootloader.

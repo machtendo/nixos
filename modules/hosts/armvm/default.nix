@@ -10,7 +10,7 @@
     ];
   };
 
-  flake.nixosModules.host-armvm = { self, inputs, ... }: {
+  flake.nixosModules.host-armvm = { inputs, self, ... }: {
     imports = [
       # Host Configuration
       self.nixosModules.host-armvm-cfg
