@@ -6,7 +6,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 
-{ self, inputs, ... }: {
+{ inputs, self ... }: {
   flake.nixosModules.mediarrHardware = { config, lib, pkgs, modulesPath, ... }: {
     imports = [
       (modulesPath + "/profiles/qemu-guest.nix")
