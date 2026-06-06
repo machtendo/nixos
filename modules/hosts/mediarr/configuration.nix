@@ -8,7 +8,6 @@
     modules = [
       self.nixosModules.hostMediarr
     ];
-  };
 
     system.stateVersion = "25.11";
 
