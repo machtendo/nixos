@@ -10,7 +10,7 @@
     ];
   };
 
-  flake.nixosModules.host-mediarr = { inputs, self, ... }: {
+  flake.nixosModules.host-mediarr = { inputs, ... }: {
     imports = [
       # Host Configuration
       self.nixosModules.host-mediarr-cfg
