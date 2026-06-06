@@ -6,7 +6,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 
-{ inputs, self ... }: {
+{ inputs, self, ... }: {
   flake.nixosModules.host-armvm-hw = { config, lib, pkgs, modulesPath, ... }: {
     imports = [
       (modulesPath + "/profiles/qemu-guest.nix")

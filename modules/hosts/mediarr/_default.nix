@@ -2,7 +2,7 @@
 # Host Definition: mediarr
 #---------------------------------------------------------------------------------------------------
 
-{ inputs, self ... }: {
+{ inputs, self, ... }: {
   flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       # Host Configuration

@@ -2,7 +2,7 @@
 # Host Definition: armvm
 #---------------------------------------------------------------------------------------------------
 
-{ inputs, self ... }: {
+{ inputs, self, ... }: {
   flake.nixosConfigurations.armvm = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       # Host Configuration
