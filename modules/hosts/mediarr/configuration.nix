@@ -4,7 +4,7 @@
 
 { inputs, self, ... }: {
 
-  flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.host-mediarr-cfg = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.hostMediarr
     ];
@@ -14,7 +14,7 @@
     # Import Modules
     imports = [
       # Host Configuration
-      self.nixosModules.baseConfiguration
+      self.nixosModules.config-base
       self.nixosModules.mediarrHardware
 
       # User Configuration
