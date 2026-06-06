@@ -6,7 +6,7 @@
   flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       # Host Configuration
-      self.nixosModules.mediarrConfiguration
+      self.nixosModules.host-mediarr
     ];
   };
 
