@@ -3,7 +3,7 @@
 #---------------------------------------------------------------------------------------------------
 
 { inputs, self, ... }: {
-  flake.nixosConfigurations.mediarr = { pkgs, ... }: {
+  flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       # Host Configuration
       self.nixosModules.host-mediarr
