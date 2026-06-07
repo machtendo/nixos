@@ -6,7 +6,7 @@
 
   flake.nixosConfigurations.host-mediarr-cfg = { pkgs, ... }: {
     modules = [
-      #self.nixosModules.host-mediarr
+      self.nixosModules.host-mediarr
     ];
 
     system.stateVersion = "25.11";
