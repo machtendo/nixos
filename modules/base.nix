@@ -59,6 +59,7 @@
       neovim        # Neovim - Text Editor
       wget
       git
+      btop
     ];
   };
 }
