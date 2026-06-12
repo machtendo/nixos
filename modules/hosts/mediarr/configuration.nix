@@ -2,11 +2,18 @@
 # Host Configuration: mediarr
 #---------------------------------------------------------------------------------------------------
 
-{ inputs, self, ... }: {
+{ self, inputs, ... }: {
 
-  flake.nixosConfigurations.host-mediarr-cfg = { pkgs, ... }: {
-    modules = [
-      self.nixosModules.host-mediarr
+  flake.nixosModules.host-mediarr = { pkgs, lib, ... }: {
+    imports = [
+      # Host Configuration
+      self.nixosModules.host-mediarr-hw
+
+      # User Configuration
+      self.nixosModules.user-nix
+
+      # Modules
+      self.nixosModules.config-base
     ];
 
     system.stateVersion = "25.11";
