@@ -15,7 +15,6 @@
       # Modules
       self.nixosModules.config-base
     ];
-  };
 
     system.stateVersion = "25.11";
 
@@ -52,6 +51,7 @@
     # Services -----------------------------------
 
     services.openssh.enable = true;     # OpenSSH Server
+  };
 }
 
 
