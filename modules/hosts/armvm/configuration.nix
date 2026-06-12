@@ -2,12 +2,20 @@
 # Host Configuration: armvm
 #---------------------------------------------------------------------------------------------------
 
-{ inputs, self, ... }: {
+{ self, inputs, ... }: {
 
-  flake.nixosModules.host-armvm-cfg = { pkgs, ... }: {
+  flake.nixosModules.host-armvm-cfg = { pkgs, lib, ... }: {
     imports = [
-      # ...
+      # Host Configuration
+      self.nixosModules.host-armvm-hw
+
+      # User Configuration
+      self.nixosModules.user-nix
+
+      # Modules
+      self.nixosModules.config-base
     ];
+  };
 
     system.stateVersion = "25.11";
 
