@@ -4,6 +4,7 @@
 
 { self, inputs, ... }: {
   flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
     modules = [
       # Host Configuration
       self.nixosModules.host-mediarr-cfg
