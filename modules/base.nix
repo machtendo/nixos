@@ -56,10 +56,12 @@
 
     # Packages (System)
     environment.systemPackages = with pkgs; [
+      btop          # Process Manager TUI
+      wget          # File Downloader - HTTP, HTTPS, FTP and FTPS
+      git           # Git - Version Control
       neovim        # Neovim - Text Editor
-      wget
-      git
-      btop
+      sops          # Secrets Management
+      age           # File Encryption
     ];
   };
 }
