@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
   flake.nixosConfigurations.armvm = inputs.nixpkgs.lib.nixosSystem {
-    system = "aarch64-darwin"
+    system = "aarch64-darwin";
     modules = [
       # Host Configuration
       self.nixosModules.host-armvm-cfg
