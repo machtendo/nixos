@@ -1,0 +1,27 @@
+####################################################################################################
+# SOPS-NIX
+####################################################################################################
+
+keys:
+  # Personal / Public PGP Key (~/.config/sops/age/keys.txt)
+  - &personal_age_key age1l3hyd3u9ctutnnqtta0ctsw6xajw9ugleu53yegtcxfr9mpwr4tsa7vqfz
+
+  # Personal / Public PGP Key (Format)
+  #- &personal_pgp_key [PGP KEY]
+
+creation_rules:
+  # Filename = secrets.yaml, or ./secrets/*.yaml
+  - path_regex: "secrets/.*\\.yaml$"
+    key_groups:
+      - age:
+          - *personal_age_key
+        # Add host keys for decryption on the target system
+        # sops-nix will automatically pick up the system's SSH host keys
+        # as decryption keys if enabled in your NixOS config.
+        # So you typically don't list them explicitly here unless you
+        # want to restrict it to specific fingerprints, which is rare.
+        # This part ensures your *personal* key can decrypt it.
+
+####################################################################################################
+# END
+####################################################################################################
