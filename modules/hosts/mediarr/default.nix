@@ -8,10 +8,10 @@
     modules = [
       # Host Configuration
       self.nixosModules.host-mediarr-cfg
+      sops-nix.nixosModules.sops
     ];
   };
 }
-
 
 #---------------------------------------------------------------------------------------------------
 # End
