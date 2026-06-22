@@ -64,6 +64,14 @@
       age           # File Encryption
       tree          # Directory Listing TUI
     ];
+
+    # Environment --------------------------------
+
+    # Envronment Variables
+    environment.variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
   };
 }
 
