@@ -3,7 +3,7 @@
 #---------------------------------------------------------------------------------------------------
 
 keys:
-  # Personal / Public PGP Key (~/.config/sops/age/keys.txt)
+  # Personal / Public age key (~/.config/sops/age/keys.txt)
   - &personal_age_key age1l3hyd3u9ctutnnqtta0ctsw6xajw9ugleu53yegtcxfr9mpwr4tsa7vqfz
 
   # Personal / Public PGP Key (Format)
