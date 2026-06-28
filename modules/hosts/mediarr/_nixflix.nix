@@ -1,4 +1,14 @@
-{ config, pkgs, ... }:
+#---------------------------------------------------------------------------------------------------
+# Nixflix Configuration
+#---------------------------------------------------------------------------------------------------
+
+{ self, inputs, ... }: {
+
+  flake.nixosModules.config-nixflix = { pkgs, lib, ... }: {
+    # import any other modules here
+    imports = [
+      # ...
+    ];
 
 {
   sops.secrets = {
@@ -49,6 +59,9 @@
 
     postgres.enable = true;
 
+    # Sonarr -------------------------------------
+    # Automated Media Management (TV)
+    #---------------------------------------------
     sonarr = {
       enable = true;
       config = {
@@ -57,6 +70,9 @@
       };
     };
 
+    # Radarr -------------------------------------
+    # Automated Media Management (Movies)
+    #---------------------------------------------
     radarr = {
       enable = true;
       config = {
@@ -65,11 +81,9 @@
       };
     };
 
-    recyclarr = {
-      enable = true;
-      cleanupUnmanagedProfiles = true;
-    };
-
+    # Lidarr -------------------------------------
+    # Automated Media Management (Music)
+    #---------------------------------------------
     lidarr = {
       enable = true;
       config = {
@@ -78,6 +92,19 @@
       };
     };
 
+    # Recyclarr ----------------------------------
+    # TRaSH Optimization for Sonarr/Radarr/Lidarr
+    #---------------------------------------------
+    
+    recyclarr = {
+      enable = true;
+      cleanupUnmanagedProfiles = true;
+    };
+
+    # Prowlarr -----------------------------------
+    # Centralized Indexer for Sonarr/Radarr/Lidarr
+    #---------------------------------------------
+    
     prowlarr = {
       enable = true;
       config = {
@@ -100,6 +127,10 @@
       };
     };
 
+    # SABnzbd ------------------------------------
+    # Automation of Usenet Transfers
+    #---------------------------------------------
+    
     sabnzbd = {
       enable = true;
 
@@ -139,6 +170,10 @@
       };
     };
 
+    # Jellyfin -----------------------------------
+    # Media Streaming Server
+    #---------------------------------------------
+    
     jellyfin = {
       enable = true;
       apiKey._secret = config.sops.secrets."jellyfin/api_key".path;
@@ -151,6 +186,10 @@
       };
     };
 
+    # Seerr --------------------------------------
+    # Media Request and Discovery
+    #---------------------------------------------
+    
     seerr = {
       enable = true;
       apiKey._secret = config.sops.secrets."seerr/api_key".path;
@@ -163,3 +202,7 @@
     };
   };
 }
+
+#---------------------------------------------------------------------------------------------------
+# End
+#---------------------------------------------------------------------------------------------------
