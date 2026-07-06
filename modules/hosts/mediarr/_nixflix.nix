@@ -1,5 +1,5 @@
 #---------------------------------------------------------------------------------------------------
-# Nixflix Configuration
+# Module: Nixflix
 #---------------------------------------------------------------------------------------------------
 
 { self, inputs, ... }: {
@@ -10,7 +10,7 @@
       # ...
     ];
 
-  {
+    {
     sops.secrets = {
       "sonarr/api_key" = {};
       "sonarr/password" = {};
@@ -36,32 +36,43 @@
       "usenet/newsgroupdirect/password" = {};
     };
 
+    # Nixflix ------------------------------------
+    # Global Configuration
+    #---------------------------------------------
+
     nixflix = {
       enable = true;
       mediaDir = "/data/media";
       stateDir = "/data/.state";
       mediaUsers = ["myuser"];
 
+      # Theme Park -------------------------------
+      # Unified Appearance
+      #-------------------------------------------
+
       theme = {
         enable = true;
         name = "overseerr";
       };
 
-      # Reverse proxy (choose nginx or caddy, not both)
+      # Nginx ------------------------------------
+      # Reverse Proxy Server
+      #-------------------------------------------
+
       nginx = {
         enable = true;
         addHostsEntries = true; # Disable this if you have your own DNS configuration
       };
-      # caddy = {
-      #   enable = true;
-      #   addHostsEntries = true;
-      # };
+
+      # PostgreSQL ---------------------------------
+      # Shared database backend
+      #-------------------------------------------
 
       postgres.enable = true;
 
-      # Sonarr -------------------------------------
+      # Sonarr -----------------------------------
       # Automated Media Management (TV)
-      #---------------------------------------------
+      #-------------------------------------------
 
       sonarr = {
         enable = true;
@@ -71,9 +82,9 @@
         };
       };
 
-      # Radarr -------------------------------------
+      # Radarr -----------------------------------
       # Automated Media Management (Movies)
-      #---------------------------------------------
+      #-------------------------------------------
 
       radarr = {
         enable = true;
@@ -83,9 +94,9 @@
         };
       };
 
-      # Lidarr -------------------------------------
+      # Lidarr -----------------------------------
       # Automated Media Management (Music)
-      #---------------------------------------------
+      #-------------------------------------------
 
       lidarr = {
         enable = true;
@@ -95,18 +106,18 @@
         };
       };
 
-      # Recyclarr ----------------------------------
-      # TRaSH Optimization for Sonarr/Radarr/Lidarr
-      #---------------------------------------------
+      # Recyclarr --------------------------------
+      # TRaSH Optimization, Sonarr/Radarr/Lidarr
+      #-------------------------------------------
 
       recyclarr = {
         enable = true;
         cleanupUnmanagedProfiles = true;
       };
 
-      # Prowlarr -----------------------------------
-      # Centralized Indexer for Sonarr/Radarr/Lidarr
-      #---------------------------------------------
+      # Prowlarr ---------------------------------
+      # Centralized Indexer, Sonarr/Radarr/Lidarr
+      #-------------------------------------------
 
       prowlarr = {
         enable = true;
@@ -130,52 +141,53 @@
         };
       };
 
-      # SABnzbd ------------------------------------
+      # SABnzbd ----------------------------------
       # Automation of Usenet Transfers
-      #---------------------------------------------
+      #-------------------------------------------
 
-      sabnzbd = {
-        enable = true;
+      #sabnzbd = {
+      #  enable = true;
+      #
+      #  settings = {
+      #    misc = {
+      #      api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
+      #      nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;
+      #      username._secret = config.sops.secrets."sabnzbd/username".path;
+      #      password._secret = config.sops.secrets."sabnzbd/password".path;
+      #    };
+      #
+      #    servers = [
+      #      {
+      #        name = "Eweka";
+      #        host = "sslreader.eweka.nl";
+      #        port = 563;
+      #        username._secret = config.sops.secrets."usenet/eweka/username".path;
+      #        password._secret = config.sops.secrets."usenet/eweka/password".path;
+      #        connections = 20;
+      #        ssl = true;
+      #        priority = 0;
+      #        retention = 3000;
+      #      }
+      #      {
+      #        name = "NewsgroupDirect";
+      #        host = "news.newsgroupdirect.com";
+      #        port = 563;
+      #
+      #       username._secret = config.sops.secrets."usenet/newsgroupdirect/username".path;
+      #        password._secret = config.sops.secrets."usenet/newsgroupdirect/password".path;
+      #        connections = 10;
+      #        ssl = true;
+      #        priority = 1;
+      #        optional = true;
+      #        backup = true;
+      #      }
+      #    ];
+      #  };
+      #};
 
-        settings = {
-          misc = {
-            api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
-            nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;
-            username._secret = config.sops.secrets."sabnzbd/username".path;
-            password._secret = config.sops.secrets."sabnzbd/password".path;
-          };
-
-          servers = [
-            {
-              name = "Eweka";
-              host = "sslreader.eweka.nl";
-              port = 563;
-              username._secret = config.sops.secrets."usenet/eweka/username".path;
-              password._secret = config.sops.secrets."usenet/eweka/password".path;
-              connections = 20;
-              ssl = true;
-              priority = 0;
-              retention = 3000;
-            }
-            {
-              name = "NewsgroupDirect";
-              host = "news.newsgroupdirect.com";
-              port = 563;
-              username._secret = config.sops.secrets."usenet/newsgroupdirect/username".path;
-              password._secret = config.sops.secrets."usenet/newsgroupdirect/password".path;
-              connections = 10;
-              ssl = true;
-              priority = 1;
-              optional = true;
-              backup = true;
-            }
-          ];
-        };
-      };
-
-      # Jellyfin -----------------------------------
+      # Jellyfin ---------------------------------
       # Media Streaming Server
-      #---------------------------------------------
+      #-------------------------------------------
 
       jellyfin = {
         enable = true;
@@ -189,23 +201,33 @@
         };
       };
 
-      # Seerr --------------------------------------
+      # Seerr ------------------------------------
       # Media Request and Discovery
-      #---------------------------------------------
+      #-------------------------------------------
 
       seerr = {
         enable = true;
         apiKey._secret = config.sops.secrets."seerr/api_key".path;
       };
 
+      # Wireguard --------------------------------
+      # VPN Configuration
+      #-------------------------------------------
+
       vpn = {
         enable = true;
         wgConfFile = config.sops.secrets."wireguard/conf".path;
         accessibleFrom = [ "192.168.1.0/24" ];
       };
+
+      #-------------------------------------------
+      #-------------------------------------------
+      #-------------------------------------------
+
     };
   };
 }
+
 #---------------------------------------------------------------------------------------------------
 # End
 #---------------------------------------------------------------------------------------------------
