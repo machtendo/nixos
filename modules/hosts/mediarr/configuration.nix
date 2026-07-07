@@ -1,58 +1,67 @@
-#---------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------#
 # Host Configuration: mediarr
-#---------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------#
 
 { self, inputs, ... }: {
 
   flake.nixosModules.host-mediarr-cfg = { pkgs, lib, ... }: {
     imports = [
-      # Host Configuration
+
+      # Host Configuration #-----------#
       self.nixosModules.host-mediarr-hw
 
-      # User Configuration
+      # User Configuration #-----------#
       self.nixosModules.user-nix
 
-      # Modules
+      # Modules #----------------------#
       self.nixosModules.config-base
     ];
 
     system.stateVersion = "25.11";
 
-    # Bootloader.
+    # Bootloader #---------------------#
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda";
     boot.loader.grub.useOSProber = true;
 
-    # Networking ---------------------------------
+    # Networking #-------------------------------#
+    # System-specific Network Settings
+    #--------------------------------------------#
 
-    # Enable Networking
+    # Enable Networking #--------------#
     networking.networkmanager.enable = true;
 
-    # Hostname
+    # Hostname #-----------------------#
     networking.hostName = "mediarr";
 
-    # Network Proxy
+    # Network Proxy #------------------#
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-    # Firewall
+    # Firewall #-----------------------#
     # networking.firewall.allowedTCPPorts = [ ... ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
 
-    # Packages  ----------------------------------
+    # Packages #---------------------------------#
+    # System-specific Packages & Settings
+    #--------------------------------------------#
 
-    # Packages (System)
+    # Packages (System) #--------------#
     environment.systemPackages = with pkgs; [
      # ...
     ];
 
-    # Services
-    services.openssh.enable = true;     # OpenSSH Server
+    # Services #---------------------------------#
+    # System-specific Services
+    #--------------------------------------------#
+
+    # SSH Server #---------------------#
+    services.openssh.enable = true;
   };
 }
 
-#---------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------#
 # End
-#---------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------#
