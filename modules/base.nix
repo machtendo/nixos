@@ -37,9 +37,10 @@
       LC_TIME = "en_US.UTF-8";
     };
 
-    # Optimization ---------------------------------
-
+    # Optimization -------------------------------
     # Optimize Nix-Store During Rebuilds
+    #---------------------------------------------
+
     nix.settings.auto-optimise-store = true;
 
     # Purge Unused Nix-Store Entries
@@ -50,6 +51,8 @@
     };
 
     # Packages -----------------------------------
+    # Baseline packages for all devices
+    #---------------------------------------------
 
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
@@ -66,12 +69,17 @@
     ];
 
     # Environment --------------------------------
+    # Environment Variables
+    #---------------------------------------------
 
-    # Envronment Variables
     environment.variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
+
+    #---------------------------------------------
+    #---------------------------------------------
+    #---------------------------------------------
   };
 }
 
