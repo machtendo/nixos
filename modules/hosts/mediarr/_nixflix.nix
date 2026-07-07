@@ -10,7 +10,10 @@
       # ...
     ];
 
-    {
+    # sops-nix -----------------------------------
+    # Importing secrets
+    #---------------------------------------------
+
     sops.secrets = {
       "sonarr/api_key" = {};
       "sonarr/password" = {};
