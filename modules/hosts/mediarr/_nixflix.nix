@@ -128,18 +128,22 @@
           apiKey._secret = config.sops.secrets."prowlarr/api_key".path;
           hostConfig.password._secret = config.sops.secrets."prowlarr/password".path;
           indexers = [
+
             {
               name = "DrunkenSlug";
               apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
             }
+
             {
               name = "NZBFinder";
               apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
             }
+
             {
               name = "NzbPlanet";
               apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
             }
+
           ];
         };
       };
@@ -150,7 +154,7 @@
 
       #sabnzbd = {
       #  enable = true;
-      #
+
       #  settings = {
       #    misc = {
       #      api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
@@ -158,7 +162,7 @@
       #      username._secret = config.sops.secrets."sabnzbd/username".path;
       #      password._secret = config.sops.secrets."sabnzbd/password".path;
       #    };
-      #
+
       #    servers = [
       #      {
       #        name = "Eweka";
@@ -171,6 +175,7 @@
       #        priority = 0;
       #        retention = 3000;
       #      }
+
       #      {
       #        name = "NewsgroupDirect";
       #        host = "news.newsgroupdirect.com";
