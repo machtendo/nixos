@@ -5,12 +5,11 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.user-nix = { pkgs, lib, ... }: {
-    # import any other modules here
     imports = [
       # ...
     ];
 
-    # Define a user account. Don't forget to set a password with ‘passwd’.
+    # User Account
     users.users.nix = {
       isNormalUser = true;
       description = "nix";

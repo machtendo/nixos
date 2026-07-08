@@ -10,19 +10,19 @@
       # ...
     ];
 
-    # Enable Flakes #----------------------------#
+    # Enable Flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    # Keyboard Settings #--------------#
+    # Keyboard Settings
     services.xserver.xkb = {
       layout = "us";
       variant = "";
     };
 
-    # Time Zone #----------------------#
+    # Time Zone
     time.timeZone = "America/Chicago";
 
-    # Locale #-------------------------#
+    # Locale
     i18n.defaultLocale = "en_US.UTF-8";
 
     i18n.extraLocaleSettings = {
@@ -54,10 +54,9 @@
     # Baseline packages for all devices
     #--------------------------------------------#
 
-    # Allow unfree packages #----------#
     nixpkgs.config.allowUnfree = true;
 
-    # Packages (System) #--------------#
+    # Packages (System)
     environment.systemPackages = with pkgs; [
       btop          # Process Manager TUI
       wget          # File Downloader - HTTP, HTTPS, FTP and FTPS

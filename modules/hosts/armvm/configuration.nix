@@ -18,7 +18,7 @@
 
     system.stateVersion = "25.11";
 
-    # Bootloader.
+    # Bootloader
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda";
     boot.loader.grub.useOSProber = true;
@@ -48,7 +48,7 @@
      # ...
     ];
 
-    # Services -----------------------------------
+    # Services -----------------------------------    
 
     services.openssh.enable = true;     # OpenSSH Server
   };
