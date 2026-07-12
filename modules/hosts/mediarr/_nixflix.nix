@@ -129,20 +129,21 @@
           hostConfig.password._secret = config.sops.secrets."prowlarr/password".path;
           indexers = [
 
-            {
-              name = "DrunkenSlug";
-              apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
-            }
-
-            {
-              name = "NZBFinder";
-              apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
-            }
-
-            {
-              name = "NzbPlanet";
-              apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
-            }
+            # Usenet Indexers
+            #{
+            #  name = "DrunkenSlug";
+            #  apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
+            #}
+            #
+            #{
+            #  name = "NZBFinder";
+            #  apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
+            #}
+            #
+            #{
+            #  name = "NzbPlanet";
+            #  apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
+            #}
 
           ];
         };
@@ -225,7 +226,7 @@
       vpn = {
         enable = true;
         wgConfFile = config.sops.secrets."wireguard/conf".path;
-        accessibleFrom = [ "192.168.1.0/24" ];
+        accessibleFrom = [ "192.168.86.0/24" ];
       };
 
       #------------------------------------------#
