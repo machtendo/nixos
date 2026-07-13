@@ -5,7 +5,6 @@
 { self, inputs, config, sops-nix, nixflix, ... }: {
 
   flake.nixosModules.host-mediarr-cfg = { pkgs, lib, ... }: {
-    specialArgs = { inherit inputs; };
     imports = [
 
       # Host Configuration
