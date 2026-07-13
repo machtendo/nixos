@@ -19,6 +19,7 @@
       inputs.nixflix.nixosModules.nixflix
     ];
 
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
     system.stateVersion = "25.11";
 
     # Bootloader

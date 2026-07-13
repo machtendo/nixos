@@ -7,7 +7,6 @@
   flake.nixosModules.core = { pkgs, lib, ... }: {
     # import any other modules here
     imports = [
-      /etc/nixos/hardware-configuration.nix
       # ...
     ];
 

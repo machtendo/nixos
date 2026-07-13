@@ -8,7 +8,7 @@
     system = "aarch64-linux";
     modules = with self.nixosModules; [
       armvm         # Configuration - Host: armvm
-      #armvm-hw      # Configuration - Hardware: armvm
+      armvm-hw      # Configuration - Hardware: armvm
       user-nix      # Configuration - User: nix
       core          # Configuration - Core: All Devices
     ];
@@ -19,6 +19,7 @@
       # ...
     ];
 
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
     system.stateVersion = "26.05";
 
     # Bootloader
