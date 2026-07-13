@@ -130,16 +130,17 @@
           indexers = [
 
             # Usenet Indexers
+
             #{
             #  name = "DrunkenSlug";
             #  apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
             #}
-            #
+
             #{
             #  name = "NZBFinder";
             #  apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
             #}
-            #
+
             #{
             #  name = "NzbPlanet";
             #  apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
@@ -153,46 +154,47 @@
       # Automation of Usenet Transfers
       #------------------------------------------#
 
-      #sabnzbd = {
-      #  enable = true;
+      sabnzbd = {
+        enable = false;
 
-      #  settings = {
-      #    misc = {
-      #      api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
-      #      nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;
-      #      username._secret = config.sops.secrets."sabnzbd/username".path;
-      #      password._secret = config.sops.secrets."sabnzbd/password".path;
-      #    };
+        settings = {
+          misc = {
+            api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
+            nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;
+            username._secret = config.sops.secrets."sabnzbd/username".path;
+            password._secret = config.sops.secrets."sabnzbd/password".path;
+          };
 
-      #    servers = [
-      #      {
-      #        name = "Eweka";
-      #        host = "sslreader.eweka.nl";
-      #        port = 563;
-      #        username._secret = config.sops.secrets."usenet/eweka/username".path;
-      #        password._secret = config.sops.secrets."usenet/eweka/password".path;
-      #        connections = 20;
-      #        ssl = true;
-      #        priority = 0;
-      #        retention = 3000;
-      #      }
+          servers = [
+            
+            #{
+            #  name = "Eweka";
+            #  host = "sslreader.eweka.nl";
+            #  port = 563;
+            #  username._secret = config.sops.secrets."usenet/eweka/username".path;
+            #  password._secret = config.sops.secrets."usenet/eweka/password".path;
+            #  connections = 20;
+            #  ssl = true;
+            #  priority = 0;
+            #  retention = 3000;
+            #}
 
-      #      {
-      #        name = "NewsgroupDirect";
-      #        host = "news.newsgroupdirect.com";
-      #        port = 563;
-      #
-      #       username._secret = config.sops.secrets."usenet/newsgroupdirect/username".path;
-      #        password._secret = config.sops.secrets."usenet/newsgroupdirect/password".path;
-      #        connections = 10;
-      #        ssl = true;
-      #        priority = 1;
-      #        optional = true;
-      #        backup = true;
-      #      }
-      #    ];
-      #  };
-      #};
+            #{
+            #  name = "NewsgroupDirect";
+            #  host = "news.newsgroupdirect.com";
+            #  port = 563;
+            #  username._secret = config.sops.secrets."usenet/newsgroupdirect/username".path;
+            #  password._secret = config.sops.secrets."usenet/newsgroupdirect/password".path;
+            #  connections = 10;
+            #  ssl = true;
+            #  priority = 1;
+            #  optional = true;
+            #  backup = true;
+            #}
+            
+          ];
+        };
+      };
 
       # Jellyfin #-------------------------------#
       # Media Streaming Server
