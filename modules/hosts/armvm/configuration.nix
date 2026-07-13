@@ -4,16 +4,19 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.host-armvm-cfg = { pkgs, lib, ... }: {
+  flake.nixosConfigurations.armvm = inputs.nixpkgs.lib.nixosSystem {
+    system = "aarch64-linux";
+    modules = with self.nixosModules; [
+      armvm         # Host Configuration: armvm
+      armvm-hw      # Hardware Configuration: armvm
+      config-base   # Base Configuration
+      user-nix      # User: nix
+    ];
+  };
+
+  flake.nixosModules.armvm = { pkgs, lib, ... }: {
     imports = [
-      # Host Configuration
-      self.nixosModules.host-armvm-hw
-
-      # User Configuration
-      self.nixosModules.user-nix
-
-      # Modules
-      self.nixosModules.config-base
+      # ...
     ];
 
     system.stateVersion = "25.11";
@@ -48,7 +51,7 @@
      # ...
     ];
 
-    # Services -----------------------------------    
+    # Services -----------------------------------
 
     services.openssh.enable = true;     # OpenSSH Server
   };

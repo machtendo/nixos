@@ -3,13 +3,7 @@
 #---------------------------------------------------------------------------------------------------
 
 { self, inputs, ... }: {
-  flake.nixosConfigurations.armvm = inputs.nixpkgs.lib.nixosSystem {
-    system = "aarch64-linux";
-    modules = [
-      # Host Configuration
-      self.nixosModules.host-armvm-cfg
-    ];
-  };
+  # ,,,
 }
 
 #---------------------------------------------------------------------------------------------------
