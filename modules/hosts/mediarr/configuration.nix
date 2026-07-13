@@ -15,7 +15,6 @@
 
       # Modules
       self.nixosModules.config-base
-      nixflix.nixosModules.default
     ];
 
     system.stateVersion = "25.11";

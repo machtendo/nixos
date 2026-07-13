@@ -7,7 +7,7 @@
   flake.nixosModules.config-nixflix = { pkgs, lib, ... }: {
     # import any other modules here
     imports = [
-      # ...
+      #...
     ];
 
     # sops-nix #---------------------------------#
