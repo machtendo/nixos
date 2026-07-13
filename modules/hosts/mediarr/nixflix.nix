@@ -47,7 +47,7 @@
       enable = true;
       mediaDir = "/data/media";
       stateDir = "/data/.state";
-      mediaUsers = ["myuser"];
+      #mediaUsers = ["myuser"];
 
       # Theme Park #-----------------------------#
       # Unified Appearance
@@ -191,7 +191,7 @@
             #  optional = true;
             #  backup = true;
             #}
-            
+
           ];
         };
       };
