@@ -9,14 +9,13 @@
     modules = with self.nixosModules; [
       armvm         # Configuration - Host: armvm
       armvm-hw      # Configuration - Hardware: armvm
-      core          # Configuration - Core: All Devices
       user-nix      # Configuration - User: nix
     ];
   };
 
   flake.nixosModules.armvm = { pkgs, lib, ... }: {
     imports = [
-      # ...
+      core          # Configuration - Core: All Devices
     ];
 
     system.stateVersion = "25.11";
