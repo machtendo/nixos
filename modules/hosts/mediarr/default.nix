@@ -9,8 +9,8 @@
 
       # Host Configuration
       self.nixosModules.host-mediarr-cfg
-      inputs.sops-nix.nixosModules.sops
-      inputs.nixflix.nixosModules.default
+      sops-nix.nixosModules.sops
+      nixflix.nixosModules.default
 
     ];
   };
