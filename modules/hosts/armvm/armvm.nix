@@ -7,10 +7,10 @@
   flake.nixosConfigurations.armvm = inputs.nixpkgs.lib.nixosSystem {
     system = "aarch64-linux";
     modules = with self.nixosModules; [
-      armvm         # Host Configuration: armvm
-      armvm-hw      # Hardware Configuration: armvm
-      config-base   # Base Configuration
-      user-nix      # User: nix
+      armvm         # Configuration - Host: armvm
+      armvm-hw      # Configuration - Hardware: armvm
+      core          # Configuration - Core: All Devices
+      user-nix      # Configuration - User: nix
     ];
   };
 

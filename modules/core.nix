@@ -1,10 +1,10 @@
 #--------------------------------------------------------------------------------------------------#
-# Modular Configuration: Base System
+# Modular Configuration: Core System - All Devices
 #--------------------------------------------------------------------------------------------------#
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.config-base = { pkgs, lib, ... }: {
+  flake.nixosModules.core = { pkgs, lib, ... }: {
     # import any other modules here
     imports = [
       # ...

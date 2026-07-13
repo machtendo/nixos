@@ -14,7 +14,7 @@
       self.nixosModules.user-nix
 
       # Modules
-      self.nixosModules.config-base
+      self.nixosModules.core
       inputs.sops-nix.nixosModules.sops
       inputs.nixflix.nixosModules.nixflix
     ];
