@@ -15,8 +15,8 @@
 
       # Modules
       self.nixosModules.config-base
-      sops-nix.nixosModules.sops
-      nixflix.nixosModules.nixflix
+      inputs.sops-nix.nixosModules.sops
+      inputs.nixflix.nixosModules.nixflix
     ];
 
     system.stateVersion = "25.11";
