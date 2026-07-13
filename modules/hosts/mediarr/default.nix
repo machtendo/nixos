@@ -2,7 +2,7 @@
 # Host Definition: mediarr
 #--------------------------------------------------------------------------------------------------#
 
-{ self, inputs, sops-nix, nixflix, ... }: {
+{ self, inputs, config, sops-nix, nixflix, ... }: {
   flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
