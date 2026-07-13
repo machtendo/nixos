@@ -10,12 +10,13 @@
       armvm         # Configuration - Host: armvm
       armvm-hw      # Configuration - Hardware: armvm
       user-nix      # Configuration - User: nix
+      core          # Configuration - Core: All Devices
     ];
   };
 
   flake.nixosModules.armvm = { pkgs, lib, ... }: {
     imports = [
-      core          # Configuration - Core: All Devices
+      # ...
     ];
 
     system.stateVersion = "25.11";
