@@ -2,7 +2,7 @@
 # Host Configuration: mediarr
 #--------------------------------------------------------------------------------------------------#
 
-{ self, inputs, nixflix, ... }: {
+{ self, inputs, nixflix, config, ... }: {
 
   flake.nixosModules.host-mediarr-cfg = { pkgs, lib, ... }: {
     imports = [
