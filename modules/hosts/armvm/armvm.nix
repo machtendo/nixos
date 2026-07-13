@@ -19,8 +19,8 @@
       # ...
     ];
 
+    # Flakes  ------------------------------------
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-    system.stateVersion = "26.05";
 
     # Bootloader
     boot.loader.grub.enable = true;
@@ -55,6 +55,14 @@
     # Services -----------------------------------
 
     services.openssh.enable = true;     # OpenSSH Server
+
+    # System State Version -----------------------
+    system.stateVersion = "26.05";
+
+    #--------------------------------------------#
+    #--------------------------------------------#
+    #--------------------------------------------#
+
   };
 }
 
