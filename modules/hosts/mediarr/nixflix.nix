@@ -2,7 +2,7 @@
 # Module: Nixflix
 #--------------------------------------------------------------------------------------------------#
 
-{ self, inputs, ... }: {
+{ self, inputs, config, ... }: {
 
   flake.nixosModules.config-nixflix = { pkgs, lib, ... }: {
     # import any other modules here

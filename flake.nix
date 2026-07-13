@@ -8,7 +8,7 @@
 
     # flake-parts
     flake-parts.url = "github:hercules-ci/flake-parts";
-    
+
     # import-tree
     import-tree.url = "github:vic/import-tree";
 
