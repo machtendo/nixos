@@ -5,9 +5,9 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.core = { pkgs, lib, ... }: {
-    specialArgs = { inherit inputs; };
     # import any other modules here
     imports = [
+      /etc/nixos/hardware-configuration.nix
       # ...
     ];
 
