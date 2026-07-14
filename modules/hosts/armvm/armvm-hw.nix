@@ -8,27 +8,31 @@
 
 { inputs, self, ... }: {
   flake.nixosModules.armvm = { config, lib, pkgs, modulesPath, ... }: {
-    imports = [
-      (modulesPath + "/profiles/qemu-guest.nix")
-    ];
 
-    boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ ];
-    boot.extraModulePackages = [ ];
+  imports = [ ];
 
-    fileSystems."/" =
-      { device = "/dev/disk/by-uuid/f54b381d-5c30-40f3-accb-ff76bd486f89";
-        fsType = "ext4";
-      };
+  boot.initrd.availableKernelModules = [ "ehci_pci" "xhci_pci" "usbhid" "sr_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
 
-    swapDevices = [ ];
-    #swapDevices =
-    #  [ { device = "/dev/disk/by-uuid/3b6abe19-55d4-4f89-9046-b2f1ac3528df"; }
-    #  ];
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/8198c212-f9ac-482e-a489-c29c56e40bff";
+      fsType = "ext4";
+    };
 
-    nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-  };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/E881-B3F1";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  swapDevices = [ ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+  hardware.parallels.enable = true;
+  nixpkgs.config.allowUnfreePackages = [ "prl-tools" ];
+
 }
 
 #---------------------------------------------------------------------------------------------------
