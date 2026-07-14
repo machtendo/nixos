@@ -8,7 +8,7 @@
     system = "aarch64-linux";
     modules = with self.nixosModules; [
       armvm         # Configuration - Host: armvm
-      armvm-hw      # Configuration - Hardware: armvm
+      #armvm-hw      # Configuration - Hardware: armvm
       user-nix      # Configuration - User: nix
       core          # Configuration - Core: All Devices
     ];
@@ -22,7 +22,7 @@
     # Flakes  ------------------------------------
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    # Bootloader
+    # Bootloader ---------------------------------
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda";
     boot.loader.grub.useOSProber = true;
