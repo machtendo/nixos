@@ -9,30 +9,30 @@
 { inputs, self, ... }: {
   flake.nixosModules.armvm = { config, lib, pkgs, modulesPath, ... }: {
 
-  imports = [ ];
+    imports = [ ];
 
-  boot.initrd.availableKernelModules = [ "ehci_pci" "xhci_pci" "usbhid" "sr_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+    boot.initrd.availableKernelModules = [ "ehci_pci" "xhci_pci" "usbhid" "sr_mod" ];
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ ];
+    boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8198c212-f9ac-482e-a489-c29c56e40bff";
-      fsType = "ext4";
-    };
+    fileSystems."/" =
+      { device = "/dev/disk/by-uuid/8198c212-f9ac-482e-a489-c29c56e40bff";
+        fsType = "ext4";
+      };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E881-B3F1";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+    fileSystems."/boot" =
+      { device = "/dev/disk/by-uuid/E881-B3F1";
+        fsType = "vfat";
+        options = [ "fmask=0077" "dmask=0077" ];
+      };
 
-  swapDevices = [ ];
+    swapDevices = [ ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-  hardware.parallels.enable = true;
-  nixpkgs.config.allowUnfreePackages = [ "prl-tools" ];
-
+    nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+    hardware.parallels.enable = true;
+    nixpkgs.config.allowUnfreePackages = [ "prl-tools" ];
+  };
 }
 
 #---------------------------------------------------------------------------------------------------
