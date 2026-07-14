@@ -23,7 +23,7 @@
 
     # Boot ---------------------------------------
 
-    boot.kernelParams = [ "reboot=acpi" ];
+    #boot.kernelParams = [ "reboot=acpi" ];
 
     # Bootloader ---------------------------------
     boot.loader.grub.enable = true;
