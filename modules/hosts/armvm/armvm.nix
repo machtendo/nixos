@@ -21,6 +21,10 @@
     # Flakes  ------------------------------------
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+    # Boot ---------------------------------------
+
+    boot.kernelParams = [ "reboot=acpi" ];
+
     # Bootloader ---------------------------------
     boot.loader.grub.enable = true;
     boot.loader.grub.device = "/dev/sda";
