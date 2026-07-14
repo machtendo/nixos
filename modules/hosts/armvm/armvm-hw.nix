@@ -30,7 +30,7 @@
     swapDevices = [ ];
 
     nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-    #hardware.parallels.enable = true;
+    hardware.parallels.enable = true;
     nixpkgs.config.allowUnfreePackages = [ "prl-tools" ];
   };
 }
