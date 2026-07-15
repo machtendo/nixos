@@ -7,7 +7,7 @@
 # to /etc/nixos/configuration.nix instead.
 
 { inputs, self, ... }: {
-  flake.nixosModules.armvm = { config, lib, pkgs, modulesPath, ... }: {
+  flake.nixosModules.armvm-hw = { config, lib, pkgs, modulesPath, ... }: {
 
     imports = [ ];
 
@@ -30,7 +30,7 @@
     swapDevices = [ ];
 
     nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-    hardware.parallels.enable = true;
+    #hardware.parallels.enable = true;
     nixpkgs.config.allowUnfreePackages = [ "prl-tools" ];
   };
 }
