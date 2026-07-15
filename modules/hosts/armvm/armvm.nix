@@ -9,14 +9,14 @@
     modules = with self.nixosModules; [
       armvm         # Configuration - Host: armvm
       armvm-hw      # Configuration - Hardware: armvm
+      user-nix      # Configuration - User: nix
+      core          # Configuration - Core: All Devices
     ];
   };
 
   flake.nixosModules.armvm = { pkgs, lib, ... }: {
     imports = [
-      #armvm-hw      # Configuration - Hardware: armvm
-      self.nixosModules.user-nix      # Configuration - User: nix
-      self.nixosModules.core          # Configuration - Core: All Devices
+      # ...
     ];
 
     # Flakes  ------------------------------------
