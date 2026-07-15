@@ -14,6 +14,7 @@
     boot.initrd.availableKernelModules = [ "ehci_pci" "xhci_pci" "usbhid" "sr_mod" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ ];
+    boot.kernelParams = [ "reboot=acpi" ];
     boot.extraModulePackages = [ ];
 
     fileSystems."/" =
@@ -32,7 +33,7 @@
       ];
 
     nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-    #hardware.parallels.enable = true;
+    hardware.parallels.enable = true;
     nixpkgs.config.allowUnfreePackages = [ "prl-tools" ];
 
   };
