@@ -14,10 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "armvm"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -52,9 +49,9 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."user" = {
+  users.users."nix" = {
     isNormalUser = true;
-    description = "user";
+    description = "nix";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
   };
@@ -67,8 +64,8 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-     neovim
      git
+     neovim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
