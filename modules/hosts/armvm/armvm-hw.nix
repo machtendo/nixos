@@ -14,7 +14,7 @@
     boot.initrd.availableKernelModules = [ "ehci_pci" "xhci_pci" "usbhid" "sr_mod" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ ];
-    boot.kernelParams = [ "reboot=acpi" ];
+    #boot.kernelParams = [ "reboot=acpi" ];
     boot.extraModulePackages = [ ];
 
     fileSystems."/" =
