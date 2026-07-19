@@ -4,19 +4,10 @@
 
 { self, inputs, config, sops-nix, nixflix, ... }: {
 
-  flake.nixosModules.host-mediarr-cfg = { pkgs, lib, ... }: {
+  flake.nixosModules.mediarr-cfg = { pkgs, lib, ... }: {
     imports = [
-
-      # Host Configuration
-      self.nixosModules.host-mediarr-hw
-
-      # User Configuration
-      self.nixosModules.user-nix
-
-      # Modules
-      self.nixosModules.core
-      inputs.sops-nix.nixosModules.sops
-      inputs.nixflix.nixosModules.nixflix
+      #self.nixosModules.core
+      #inputs.sops-nix.nixosModules.sops
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -4,9 +4,8 @@
 
 { self, inputs, config, sops-nix, nixflix, ... }: {
 
-  flake.nixosModules.config-nixflix = { pkgs, lib, ... }: {
+  flake.nixosModules.nixflix = { pkgs, lib, ... }: {
     specialArgs = { inherit inputs; };
-    # import any other modules here
     imports = [
       #...
     ];

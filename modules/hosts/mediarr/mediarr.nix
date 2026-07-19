@@ -6,13 +6,13 @@
   flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };
-    modules = [
-
-      # Host Configuration
-      self.nixosModules.host-mediarr-cfg
-      inputs.sops-nix.nixosModules.sops
-      inputs.nixflix.nixosModules.default
-
+    modules = with self.nixosModules; [
+      mediarr-cfg   # Configuration - Host: mediarr
+      mediarr-hw    # Configuration - Hardware: mediarr
+      user-nix      # Configuration - User: nix
+      core          # Applications - Core: All Devices
+      sops          # Security - Tools: sops-nix
+      nixflix       # Aspect - Configuration: Nixflix
     ];
   };
 }
