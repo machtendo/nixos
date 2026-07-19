@@ -8,8 +8,9 @@
 
 { inputs, self, ... }: {
   flake.nixosModules.armvm-hw = { config, lib, pkgs, modulesPath, ... }: {
-
-    imports = [ ];
+    imports = [
+      # ...
+    ];
 
     boot.initrd.availableKernelModules = [ "ehci_pci" "xhci_pci" "usbhid" "sr_mod" ];
     boot.initrd.kernelModules = [ ];
