@@ -13,7 +13,7 @@
       core          # Applications - Core: All Devices
 
       inputs.sops-nix.nixosModules.sops     # Security - Tools: sops-nix
-      inputs.nixflix.nixosModules.nixflix   # Aspect - Configuration: Nixflix
+      inputs.nixflix.nixosModules.nixflix   # Feature - Configuration: Nixflix
     ];
   };
 }
