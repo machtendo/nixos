@@ -11,8 +11,9 @@
       mediarr-hw    # Configuration - Hardware: mediarr
       user-nix      # Configuration - User: nix
       core          # Applications - Core: All Devices
-      sops          # Security - Tools: sops-nix
-      nixflix       # Aspect - Configuration: Nixflix
+
+      inputs.sops-nix.nixosModules.sops          # Security - Tools: sops-nix
+      inputs.sops-nix.nixosModules.nixflix       # Aspect - Configuration: Nixflix
     ];
   };
 }
