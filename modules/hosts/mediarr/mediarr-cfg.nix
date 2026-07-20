@@ -10,7 +10,6 @@
       #inputs.sops-nix.nixosModules.sops
     ];
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
     system.stateVersion = "25.11";
 
     # Bootloader
