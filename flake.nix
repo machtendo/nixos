@@ -4,6 +4,8 @@
 
 {
   inputs = {
+
+    # nixpkgs: unstable
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # flake-parts
