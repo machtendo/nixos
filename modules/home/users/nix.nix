@@ -5,6 +5,7 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.user-nix = { pkgs, lib, ... }: {
+
     imports = [
       # ...
     ];
@@ -18,6 +19,7 @@
       packages = with pkgs; [
         # ...
       ];
+
     };
   };
 }

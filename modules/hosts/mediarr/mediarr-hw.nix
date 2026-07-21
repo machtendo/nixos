@@ -7,6 +7,7 @@
 # to /etc/nixos/configuration.nix instead.
 
 { inputs, self, ... }: {
+
   flake.nixosModules.mediarr-hw = { config, lib, pkgs, modulesPath, ... }: {
     imports = [
       (modulesPath + "/profiles/qemu-guest.nix")

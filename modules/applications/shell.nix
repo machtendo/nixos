@@ -8,7 +8,7 @@
       # ...
     ];
 
-      # Packages (System)
+    # Packages (System)
     environment.systemPackages = with pkgs; [
       # ...           # Name - Description
     ];

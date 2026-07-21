@@ -7,7 +7,9 @@
 # to /etc/nixos/configuration.nix instead.
 
 { inputs, self, ... }: {
+
   flake.nixosModules.armvm-hw = { config, lib, pkgs, modulesPath, ... }: {
+
     imports = [
       # ...
     ];

@@ -5,9 +5,9 @@
 { self, inputs, config, sops-nix, nixflix, ... }: {
 
   flake.nixosModules.mediarr-cfg = { pkgs, lib, ... }: {
+
     imports = [
-      #self.nixosModules.core
-      #inputs.sops-nix.nixosModules.sops
+      # ...
     ];
 
     system.stateVersion = "25.11";
@@ -52,6 +52,7 @@
 
     # SSH Server
     services.openssh.enable = true;
+
   };
 }
 
