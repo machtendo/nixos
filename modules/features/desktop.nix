@@ -34,9 +34,9 @@
         # ...
       ];
 
-      plugins = [
-        # ...
-      ];
+      #plugins = [
+      #  # ...
+      #];
     };
 
     programs.noctalia = {
