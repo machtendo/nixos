@@ -30,9 +30,9 @@
 
     programs.hyprland = {
       enable = true;
-      settings = [
-        # ...
-      ];
+      #settings = [
+      #  # ...
+      #];
 
       #plugins = [
       #  # ...
