@@ -56,7 +56,7 @@
       # ...
 
       # Hyprland
-      inputs.hyprland.packages.${pkgs.stdenv.host<D-b>Platform.system}.hyprland
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
 
       # Noctalia
