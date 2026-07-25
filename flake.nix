@@ -44,9 +44,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hermes-agent (nix'd abstraction)
-    nix-hermes = {
-      url = "github:0xrsydn/nix-hermes-agent";
+    # hermes
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
     };
 
   };

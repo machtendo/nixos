@@ -18,136 +18,88 @@
     services.hermes-agent = {
       enable = true;
 
-      # Configuration ----------------------------
-      # Renders to cli-config.yaml
-      #-------------------------------------------
+      addToSystemPackages   = true;
+      extraArgs             = [ "--verbose" ];
+      restart               = "always";
+      restartSec            = 5;
 
-      config = {
-
-        model = {
-          default = "anthropic/claude-opus-4.6";
-          provider = "openrouter";
-          base_url = "www.example.com";
-        };
-
-        terminal = {
-          backend = "local";
-          timeout = 180;
-          lifetime_seconds = 300;
-        };
-
-        agent = {
-          max_turns = 60;
-          verbose = "";
-          reasoning_effort = "medium";
-          personalities = "";
-        };
-
-        memory = {
-          memory_enabled = true;
-          user_profile_enabled = true;
-          memory_char_limit = 2200;
-          nudge_interval = 10;
-        };
-
-        compression = {
-          enabled = true;
-          threshold = 0.85;
-          summary_model = "google/gemini-3-flash-preview";
-        };
-
-        toolsets = [ "all" ];
-
+      # ── Container options ──────────────────────────────────────────────
+      container = {
+        enable        = false;
+        image         = "ubuntu:24.04";
+        backend       = "docker";
+        hostUsers     = [ "your-username" ];
+        extraVolumes  = [ "/home/user/projects:/projects:rw" ];
+        extraOptions  = [ "--gpus" "all" ];
       };
 
-      # Environment ------------------------------
-      # Secret & Standard Variables
-      #-------------------------------------------
-
-      # Secrets (sops-nix) -----------------------
-      environmentFiles = [
-
-        "/run/secrets/hermes-env"  # ANTHROPIC_API_KEY, TELEGRAM_TOKEN, etc.
-
-      ];
-
-      # Standard Environment ---------------------
-
-      environment = {
-
-        LLM_MODEL = "anthropic/claude-opus-4.6";
-
-      };
-
-      # Workspace Documents ----------------------
-      # Inline definitions or file paths
-      #-------------------------------------------
-
-      documents = {
-
-        # Inline Definitions
-
-        "SOUL.md"   = ''
-          # SOUL.md
-          You are a sharp, pragmatic AI assistant.
-        '';
-
-        "AGENTS.md" = ''
-          # AGENTS.md
-          Read SOUL.md first. Then help the user.
-        '';
-
-        "USER.md"   = ''
-          # USER.md
-          Name: Your Human
-        '';
-
-        # External Files
-        # "SOUL.md"     = ./documents/SOUL.md;
-        # "AGENTS.md"   = ./documents/AGENTS.md;
-        # "USER.md"     = ./documents/USER.md;
-
-      };
-
-      # Skills -----------------------------------
-      # Declared (Phase 1) Skills
-      #-------------------------------------------
-
-      skills = {
-        bundled.enable = true;
-
-        optional = [
-          "creative/blender-mcp"
-        ];
-
-        custom = {
-          repo-watch = {
-            category = "research";
-            source = ./skills/repo-watch;
-          };
-        };
-
-      };
-
-      # MCP Servers ------------------------------
+      # Secrets ----------------------------------
       #
       #-------------------------------------------
 
-      mcpServers = {
+      environmentFiles = [ config.sops.secrets."hermes-env".path ];
 
-        context7 = {
-          command = "npx";
-          args = [ "-y" "@upstash/context7-mcp@latest" ];
+      # Documents --------------------------------
+      #
+      #-------------------------------------------
+
+      documents = {
+        "SOUL.md"       = ./documents/SOUL.md;
+        "AGENTS.md"     = ./documents/AGENTS.md;
+        "USER.md"       = ./documents/USER.md;
+        "MEMORIES.md"   = ./documents/MEMORIES.md
+      };
+
+      # ── MCP Servers ────────────────────────────────────────────────────
+      mcpServers = {
+        filesystem = {
+          command   = "npx";
+          args      = [ "-y" "@modelcontextprotocol/server-filesystem" "/data/workspace" ];
         };
+
+        # ...
 
       };
 
-      # Extra Tools ------------------------------
-      # Tools in PATH
-      #-------------------------------------------
+      # ── Model ──────────────────────────────────────────────────────────
+      settings = {
 
-      extraPackages = with pkgs; [ jq ripgrep curl ];
+        toolsets    = [ "all" ];
+        max_turns   = 100;
 
+        model = {
+          base_url  = "https://openrouter.ai/api/v1";
+          default   = "anthropic/claude-opus-4.6";
+        };
+
+        terminal = {
+          backend   = "local";
+          cwd       = ".";
+          timeout   = 180;
+        };
+
+        compression = {
+          enabled         = true;
+          threshold       = 0.85;
+          summary_model   = "google/gemini-3-flash-preview";
+        };
+
+        memory = {
+          memory_enabled        = true;
+          user_profile_enabled  = true;
+        };
+
+        display = {
+          compact       = false;
+          personality   = "kawaii";
+        };
+
+        agent = {
+          max_turns   = 60;
+          verbose     = false;
+        };
+
+      };
     };
 
     #--------------------------------------------#
