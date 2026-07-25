@@ -44,6 +44,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # hermes-agent
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+    };
+
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake
