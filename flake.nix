@@ -45,8 +45,8 @@
     };
 
     # hermes-agent
-    hermes-agent = {
-      url = "github:NousResearch/hermes-agent";
+    nix-hermes = {
+      url = "github:0xrsydn/nix-hermes-agent";
     };
 
   };
