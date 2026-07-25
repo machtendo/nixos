@@ -40,7 +40,7 @@
       #];
     };
 
-    xwayland.enable = false; # Xwayland can be disabled.
+    #xwayland.enable = false; # Xwayland can be disabled.
 
     programs.noctalia = {
       enable = true;
