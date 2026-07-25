@@ -38,9 +38,9 @@
       #plugins = [
       #  # ...
       #];
+    };
 
-    xwayland.enable = true; # Xwayland can be disabled.
-d    };
+    xwayland.enable = false; # Xwayland can be disabled.
 
     programs.noctalia = {
       enable = true;
