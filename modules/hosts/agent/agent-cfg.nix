@@ -22,7 +22,7 @@
     networking.networkmanager.enable = true;
 
     # Hostname
-    networking.hostName = "armvm";
+    networking.hostName = "agent";
 
     # Network Proxy
     # networking.proxy.default = "http://user:password@proxy:port/";
