@@ -27,6 +27,7 @@
         model = {
           default = "anthropic/claude-opus-4.6";
           provider = "openrouter";
+          base_url = "www.example.com";
         };
 
         terminal = {
@@ -37,7 +38,9 @@
 
         agent = {
           max_turns = 60;
+          verbose = "";
           reasoning_effort = "medium";
+          personalities = "";
         };
 
         memory = {
@@ -77,12 +80,14 @@
       };
 
       # Workspace Documents ----------------------
-      # (inline or file paths)
+      # Inline definitions or file paths
       #-------------------------------------------
 
       documents = {
 
-        "SOUL.md" = ''
+        # Inline Definitions
+
+        "SOUL.md"   = ''
           # SOUL.md
           You are a sharp, pragmatic AI assistant.
         '';
@@ -92,13 +97,15 @@
           Read SOUL.md first. Then help the user.
         '';
 
-        "USER.md" = ''
+        "USER.md"   = ''
           # USER.md
           Name: Your Human
         '';
 
-        # Or reference a file:
-        # "SOUL.md" = ./documents/SOUL.md;
+        # External Files
+        # "SOUL.md"     = ./documents/SOUL.md;
+        # "AGENTS.md"   = ./documents/AGENTS.md;
+        # "USER.md"     = ./documents/USER.md;
 
       };
 
