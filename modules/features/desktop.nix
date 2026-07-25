@@ -5,10 +5,9 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.desktop = { pkgs, lib, ... }: {
-    specialArgs = { inherit inputs; };
 
     imports = [
-      # ...
+      inputs.noctalia.nixosModules.default
     ];
 
     # Cachix ------------------------------------#
