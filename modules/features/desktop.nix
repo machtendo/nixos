@@ -29,7 +29,8 @@
     #--------------------------------------------#
 
     programs.hyprland = {
-      enable = true;
+      enable    = true;
+      withUWSM  = true; # Universal Wayland Session Manager
       #settings = [
       #  # ...
       #];
@@ -37,7 +38,9 @@
       #plugins = [
       #  # ...
       #];
-    };
+
+    xwayland.enable = true; # Xwayland can be disabled.
+d    };
 
     programs.noctalia = {
       enable = true;
