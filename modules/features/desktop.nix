@@ -5,6 +5,7 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.desktop = { pkgs, lib, ... }: {
+    specialArgs = { inherit inputs; };
 
     imports = [
       # ...
