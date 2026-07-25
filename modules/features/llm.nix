@@ -16,8 +16,8 @@
       enable = true;
       #configFile = /etc/hermes/config.yaml;
       settings = {
-        model.default         = "anthropic/claude-sonnet-4";
-        environmentFiles      = [ config.sops.secrets."hermes-env".path ];
+        #model.default         = "anthropic/claude-sonnet-4";
+        #environmentFiles      = [ config.sops.secrets."hermes-env".path ];
         addToSystemPackages   = true;
         toolsets              = [ "all" ];
         terminal              = { backend = "local"; timeout = 180; };
