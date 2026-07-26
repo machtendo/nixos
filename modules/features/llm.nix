@@ -12,6 +12,20 @@
       # ...
     ];
 
+    sops = {
+      
+      defaultSopsFile = ../../../../secrets/secrets.yaml;
+      defaultSopsFormat = "yaml";
+      
+      age = {
+        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      };
+
+      secrets = {
+        "sonarr/api_key" = {};
+      };
+    };
+
     # Hermes Agent --------------------------------------------------------
     #
     #----------------------------------------------------------------------
@@ -85,6 +99,7 @@
         #"AGENTS.md"   = ${workingDirectory}/AGENTS.md;
         #"USER.md"     = ${workingDirectory}/USER.md;
         #"MEMORIES.md" = ${workingDirectory}/MEMORIES.md
+
       };
 
       # Tools ------------------------------------
@@ -108,24 +123,24 @@
 
       settings = {
 
-        toolsets    = [ "all" ];
-        max_turns   = 100;
+        toolsets                = [ "all" ];
+        max_turns               = 100;
 
         model = {
-          base_url  = "http://192.168.86.239:11434/api/v1";
-          default   = "ollama/laguna-s-2.1";
+          base_url              = "http://192.168.86.239:11434/api/v1";
+          default               = "ollama/laguna-s-2.1";
         };
 
         terminal = {
-          backend   = "local";
-          cwd       = ".";
-          timeout   = 180;
+          backend               = "local";
+          cwd                   = ".";
+          timeout               = 180;
         };
 
         compression = {
-          enabled         = false;
-          #threshold       = 0.85;
-          #summary_model   = "google/gemini-3-flash-preview";
+          enabled               = false;
+          #threshold            = 0.85;
+          #summary_model        = "google/gemini-3-flash-preview";
         };
 
         memory = {
@@ -135,13 +150,13 @@
         };
 
         display = {
-          compact       = false;
-          personality   = "technical";
+          compact               = false;
+          personality           = "technical";
         };
 
         agent = {
-          max_turns   = 60;
-          verbose     = false;
+          max_turns             = 60;
+          verbose               = false;
         };
       };
 
@@ -177,9 +192,9 @@
       stateDir          = "/var/lib/hermes-webui";
       user              = "hermes";
       group             = "hermes";
-      hermesHome        = "/var/lib/hermes";
-      #agent.package     = hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
-      #environmentFiles  = [ "/run/secrets/hermes-webui.env" ];
+      hermesHome        = "/var/lib/hermes/.hermes";
+      agent.package     = hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      environmentFiles  = [ "/run/secrets/hermes-webui.env" ];
     };
 
     #--------------------------------------------#
@@ -187,9 +202,6 @@
     #--------------------------------------------#
 
   };
-
-
-
 }
 
 #--------------------------------------------------------------------------------------------------#
