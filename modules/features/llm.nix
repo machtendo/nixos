@@ -60,10 +60,30 @@
       #-------------------------------------------
 
       documents = {
-        "SOUL.md"     = ${workingDirectory}/SOUL.md;
-        "AGENTS.md"   = ${workingDirectory}/AGENTS.md;
-        "USER.md"     = ${workingDirectory}/USER.md;
-        "MEMORIES.md" = ${workingDirectory}/MEMORIES.md
+
+        # Inline Definitions
+
+        "SOUL.md"   = ''
+          # SOUL.md
+          You are a sharp, pragmatic AI assistant.
+        '';
+
+        "AGENTS.md" = ''
+          # AGENTS.md
+          Read SOUL.md first. Then help the user.
+        '';
+
+        "USER.md"   = ''
+          # USER.md
+          Name: Your Human
+        '';
+
+        # External Files
+
+        #"SOUL.md"     = ${workingDirectory}/SOUL.md;
+        #"AGENTS.md"   = ${workingDirectory}/AGENTS.md;
+        #"USER.md"     = ${workingDirectory}/USER.md;
+        #"MEMORIES.md" = ${workingDirectory}/MEMORIES.md
       };
 
       # Tools ------------------------------------
