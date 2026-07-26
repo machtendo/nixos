@@ -27,10 +27,12 @@
       restart             = "always";
       restartSec          = 5;
 
+      # User
       user                = "hermes";
       group               = "hermes";
-      createUser          = true;
+      createUser          = false;
 
+      # Directories
       stateDir            = "/var/lib/hermes";
       workingDirectory    = "${stateDir}/workspace";
 
@@ -53,7 +55,6 @@
         #extraOptions  = [ "--gpus" "all" ];
       };
 
-
       # Personality ------------------------------
       #
       #-------------------------------------------
@@ -69,7 +70,7 @@
       # MCP, Packages, etc.
       #-------------------------------------------
 
-      # MCP Servers -----
+      # MCP Servers --------------------
       mcpServers = {
         filesystem  = {
           command   = "npx";
@@ -109,19 +110,44 @@
         memory = {
           memory_enabled        = true;
           user_profile_enabled  = true;
+          provider              = "hindsight";
         };
 
         display = {
           compact       = false;
-          personality   = "kawaii";
+          personality   = "technical";
         };
 
         agent = {
           max_turns   = 60;
           verbose     = false;
         };
-
       };
+
+      #-------------------------------------------
+      # Extra Options
+      #-------------------------------------------
+
+      extraDependencyGroups = [
+        #"messaging"
+        #"matrix"
+        #"dingtalk"
+        #"feishu"
+        #"voice"
+        #"edge-tts"
+        #"tts-premium"
+        #"anthropic"
+        #"bedrock"
+        #"azure-identity"
+        #"honcho"
+        #"hindsight"
+        #"modal"
+        #"daytona"
+        #"exa"
+        #"firecrawl"
+        #"fal"
+      ];
+
     };
 
     #--------------------------------------------#
