@@ -1,5 +1,5 @@
 #---------------------------------------------------------------------------------------------------
-# Host Configuration: armvm
+# Host Configuration: agent
 #---------------------------------------------------------------------------------------------------
 
 { self, inputs, ... }: {
@@ -29,10 +29,11 @@
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     # Firewall
-    networking.firewall.allowedTCPPorts = [ 9119 8787 ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
+    networking.firewall = {
+      enable = true;
+      allowedTCPPorts = [ 9119 8787 ];
+      allowedUDPPorts = [ 9119 8787 ];
+    };
 
     # Packages  ----------------------------------
 
