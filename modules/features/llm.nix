@@ -94,7 +94,7 @@
       mcpServers = {
         filesystem  = {
           command   = "npx";
-          args      = [ "-y" "@modelcontextprotocol/server-filesystem" "/data/workspace" ];
+          args      = [ "-y" "@modelcontextprotocol/server-filesystem" "/var/lib/hermes/workspace" ];
         };
 
         # ...
