@@ -10,16 +10,22 @@
       # ...
     ];
 
+    # Group
+    users.groups = {
+      hermes = {};    # Automatically Generate GID
+    };
+
     # User Account
     users.users.hermes = {
-      isNormalUser = true;
-      description = "hermes";
-      initialPassword = "password";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [
+      isNormalUser      = true;
+      description       = "hermes";
+      initialPassword   = "password";
+      extraGroups       = [ "networkmanager" "wheel" ];
+      packages          = with pkgs; [
         # ...
       ];
     };
+
   };
 }
 
