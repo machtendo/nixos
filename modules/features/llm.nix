@@ -23,7 +23,7 @@
 
       # Service ---------
       addToSystemPackages = true;
-      extraArgs           = [ "--verbose" ];
+      #extraArgs           = [ "--verbose" ];
       restart             = "always";
       restartSec          = 5;
 
