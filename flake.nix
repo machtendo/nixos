@@ -49,6 +49,9 @@
       url = "github:NousResearch/hermes-agent";
     };
 
+    hermes-webui = {
+      url = "github:nesquena/hermes-webui";
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake
