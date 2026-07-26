@@ -34,7 +34,7 @@
 
       # Directories
       stateDir            = "/var/lib/hermes";
-      workingDirectory    = "${stateDir}/workspace";
+      workingDirectory    = "/var/lib/hermes/workspace";
 
       # Environment -----
       environment         = {};
