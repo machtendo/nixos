@@ -13,16 +13,15 @@
     ];
 
     sops = {
-
-      defaultSopsFile = ../../secrets/secrets.yaml;
-      defaultSopsFormat = "yaml";
+      defaultSopsFile     = ../../secrets/hermes.yaml;
+      defaultSopsFormat   = "yaml";
 
       age = {
-        sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+        sshKeyPaths       = [ "/etc/ssh/ssh_host_ed25519_key" ];
       };
 
       secrets = {
-        "sonarr/api_key" = {};
+        "sonarr/api_key"  = {};
       };
     };
 

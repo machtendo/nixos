@@ -15,7 +15,7 @@
     # Importing secrets
     #--------------------------------------------#
 
-    sops.defaultSopsFile = ../../../../secrets/secrets.yaml;
+    sops.defaultSopsFile = ../../../../secrets/nixflix.yaml;
     sops.defaultSopsFormat = "yaml";
     sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
     sops.secrets = {
