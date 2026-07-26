@@ -8,6 +8,7 @@
 
     imports = [
       inputs.hermes-agent.nixosModules.default
+      inputs.hermes-webui.nixosModules.default
       # ...
     ];
 
@@ -169,11 +170,26 @@
       ];
     };
 
+    services.hermes-webui = {
+      enable            = true;
+      host              = "127.0.0.1";
+      port              = 8787;
+      stateDir          = "/var/lib/hermes-webui";
+      user              = "hermes";
+      group             = "hermes";
+      hermesHome        = "/var/lib/hermes/.hermes";
+      agent.package     = hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      environmentFiles  = [ "/run/secrets/hermes-webui.env" ];
+    };
+
     #--------------------------------------------#
     #--------------------------------------------#
     #--------------------------------------------#
 
   };
+
+
+
 }
 
 #--------------------------------------------------------------------------------------------------#
