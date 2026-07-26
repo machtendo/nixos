@@ -14,7 +14,7 @@
 
     sops = {
 
-      defaultSopsFile = ../secrets/secrets.yaml;
+      defaultSopsFile = ../../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
 
       age = {
