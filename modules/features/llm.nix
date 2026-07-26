@@ -60,10 +60,10 @@
       #-------------------------------------------
 
       documents = {
-        "SOUL.md"     = ./documents/SOUL.md;
-        "AGENTS.md"   = ./documents/AGENTS.md;
-        "USER.md"     = ./documents/USER.md;
-        "MEMORIES.md" = ./documents/MEMORIES.md
+        "SOUL.md"     = ${workingDirectory}/SOUL.md;
+        "AGENTS.md"   = ${workingDirectory}/AGENTS.md;
+        "USER.md"     = ${workingDirectory}/USER.md;
+        "MEMORIES.md" = ${workingDirectory}/MEMORIES.md
       };
 
       # Tools ------------------------------------
@@ -91,8 +91,8 @@
         max_turns   = 100;
 
         model = {
-          base_url  = "https://openrouter.ai/api/v1";
-          default   = "anthropic/claude-opus-4.6";
+          base_url  = "http://192.168.86.239:11434/api/v1";
+          default   = "ollama/laguna-s-2.1";
         };
 
         terminal = {
@@ -102,9 +102,9 @@
         };
 
         compression = {
-          enabled         = true;
-          threshold       = 0.85;
-          summary_model   = "google/gemini-3-flash-preview";
+          enabled         = false;
+          #threshold       = 0.85;
+          #summary_model   = "google/gemini-3-flash-preview";
         };
 
         memory = {
@@ -129,25 +129,24 @@
       #-------------------------------------------
 
       extraDependencyGroups = [
-        #"messaging"
-        #"matrix"
-        #"dingtalk"
-        #"feishu"
-        #"voice"
-        #"edge-tts"
-        #"tts-premium"
-        #"anthropic"
-        #"bedrock"
-        #"azure-identity"
-        #"honcho"
-        #"hindsight"
-        #"modal"
-        #"daytona"
-        #"exa"
-        #"firecrawl"
-        #"fal"
+        #"messaging"          # Discord, Telegram, Slack
+        #"matrix"             # Matrix/Element
+        #"dingtalk"           # DingTalk
+        #"feishu"             # Feishu/Lark
+        #"voice"              # Local speech-to-text (faster-whisper)
+        #"edge-tts"           # Edge TTS provider
+        #"tts-premium"        # ElevenLabs TTS
+        #"anthropic"          # Native Anthropic SDK (not needed via OpenRouter)
+        #"bedrock"            # AWS Bedrock (boto3)
+        #"azure-identity"     # Azure Entra ID auth
+        #"honcho"             # Honcho memory provider
+        "hindsight"          # Hindsight memory provider
+        #"modal"              # Modal terminal backend
+        #"daytona"            # Daytona terminal backend
+        #"exa"                # Exa web search
+        #"firecrawl"          # Firecrawl web search
+        #"fal"                # FAL image generation
       ];
-
     };
 
     #--------------------------------------------#
