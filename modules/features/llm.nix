@@ -177,7 +177,7 @@
       stateDir          = "/var/lib/hermes-webui";
       user              = "hermes";
       group             = "hermes";
-      hermesHome        = "/var/lib/hermes/";
+      hermesHome        = "/var/lib/hermes";
       #agent.package     = hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
       environmentFiles  = [ "/run/secrets/hermes-webui.env" ];
     };
