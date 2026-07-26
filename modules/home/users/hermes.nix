@@ -20,7 +20,7 @@
       isNormalUser      = true;
       description       = "hermes";
       initialPassword   = "password";
-      extraGroups       = [ "networkmanager" "wheel" ];
+      extraGroups       = [ "hermes" ];
       packages          = with pkgs; [
         # ...
       ];
