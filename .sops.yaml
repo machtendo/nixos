@@ -5,6 +5,7 @@
 keys:
   # Personal / Public age key (~/.config/sops/age/keys.txt)
   - &personal_age_key age1l3hyd3u9ctutnnqtta0ctsw6xajw9ugleu53yegtcxfr9mpwr4tsa7vqfz
+  - &agent age1nnetykpz7g9777z3806a5yv0773thdh7sh4qpaxsxsn72uza8dwsel9v3y
 
   # Personal / Public PGP Key (Format)
   #- &personal_pgp_key [PGP KEY]
@@ -15,6 +16,7 @@ creation_rules:
     key_groups:
       - age:
           - *personal_age_key
+          - *agent
         # Add host keys for decryption on the target system
         # sops-nix will automatically pick up the system's SSH host keys
         # as decryption keys if enabled in your NixOS config.
