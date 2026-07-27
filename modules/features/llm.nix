@@ -22,7 +22,7 @@
       };
 
       secrets = {
-        "sonarr/api_key"  = {};
+        #"sonarr/api_key"  = {};
       };
     };
 
