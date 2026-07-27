@@ -187,7 +187,7 @@
 
     services.hermes-webui = {
       enable            = true;
-      host              = "0.0.0.0";
+      host              = "127.0.0.1";
       port              = 8787;
       stateDir          = "/var/lib/hermes-webui";
       user              = "hermes";
