@@ -41,6 +41,10 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
+    #
+    # Flake Modules
+    #
+
     # flake-parts
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -49,6 +53,12 @@
     # import-tree
     import-tree = {
       url = "github:vic/import-tree";
+    };
+
+    # nix-wrapper-modules
+    wrappers = {
+      url = "github:BirdeeHub/nix-wrapper-modules";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # sops-nix
