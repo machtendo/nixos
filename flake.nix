@@ -45,7 +45,7 @@
     };
 
     # numtide llm-agents
-    llm-agents {
+    llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
 
