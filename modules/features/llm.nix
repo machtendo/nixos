@@ -14,10 +14,14 @@
       extra-trusted-public-keys   = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
     };
 
-    nixpkgs.overlays = [ llm-agents.overlays.shared-nixpkgs ];
-    environment.systemPackages = [
-      pkgs.llm-agents.hermes-agent
-    ];
+    environment = {
+      systemPackages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+        hermes-agent
+        hermes-hud
+        hermes-desktop
+        # ...
+      ];
+    };
 
     #--------------------------------------------#
     #--------------------------------------------#
