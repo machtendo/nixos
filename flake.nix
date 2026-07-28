@@ -44,15 +44,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hermes
-    hermes-agent = {
-      url = "github:NousResearch/hermes-agent";
+    # numtide llm-agents
+    llm-agents {
+      url = "github:numtide/llm-agents.nix";
     };
-
-    hermes-webui = {
-      url = "github:nesquena/hermes-webui";
-    };
-  };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake
     { inherit inputs; }
