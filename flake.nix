@@ -6,12 +6,31 @@
   description = "Dendritic NixOS";
 
   nixConfig = {
+    substituters = [
+      "https://hyprland.cachix.org"
+    ];
+
+    trusted-substituters = [
+      "https://hyprland.cachix.org"
+    ];
+
     extra-substituters = [
       "https://cache.numtide.com"
+      "https://noctalia.cachix.org"
+    ];
+
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
 
     extra-trusted-public-keys = [
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+
+    trusted-users = [
+      "root"
+      "@wheel"
     ];
   };
 
