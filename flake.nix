@@ -48,14 +48,15 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
-  }
-  
+
+  };
+
   outputs = inputs: inputs.flake-parts.lib.mkFlake
     { inherit inputs; }
 
     (inputs.import-tree ./modules);
 
-}
+  }
 
 #---------------------------------------------------------------------------------------------------
 # End
