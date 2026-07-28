@@ -4,18 +4,14 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.llm = { pkgs, lib, llm-agents, ... }: {
+  flake.nixosModules.llm = { pkgs, lib, ... }: {
     imports = [
      # ...
     ];
 
-    nix.settings = {
-      extra-substituters = [
-        "https://cache.numtide.com"
-      ];
-      extra-trusted-public-keys = [
-        "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
-      ];
+    nixConfig = {
+      extra-substituters          = [ "https://cache.numtide.com" ];
+      extra-trusted-public-keys   = [ "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g=" ];
     };
 
     nixpkgs.overlays = [ llm-agents.overlays.shared-nixpkgs ];
