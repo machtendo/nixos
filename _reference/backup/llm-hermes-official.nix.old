@@ -184,23 +184,6 @@
         #"fal"                # FAL image generation
       ];
     };
-
-    services.hermes-webui = {
-      enable            = true;
-      host              = "127.0.0.1";
-      port              = 8787;
-      stateDir          = "/var/lib/hermes-webui";
-      user              = "hermes";
-      group             = "hermes";
-      hermesHome        = "/var/lib/hermes/.hermes";
-      agent.package     = inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
-      environmentFiles  = [ "/run/secrets/hermes-webui.env" ];
-    };
-
-    #--------------------------------------------#
-    #--------------------------------------------#
-    #--------------------------------------------#
-
   };
 }
 
