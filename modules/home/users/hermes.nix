@@ -12,7 +12,7 @@
 
     # Group
     users.groups = {
-      hermes = {};    # Automatically Generate GID
+      hermes            = {};    # Automatically Generate GID
     };
 
     # User Account
@@ -25,7 +25,6 @@
         # ...
       ];
     };
-
   };
 }
 
