@@ -132,6 +132,7 @@
         max_turns               = 100;
 
         model = {
+          provider              = "custom";
           base_url              = "http://192.168.86.239:11434/api/v1";
           default               = "ollama/laguna-s-2.1";
         };
@@ -140,6 +141,7 @@
           backend               = "local";
           cwd                   = ".";
           timeout               = 180;
+          home_mode             = "profile"     # force HERMES_HOME/home
         };
 
         compression = {
