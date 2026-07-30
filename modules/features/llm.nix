@@ -67,12 +67,23 @@
       #-------------------------------------------
 
       container = {
-        enable         = false;
-        #image         = "ubuntu:24.04";
-        #backend       = "docker";
-        #hostUsers     = [ "your-username" ];
-        #extraVolumes  = [ "/home/user/projects:/projects:rw" ];
-        #extraOptions  = [ "--gpus" "all" ];
+        enable                = false;
+        #container_cpu         = 1;         # CPU Cores
+        #container_memory      = 5120;      # Memory (MB)
+        #container_disk        = 51200;     # Disk (MB)
+        #container_persistent  = true;      # Persist Filesystem Across Sessions
+        #image                = "ubuntu:24.04";
+        #backend              = "docker";
+
+        #hostUsers = [
+        #  "your-username"
+        #];
+
+        #extraVolumes = [
+        #  "/home/user/projects:/projects:rw"
+        #];
+
+        #extraOptions         = [ "--gpus" "all" ];
       };
 
       # Personality ------------------------------
@@ -111,15 +122,49 @@
       # MCP, Packages, etc.
       #-------------------------------------------
 
+      browser = {
+        inactivity_timeout = 120;
+      };
+
+      tool_loop_guardrails = {
+        warnings_enabled          = true;
+        hard_stop_enabled         = false;
+        warn_after = {
+          exact_failure           = 2;
+          same_tool_failure       = 2;
+          idempotent_no_progress  = 2;
+        };
+
+        hard_stop_after = {
+          exact_failure           = 5;
+          same_tool_failure       = 8;
+          idempotent_no_progress  = 5;
+        };
+      };
+
       # MCP Servers --------------------
       mcpServers = {
         filesystem  = {
           command   = "npx";
-          args      = [ "-y" "@modelcontextprotocol/server-filesystem" "/var/lib/hermes/workspace" ];
+          args = [
+            "-y"
+            "@modelcontextprotocol/server-filesystem"
+            "/var/lib/hermes/workspace"
+          ];
         };
 
         # ...
 
+      };
+
+      # Skills -------------------------
+
+      skills = {
+        creation_nudge_interval   = 15;
+        #external_dirs = {
+        #  - ~/.agents/skills
+        #  - /home/shared/team-skills
+        #};
       };
 
       # Model ------------------------------------
@@ -128,8 +173,19 @@
 
       settings = {
 
-        toolsets                = [ "all" ];
+        toolsets = [
+          "all"
+        ];
+
+        session_reset = {
+          mode          = "none";
+          idle_minutes  = 1440;
+          at_hour       = 4;
+        };
+
         max_turns               = 100;
+        max_concurrent_sessions = null;
+        group_sessions_per_user = true;
 
         model = {
           provider              = "custom";
@@ -144,15 +200,22 @@
           home_mode             = "profile"     # force HERMES_HOME/home
         };
 
+        # Context Compression
         compression = {
-          enabled               = false;
-          #threshold            = 0.85;
+          enabled               = true;
+          progress_notices      = false;
+          threshold             = 0.50;
           #summary_model        = "google/gemini-3-flash-preview";
         };
 
+        # Persistent Memory
         memory = {
           memory_enabled        = true;
           user_profile_enabled  = true;
+          memory_char_limit     = 2200;
+          user_char_limit       = 1375;
+          nudge_interval        = 10;
+          flush_min_turns       = 6;
           provider              = "hindsight";
         };
 
@@ -164,6 +227,15 @@
         agent = {
           max_turns             = 60;
           verbose               = false;
+        };
+
+        # Gateway Streaming
+        streaming = {
+          enabled               = false;
+          #transport            = "edit";
+          #edit_interval        = 0.3;
+          #buffer_threshold     = 40;
+          #cursor               = " ▉";
         };
       };
 
