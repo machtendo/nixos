@@ -148,29 +148,29 @@
         };
       };
 
-      platforms = {
-        telegram = {
-          reply_to_mode             = "first";            # off | first | all
-          guest_mode                = false;
-          allowed_chats             = ["-1001234567890"];
-          extra = {
-            disable_link_previews   = false;            # Suppress Telegram URL previews in bot messages.
-            rich_messages           = false;
-            rich_drafts             = false;
-            command_menu = {
-              max_commands          = 60;
-              priority_mode         = "prepend";
-              priority              = [ "my_plugin_command" ]
-            };
-          };
-        };
+      #platforms = {
+        #telegram = {
+        #  reply_to_mode             = "first";            # off | first | all
+        #  guest_mode                = false;
+        #  allowed_chats             = ["-1001234567890"];
+        #  extra = {
+        #    disable_link_previews   = false;            # Suppress Telegram URL previews in bot messages.
+        #    rich_messages           = false;
+        #    rich_drafts             = false;
+        #    command_menu = {
+        #      max_commands          = 60;
+        #      priority_mode         = "prepend";
+        #      priority              = [ "my_plugin_command" ]
+        #    };
+        #  };
+        #};
 
-        webhook = {
-          extra = {
-            script_timeout_seconds = 30;
-          };
-        };
-      };
+        #webhook = {
+        #  extra = {
+        #    script_timeout_seconds = 30;
+        #  };
+        #};
+        #};
 
       platform_toolsets = {
         cli                 = [hermes-cli];
@@ -230,15 +230,15 @@
       };
 
       # Subagent Delegation
-      delegation = {
-        max_iterations        = 50;
-        max_spawn_depth       = 1;
-        orchestrator_enabled  = true;
-        subagent_auto_approve = false;
-        inherit_mcp_toolsets  = true;
-        model                 = "google/gemini-3-flash-preview";
-        provider              = "openrouter";
-      };
+      #delegation = {
+      #  max_iterations        = 50;
+      #  max_spawn_depth       = 1;
+      #  orchestrator_enabled  = true;
+      #  subagent_auto_approve = false;
+      #  inherit_mcp_toolsets  = true;
+      #  model                 = "google/gemini-3-flash-preview";
+      #  provider              = "openrouter";
+      #};
 
       # MCP Servers --------------------
       mcpServers = {
