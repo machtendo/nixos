@@ -36,7 +36,12 @@
     #----------------------------------------------------------------------
 
     services.hermes-agent = {
-      enable              = true;
+      enable                            = true;
+      updates = {
+        pre_update_backup               = true;
+        backup_keep                     = 5;
+        non_interactive_local_changes   = "stash";
+      };
 
       # Override --------
       #configFile         = /var/lib/hermes/config.yaml;    # Overrides All Declared Settings
@@ -145,12 +150,12 @@
       platforms = {
         telegram = {
           reply_to_mode             = "first";            # off | first | all
-          guest_mode                = "false";
+          guest_mode                = false;
           allowed_chats             = ["-1001234567890"];
           extra = {
-            disable_link_previews   = "false";            # Suppress Telegram URL previews in bot messages.
-            rich_messages           = "false";
-            rich_drafts             = "false";
+            disable_link_previews   = false;            # Suppress Telegram URL previews in bot messages.
+            rich_messages           = false;
+            rich_drafts             = false;
             command_menu = {
               max_commands          = 60;
               priority_mode         = "prepend";
@@ -181,11 +186,11 @@
       };
 
       discord = {
-        require_mention         = "true";
-        auto-thread             = "true";
+        require_mention         = true;
+        auto-thread             = true;
         free_response_channels  = "";
-        reactions               = "true";
-        history_backfill        = "true";
+        reactions               = true;
+        history_backfill        = true;
         history_backfill_limit  = 50;
       };
 
@@ -195,14 +200,14 @@
         gemini = {
           model = "gemini-3.1-flash-tts-preview";
           voice = "Kore";
-          audio_tags = "false";
+          audio_tags = false;
           persona_prompt_file = "";           # Example: ~/.hermes/tts/radio-host.md
         };
       };
 
       # Speech-to-Text
       stt = {
-        enabled   = "true";
+        enabled   = true;
         local = {
           model   = "base";
             language = "";                    # auto-detect | en | es | fr
@@ -227,9 +232,9 @@
       delegation = {
         max_iterations        = 50;
         max_spawn_depth       = 1;
-        orchestrator_enabled  = "true";
-        subagent_auto_approve = "false";
-        inherit_mcp_toolsets  = "true";
+        orchestrator_enabled  = true;
+        subagent_auto_approve = false;
+        inherit_mcp_toolsets  = true;
         model                 = "google/gemini-3-flash-preview";
         provider              = "openrouter";
       };
@@ -274,6 +279,7 @@
             allowed_models  = [];
             max_tool_rounds = 5;
             log_level       = "info";
+          };
         };
 
         # ...
@@ -382,38 +388,38 @@
           };
 
           qwen = {
-            model = "qwen3.5:397b";
-            provider = "custom";
-            base_url = "https://ollama.com/v1";
+            model         = "qwen3.5:397b";
+            provider      = "custom";
+            base_url      = "https://ollama.com/v1";
           };
 
           glm = {
-            model     = "glm-4.7";
-            provider  = "custom";
-            base_url  = "https://ollama.com/v1";
+            model         = "glm-4.7";
+            provider      = "custom";
+            base_url      = "https://ollama.com/v1";
           };
         };
 
         # Privacy
         privacy = {
-          redact_pii = "false";
+          redact_pii = false;
         };
 
       # Display --------------------------------
       #
       #-----------------------------------------
         display = {
-          compact                           = "false";
+          compact                           = false;
           tool_progress                     = "all";
-          cleanup_progress                  = "false";
-          interim_assistant_messages        = "true";
-          long_running_notifications        = "true";
-          busy_ack_detail                   = "true";
+          cleanup_progress                  = false;
+          interim_assistant_messages        = true;
+          long_running_notifications        = true;
+          busy_ack_detail                   = true;
           busy_input_mode                   = "interrupt";
           background_process_notifications  = "all";
-          bell_on_complete                  = "false";
-          show_reasoning                    = "false";
-          streaming                         = "true";
+          bell_on_complete                  = false;
+          show_reasoning                    = false;
+          streaming                         = true;
         };
 
         # Skin / Theme
