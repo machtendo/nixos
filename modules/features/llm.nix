@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.llm = { pkgs, lib, ... }: {
+  flake.nixosModules.llm = { pkgs, lib, llm-agents, ... }: {
     imports = [
      # ...
     ];
