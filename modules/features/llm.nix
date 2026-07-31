@@ -270,7 +270,7 @@
 
         analysis = {
           command           = "npx";
-          args              = ["-y", "analysis-server"];
+          args              = ["-y" "analysis-server"];
           sampling = {
             enabled         = true;
             model           = "gemini-3-flash";
