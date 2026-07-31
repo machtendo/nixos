@@ -189,6 +189,51 @@
         history_backfill_limit  = 50;
       };
 
+      # Text-to-Speech
+      tts = {
+        provider = "gemini";
+        gemini = {
+          model = "gemini-3.1-flash-tts-preview";
+          voice = "Kore";
+          audio_tags = "false";
+          persona_prompt_file = "";           # Example: ~/.hermes/tts/radio-host.md
+        };
+      };
+
+      # Speech-to-Text
+      stt = {
+        enabled   = "true";
+        local = {
+          model   = "base";
+            language = "";                    # auto-detect | en | es | fr
+        };
+
+        openai = {
+          model   = "whisper-1"               # whisper-1 | gpt-4o-mini-transcribe | gpt-4o-transcribe
+        };
+
+        mistral = {
+          model   = "voxtral-mini-latest";    # voxtral-mini-latest | voxtral-mini-2602
+        };
+      };
+
+      # Code Execution Sandbox (Programmatic Tool Calling)
+      code_execution = {
+        timeout           = 300;
+        max_tool_calls    = 50;
+      };
+
+      # Subagent Delegation
+      delegation = {
+        max_iterations        = 50;
+        max_spawn_depth       = 1;
+        orchestrator_enabled  = "true";
+        subagent_auto_approve = "false";
+        inherit_mcp_toolsets  = "true";
+        model                 = "google/gemini-3-flash-preview";
+        provider              = "openrouter";
+      };
+
       # MCP Servers --------------------
       mcpServers = {
 
@@ -215,6 +260,20 @@
           env = {
             GITHUB_PERSONAL_ACCESS_TOKEN = "";
           };
+        };
+
+        analysis = {
+          command           = "npx";
+          args              = ["-y", "analysis-server"];
+          sampling = {
+            enabled         = true;
+            model           = "gemini-3-flash";
+            max_tokens_cap  = 4096;
+            timeout         = 30;
+            max_rpm         = 10;
+            allowed_models  = [];
+            max_tool_rounds = 5;
+            log_level       = "info";
         };
 
         # ...
@@ -283,11 +342,6 @@
           provider              = "hindsight";
         };
 
-        display = {
-          compact               = false;
-          personality           = "technical";
-        };
-
         agent = {
           max_turns             = 60;
           verbose               = false;
@@ -319,7 +373,61 @@
           #buffer_threshold     = 40;
           #cursor               = " ▉";
         };
-      };
+
+        # Model Aliases
+        model_aliases = {
+          opus = {
+            model         = "claude-opus-4-6";
+            provider      = "anthropic";
+          };
+
+          qwen = {
+            model = "qwen3.5:397b";
+            provider = "custom";
+            base_url = "https://ollama.com/v1";
+          };
+
+          glm = {
+            model     = "glm-4.7";
+            provider  = "custom";
+            base_url  = "https://ollama.com/v1";
+          };
+        };
+
+        # Privacy
+        privacy = {
+          redact_pii = "false";
+        };
+
+      # Display --------------------------------
+      #
+      #-----------------------------------------
+        display = {
+          compact                           = "false";
+          tool_progress                     = "all";
+          cleanup_progress                  = "false";
+          interim_assistant_messages        = "true";
+          long_running_notifications        = "true";
+          busy_ack_detail                   = "true";
+          busy_input_mode                   = "interrupt";
+          background_process_notifications  = "all";
+          bell_on_complete                  = "false";
+          show_reasoning                    = "false";
+          streaming                         = "true";
+        };
+
+        # Skin / Theme
+        skin = "default";
+          #   default        — Classic Hermes gold/kawaii
+          #   ares           — Crimson/bronze war-god theme with spinner wings
+          #   mono           — Clean grayscale monochrome
+          #   slate          — Cool blue developer-focused
+          #   daylight       — Bright light-mode theme
+          #   warm-lightmode — Warm paper-tone light-mode theme
+          #   poseidon       — Sea-green/teal Olympian theme
+          #   sisyphus       — Earthy stone-and-moss theme
+          #   charizard      — Fiery orange dragon theme
+
 
       #-------------------------------------------
       # Extra Options
