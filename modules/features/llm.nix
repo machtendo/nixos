@@ -26,9 +26,9 @@
         sshKeyPaths       = [ "/etc/ssh/ssh_host_ed25519_key" ];
       };
 
-      secrets = {
-        "sonarr/api_key"  = {};
-      };
+      #secrets = {
+      #  "sonarr/api_key"  = {};
+      #};
     };
 
     # Hermes Agent --------------------------------------------------------
@@ -134,7 +134,7 @@
       tool_loop_guardrails = {
         warnings_enabled          = true;
         hard_stop_enabled         = false;
-        
+
         warn_after = {
           exact_failure           = 2;
           same_tool_failure       = 2;
@@ -382,24 +382,24 @@
         };
 
         # Model Aliases
-        model_aliases = {
-          opus = {
-            model               = "claude-opus-4-6";
-            provider            = "anthropic";
-          };
+        # model_aliases = {
+        #  opus = {
+        #    model               = "claude-opus-4-6";
+        #    provider            = "anthropic";
+        #  };
 
-          qwen = {
-            model               = "qwen3.5:397b";
-            provider            = "custom";
-            base_url            = "https://ollama.com/v1";
-          };
+        #  qwen = {
+        #    model               = "qwen3.5:397b";
+        #    provider            = "custom";
+        #    base_url            = "https://ollama.com/v1";
+        #  };
 
-          glm = {
-            model               = "glm-4.7";
-            provider            = "custom";
-            base_url            = "https://ollama.com/v1";
-          };
-        };
+        #  glm = {
+        #    model               = "glm-4.7";
+        #    provider            = "custom";
+        #    base_url            = "https://ollama.com/v1";
+        #  };
+        #};
 
         # Privacy
         privacy = {
@@ -409,6 +409,7 @@
         # Display --------------------------------
         #
         #-----------------------------------------
+
         display = {
           compact                           = false;
           tool_progress                     = "all";
