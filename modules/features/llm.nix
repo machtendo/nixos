@@ -35,293 +35,294 @@
     #
     #----------------------------------------------------------------------
 
-    services.hermes-agent.settings = {
-      enable                            = true;
-      updates = {
-        pre_update_backup               = true;
-        backup_keep                     = 5;
-        non_interactive_local_changes   = "stash";
-      };
-
-      # Override --------
-      #configFile         = /var/lib/hermes/config.yaml;    # Overrides All Declared Settings
-
-      # Service ---------
-      addToSystemPackages = true;
-      #extraArgs           = [ "--verbose" ];
-      restart             = "always";
-      restartSec          = 5;
-
-      # User
-      user                = "hermes";
-      group               = "hermes";
-      createUser          = false;
-
-      # Directories
-      stateDir            = "/var/lib/hermes";
-      workingDirectory    = "/var/lib/hermes/workspace";
-
-      # Environment -----
-      environment         = {};
-
-      # Secrets ---------
-      #environmentFiles    = [ config.sops.secrets."hermes-env".path ];
-
-      # Container --------------------------------
-      # Run in a Container (optional)
-      #-------------------------------------------
-
-      container = {
-        enable                = false;
-        #container_cpu         = 1;         # CPU Cores
-        #container_memory      = 5120;      # Memory (MB)
-        #container_disk        = 51200;     # Disk (MB)
-        #container_persistent  = true;      # Persist Filesystem Across Sessions
-        #image                = "ubuntu:24.04";
-        #backend              = "docker";
-
-        #hostUsers = [
-        #  "your-username"
-        #];
-
-        #extraVolumes = [
-        #  "/home/user/projects:/projects:rw"
-        #];
-
-        #extraOptions         = [ "--gpus" "all" ];
-      };
-
-      # Personality ------------------------------
-      #
-      #-------------------------------------------
-
-      documents = {
-
-        # Inline Definitions
-
-        "SOUL.md"   = ''
-          # SOUL.md
-          You are a sharp, pragmatic AI assistant.
-        '';
-
-        "AGENTS.md" = ''
-          # AGENTS.md
-          Read SOUL.md first. Then help the user.
-        '';
-
-        "USER.md"   = ''
-          # USER.md
-          Name: Your Human
-        '';
-
-        # External Files
-
-        #"SOUL.md"     = ${workingDirectory}/SOUL.md;
-        #"AGENTS.md"   = ${workingDirectory}/AGENTS.md;
-        #"USER.md"     = ${workingDirectory}/USER.md;
-        #"MEMORIES.md" = ${workingDirectory}/MEMORIES.md
-
-      };
-
-      # Tools ------------------------------------
-      # MCP, Packages, etc.
-      #-------------------------------------------
-
-      terminal = {
-        backend               = "local";
-        cwd                   = ".";
-        timeout               = 180;
-        home_mode             = "profile";      # force HERMES_HOME/home
-        #sudo_password         = "";            # Warning: Store sensitive information in Secrets
-      };
-
-      browser = {
-        inactivity_timeout = 120;
-      };
-
-      tool_loop_guardrails = {
-        warnings_enabled          = true;
-        hard_stop_enabled         = false;
-
-        warn_after = {
-          exact_failure           = 2;
-          same_tool_failure       = 2;
-          idempotent_no_progress  = 2;
-        };
-
-        hard_stop_after = {
-          exact_failure           = 5;
-          same_tool_failure       = 8;
-          idempotent_no_progress  = 5;
-        };
-      };
-
-      #image_gen = {
-      #  provider = "deepinfra";
-      #  deepinfra = "";         # Leave 'model' blank for the first live 'image-gen'-tagged result.
-      #};
-
-      #platforms = {
-        #telegram = {
-        #  reply_to_mode             = "first";            # off | first | all
-        #  guest_mode                = false;
-        #  allowed_chats             = ["-1001234567890"];
-        #  extra = {
-        #    disable_link_previews   = false;            # Suppress Telegram URL previews in bot messages.
-        #    rich_messages           = false;
-        #    rich_drafts             = false;
-        #    command_menu = {
-        #      max_commands          = 60;
-        #      priority_mode         = "prepend";
-        #      priority              = [ "my_plugin_command" ]
-        #    };
-        #  };
-        #};
-
-        #webhook = {
-        #  extra = {
-        #    script_timeout_seconds = 30;
-        #  };
-        #};
-      #};
-
-      platform_toolsets = {
-        cli                 = [ "hermes-cli" ];
-        #telegram            = [ "hermes-telegram" ];
-        discord             = [ "hermes-discord" ];
-        #whatsapp            = [ "hermes-discord" ];
-        #slack               = [ "hermes-slack" ];
-        signal              = [ "hermes-signal" ];
-        #homeassistant       = [ "hermes-homeassistant" ];
-        #qqbot               = [ "hermes-qqbot" ];
-        #yuanbao             = [ "hermes-yuanbao" ];
-        #teams               = [ "hermes-teams" ];
-        #google_chat         = [ "hermes-google_chat" ];
-      };
-
-      discord = {
-        require_mention         = true;
-        auto-thread             = true;
-        free_response_channels  = "";
-        reactions               = true;
-        history_backfill        = true;
-        history_backfill_limit  = 50;
-      };
-
-      # Text-to-Speech
-      tts = {
-        provider = "gemini";
-        gemini = {
-          model = "gemini-3.1-flash-tts-preview";
-          voice = "Kore";
-          audio_tags = false;
-          persona_prompt_file = "";           # Example: ~/.hermes/tts/radio-host.md
-        };
-      };
-
-      # Speech-to-Text
-      stt = {
-        enabled   = true;
-        local = {
-          model   = "base";
-            language = "";                    # auto-detect | en | es | fr
-        };
-
-        #openai = {
-        #  model   = "whisper-1";              # whisper-1 | gpt-4o-mini-transcribe | gpt-4o-transcribe
-        #};
-
-        #mistral = {
-        #  model   = "voxtral-mini-latest";    # voxtral-mini-latest | voxtral-mini-2602
-        #};
-      };
-
-      # Response Pacing
-      human_delay = {
-        mode            = "off";      # "off" | "natural" | "custom"
-        min_ms          = 800;        # Minimum Delay (Custom Mode Only)
-        max_ms          = 2500;       # Maximum Delay (Custom Mode Only)
-      };
-
-      # Code Execution Sandbox (Programmatic Tool Calling)
-      code_execution = {
-        timeout           = 300;
-        max_tool_calls    = 50;
-      };
-
-      # Subagent Delegation
-      delegation = {
-        max_iterations        = 50;
-      #  max_spawn_depth       = 1;
-      #  orchestrator_enabled  = true;
-      #  subagent_auto_approve = false;
-      #  inherit_mcp_toolsets  = true;
-      #  model                 = "google/gemini-3-flash-preview";
-      #  provider              = "openrouter";
-      };
-
-      # MCP Servers --------------------
-      mcpServers = {
-
-        time = {
-          command = "uvx";
-          args = [ "mcp-server-time" ];
-        };
-
-        filesystem  = {
-          command   = "npx";
-          args = [
-            "-y"
-            "@modelcontextprotocol/server-filesystem"
-            "/var/lib/hermes/workspace"
-          ];
-        };
-
-        github = {
-          command = "npx";
-          args = [
-            "-y"
-            "@modelcontextprotocol/server-github"
-          ];
-          env = {
-            GITHUB_PERSONAL_ACCESS_TOKEN = "";
-          };
-        };
-
-        analysis = {
-          command           = "npx";
-          args              = ["-y" "analysis-server"];
-          sampling = {
-            enabled         = true;
-            model           = "gemini-3-flash";
-            max_tokens_cap  = 4096;
-            timeout         = 30;
-            max_rpm         = 10;
-            allowed_models  = [];
-            max_tool_rounds = 5;
-            log_level       = "info";
-          };
-        };
-
-        # ...
-
-      };
-
-      # Skills -------------------------
-
-      skills = {
-        creation_nudge_interval   = 15;
-        #external_dirs = {
-        #  - ~/.agents/skills
-        #  - /home/shared/team-skills
-        #};
-      };
-
-      # Model ------------------------------------
-      #
-      #-------------------------------------------
-
+    services.hermes-agent = {
       settings = {
+        enable                            = true;
+        updates = {
+          pre_update_backup               = true;
+          backup_keep                     = 5;
+          non_interactive_local_changes   = "stash";
+        };
+
+        # Override --------
+        #configFile         = /var/lib/hermes/config.yaml;    # Overrides All Declared Settings
+
+        # Service ---------
+        addToSystemPackages = true;
+        #extraArgs           = [ "--verbose" ];
+        restart             = "always";
+        restartSec          = 5;
+
+        # User
+        user                = "hermes";
+        group               = "hermes";
+        createUser          = false;
+
+        # Directories
+        stateDir            = "/var/lib/hermes";
+        workingDirectory    = "/var/lib/hermes/workspace";
+
+        # Environment -----
+        environment         = {};
+
+        # Secrets ---------
+        #environmentFiles    = [ config.sops.secrets."hermes-env".path ];
+
+        # Container --------------------------------
+        # Run in a Container (optional)
+        #-------------------------------------------
+
+        container = {
+          enable                = false;
+          #container_cpu         = 1;         # CPU Cores
+          #container_memory      = 5120;      # Memory (MB)
+          #container_disk        = 51200;     # Disk (MB)
+          #container_persistent  = true;      # Persist Filesystem Across Sessions
+          #image                = "ubuntu:24.04";
+          #backend              = "docker";
+
+          #hostUsers = [
+          #  "your-username"
+          #];
+
+          #extraVolumes = [
+          #  "/home/user/projects:/projects:rw"
+          #];
+
+          #extraOptions         = [ "--gpus" "all" ];
+        };
+
+        # Personality ------------------------------
+        #
+        #-------------------------------------------
+
+        documents = {
+
+          # Inline Definitions
+
+          "SOUL.md"   = ''
+            # SOUL.md
+            You are a sharp, pragmatic AI assistant.
+          '';
+
+          "AGENTS.md" = ''
+            # AGENTS.md
+            Read SOUL.md first. Then help the user.
+          '';
+
+          "USER.md"   = ''
+            # USER.md
+            Name: Your Human
+          '';
+
+          # External Files
+
+          #"SOUL.md"     = ${workingDirectory}/SOUL.md;
+          #"AGENTS.md"   = ${workingDirectory}/AGENTS.md;
+          #"USER.md"     = ${workingDirectory}/USER.md;
+          #"MEMORIES.md" = ${workingDirectory}/MEMORIES.md
+
+        };
+
+        # Tools ------------------------------------
+        # MCP, Packages, etc.
+        #-------------------------------------------
+
+        terminal = {
+          backend               = "local";
+          cwd                   = ".";
+          timeout               = 180;
+          home_mode             = "profile";      # force HERMES_HOME/home
+          #sudo_password         = "";            # Warning: Store sensitive information in Secrets
+        };
+
+        browser = {
+          inactivity_timeout = 120;
+        };
+
+        tool_loop_guardrails = {
+          warnings_enabled          = true;
+          hard_stop_enabled         = false;
+
+          warn_after = {
+            exact_failure           = 2;
+            same_tool_failure       = 2;
+            idempotent_no_progress  = 2;
+          };
+
+          hard_stop_after = {
+            exact_failure           = 5;
+            same_tool_failure       = 8;
+            idempotent_no_progress  = 5;
+          };
+        };
+
+        #image_gen = {
+        #  provider = "deepinfra";
+        #  deepinfra = "";         # Leave 'model' blank for the first live 'image-gen'-tagged result.
+        #};
+
+        #platforms = {
+          #telegram = {
+          #  reply_to_mode             = "first";            # off | first | all
+          #  guest_mode                = false;
+          #  allowed_chats             = ["-1001234567890"];
+          #  extra = {
+          #    disable_link_previews   = false;            # Suppress Telegram URL previews in bot messages.
+          #    rich_messages           = false;
+          #    rich_drafts             = false;
+          #    command_menu = {
+          #      max_commands          = 60;
+          #      priority_mode         = "prepend";
+          #      priority              = [ "my_plugin_command" ]
+          #    };
+          #  };
+          #};
+
+          #webhook = {
+          #  extra = {
+          #    script_timeout_seconds = 30;
+          #  };
+          #};
+        #};
+
+        platform_toolsets = {
+          cli                 = [ "hermes-cli" ];
+          #telegram            = [ "hermes-telegram" ];
+          discord             = [ "hermes-discord" ];
+          #whatsapp            = [ "hermes-discord" ];
+          #slack               = [ "hermes-slack" ];
+          signal              = [ "hermes-signal" ];
+          #homeassistant       = [ "hermes-homeassistant" ];
+          #qqbot               = [ "hermes-qqbot" ];
+          #yuanbao             = [ "hermes-yuanbao" ];
+          #teams               = [ "hermes-teams" ];
+          #google_chat         = [ "hermes-google_chat" ];
+        };
+
+        discord = {
+          require_mention         = true;
+          auto-thread             = true;
+          free_response_channels  = "";
+          reactions               = true;
+          history_backfill        = true;
+          history_backfill_limit  = 50;
+        };
+
+        # Text-to-Speech
+        tts = {
+          provider = "gemini";
+          gemini = {
+            model = "gemini-3.1-flash-tts-preview";
+            voice = "Kore";
+            audio_tags = false;
+            persona_prompt_file = "";           # Example: ~/.hermes/tts/radio-host.md
+          };
+        };
+
+        # Speech-to-Text
+        stt = {
+          enabled   = true;
+          local = {
+            model   = "base";
+              language = "";                    # auto-detect | en | es | fr
+          };
+
+          #openai = {
+          #  model   = "whisper-1";              # whisper-1 | gpt-4o-mini-transcribe | gpt-4o-transcribe
+          #};
+
+          #mistral = {
+          #  model   = "voxtral-mini-latest";    # voxtral-mini-latest | voxtral-mini-2602
+          #};
+        };
+
+        # Response Pacing
+        human_delay = {
+          mode            = "off";      # "off" | "natural" | "custom"
+          min_ms          = 800;        # Minimum Delay (Custom Mode Only)
+          max_ms          = 2500;       # Maximum Delay (Custom Mode Only)
+        };
+
+        # Code Execution Sandbox (Programmatic Tool Calling)
+        code_execution = {
+          timeout           = 300;
+          max_tool_calls    = 50;
+        };
+
+        # Subagent Delegation
+        delegation = {
+          max_iterations        = 50;
+        #  max_spawn_depth       = 1;
+        #  orchestrator_enabled  = true;
+        #  subagent_auto_approve = false;
+        #  inherit_mcp_toolsets  = true;
+        #  model                 = "google/gemini-3-flash-preview";
+        #  provider              = "openrouter";
+        };
+
+        # MCP Servers --------------------
+        mcpServers = {
+
+          time = {
+            command = "uvx";
+            args = [ "mcp-server-time" ];
+          };
+
+          filesystem  = {
+            command   = "npx";
+            args = [
+              "-y"
+              "@modelcontextprotocol/server-filesystem"
+              "/var/lib/hermes/workspace"
+            ];
+          };
+
+          github = {
+            command = "npx";
+            args = [
+              "-y"
+              "@modelcontextprotocol/server-github"
+            ];
+            env = {
+              GITHUB_PERSONAL_ACCESS_TOKEN = "";
+            };
+          };
+
+          analysis = {
+            command           = "npx";
+            args              = ["-y" "analysis-server"];
+            sampling = {
+              enabled         = true;
+              model           = "gemini-3-flash";
+              max_tokens_cap  = 4096;
+              timeout         = 30;
+              max_rpm         = 10;
+              allowed_models  = [];
+              max_tool_rounds = 5;
+              log_level       = "info";
+            };
+          };
+
+          # ...
+
+        };
+
+        # Skills -------------------------
+
+        skills = {
+          creation_nudge_interval   = 15;
+          #external_dirs = {
+          #  - ~/.agents/skills
+          #  - /home/shared/team-skills
+          #};
+        };
+
+        # Model ------------------------------------
+        #
+        #-------------------------------------------
+
+   #     settings = {
 
         toolsets = [
           "all"
