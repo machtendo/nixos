@@ -35,7 +35,7 @@
     #
     #----------------------------------------------------------------------
 
-    services.hermes-agent = {
+    services.hermes-agent.settings = {
       enable                            = true;
       updates = {
         pre_update_backup               = true;
