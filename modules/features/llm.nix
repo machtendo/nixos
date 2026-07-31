@@ -173,12 +173,12 @@
         #};
 
       platform_toolsets = {
-        cli                 = [hermes-cli];
+        cli                 = [ "hermes-cli" ];
         #telegram            = [hermes-telegram];
-        discord             = [hermes-discord];
+        discord             = [ "hermes-discord" ];
         #whatsapp            = [hermes-discord];
         #slack               = [hermes-slack];
-        signal              = [hermes-signal];
+        signal              = [ "hermes-signal" ];
         #homeassistant       = [hermes-homeassistant];
         #qqbot               = [hermes-qqbot];
         #yuanbao             = [hermes-yuanbao];
