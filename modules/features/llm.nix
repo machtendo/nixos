@@ -174,16 +174,16 @@
 
       platform_toolsets = {
         cli                 = [hermes-cli];
-        telegram            = [hermes-telegram];
+        #telegram            = [hermes-telegram];
         discord             = [hermes-discord];
-        whatsapp            = [hermes-discord];
-        slack               = [hermes-slack];
+        #whatsapp            = [hermes-discord];
+        #slack               = [hermes-slack];
         signal              = [hermes-signal];
-        homeassistant       = [hermes-homeassistant];
-        qqbot               = [hermes-qqbot];
-        yuanbao             = [hermes-yuanbao];
-        teams               = [hermes-teams];
-        google_chat         = [hermes-google_chat];
+        #homeassistant       = [hermes-homeassistant];
+        #qqbot               = [hermes-qqbot];
+        #yuanbao             = [hermes-yuanbao];
+        #teams               = [hermes-teams];
+        #google_chat         = [hermes-google_chat];
       };
 
       discord = {
