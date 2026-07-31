@@ -327,7 +327,7 @@
           backend               = "local";
           cwd                   = ".";
           timeout               = 180;
-          home_mode             = "profile"     # force HERMES_HOME/home
+          home_mode             = "profile";     # force HERMES_HOME/home
         };
 
         # Context Compression
