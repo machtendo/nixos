@@ -214,13 +214,13 @@
             language = "";                    # auto-detect | en | es | fr
         };
 
-        openai = {
-          model   = "whisper-1"               # whisper-1 | gpt-4o-mini-transcribe | gpt-4o-transcribe
-        };
+        #openai = {
+        #  model   = "whisper-1";              # whisper-1 | gpt-4o-mini-transcribe | gpt-4o-transcribe
+        #};
 
-        mistral = {
-          model   = "voxtral-mini-latest";    # voxtral-mini-latest | voxtral-mini-2602
-        };
+        #mistral = {
+        #  model   = "voxtral-mini-latest";    # voxtral-mini-latest | voxtral-mini-2602
+        #};
       };
 
       # Code Execution Sandbox (Programmatic Tool Calling)
