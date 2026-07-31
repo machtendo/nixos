@@ -127,6 +127,14 @@
       # MCP, Packages, etc.
       #-------------------------------------------
 
+      terminal = {
+        backend               = "local";
+        cwd                   = ".";
+        timeout               = 180;
+        home_mode             = "profile";      # force HERMES_HOME/home
+        #sudo_password         = "";            # Warning: Store sensitive information in Secrets
+      };
+
       browser = {
         inactivity_timeout = 120;
       };
@@ -147,6 +155,11 @@
           idempotent_no_progress  = 5;
         };
       };
+
+      #image_gen = {
+      #  provider = "deepinfra";
+      #  deepinfra = "";         # Leave 'model' blank for the first live 'image-gen'-tagged result.
+      #};
 
       #platforms = {
         #telegram = {
@@ -170,20 +183,20 @@
         #    script_timeout_seconds = 30;
         #  };
         #};
-        #};
+      #};
 
       platform_toolsets = {
         cli                 = [ "hermes-cli" ];
-        #telegram            = [hermes-telegram];
+        #telegram            = [ "hermes-telegram" ];
         discord             = [ "hermes-discord" ];
-        #whatsapp            = [hermes-discord];
-        #slack               = [hermes-slack];
+        #whatsapp            = [ "hermes-discord" ];
+        #slack               = [ "hermes-slack" ];
         signal              = [ "hermes-signal" ];
-        #homeassistant       = [hermes-homeassistant];
-        #qqbot               = [hermes-qqbot];
-        #yuanbao             = [hermes-yuanbao];
-        #teams               = [hermes-teams];
-        #google_chat         = [hermes-google_chat];
+        #homeassistant       = [ "hermes-homeassistant" ];
+        #qqbot               = [ "hermes-qqbot" ];
+        #yuanbao             = [ "hermes-yuanbao" ];
+        #teams               = [ "hermes-teams" ];
+        #google_chat         = [ "hermes-google_chat" ];
       };
 
       discord = {
@@ -223,6 +236,13 @@
         #};
       };
 
+      # Response Pacing
+      human_delay = {
+        mode            = "off";      # "off" | "natural" | "custom"
+        min_ms          = 800;        # Minimum Delay (Custom Mode Only)
+        max_ms          = 2500;       # Maximum Delay (Custom Mode Only)
+      };
+
       # Code Execution Sandbox (Programmatic Tool Calling)
       code_execution = {
         timeout           = 300;
@@ -230,15 +250,15 @@
       };
 
       # Subagent Delegation
-      #delegation = {
-      #  max_iterations        = 50;
+      delegation = {
+        max_iterations        = 50;
       #  max_spawn_depth       = 1;
       #  orchestrator_enabled  = true;
       #  subagent_auto_approve = false;
       #  inherit_mcp_toolsets  = true;
       #  model                 = "google/gemini-3-flash-preview";
       #  provider              = "openrouter";
-      #};
+      };
 
       # MCP Servers --------------------
       mcpServers = {
@@ -318,24 +338,33 @@
         group_sessions_per_user = true;
 
         model = {
-          provider              = "custom";
+          provider              = "custom";                               # Ollama
           base_url              = "http://192.168.86.239:11434/api/v1";
-          default               = "ollama/laguna-s-2.1";
-        };
-
-        terminal = {
-          backend               = "local";
-          cwd                   = ".";
-          timeout               = 180;
-          home_mode             = "profile";     # force HERMES_HOME/home
+          default               = "laguna-s-2.1";
         };
 
         # Context Compression
         compression = {
-          enabled               = true;
-          progress_notices      = false;
-          threshold             = 0.50;
-          #summary_model        = "google/gemini-3-flash-preview";
+          enabled                             = true;
+          progress_notices                    = false;
+          threshold                           = 0.50;
+          codex_gpt55_autoraise               = true;
+          target_ratio                        = 0.20;
+          protect_first_n                     = 3;
+          protect_last_n                      = 20;
+          min_tail_user_messages              = 1;
+          max_attempts                        = 3;
+          codex_app_server_auto               = "native";
+          idle_compact_after_seconds          = 0;
+          proactive_prune_tokens              = 0;
+          proactive_prune_min_result_chars    = 8000;
+          proactive_prune_min_reclaim_tokens  = 4096;
+          #summary_model                      = "google/gemini-3-flash-preview";
+        };
+
+        # Anthropic Prompt Caching TTL
+        prompt_caching = {
+          cache_ttl = "5m";
         };
 
         # Persistent Memory
@@ -435,6 +464,8 @@
           #   poseidon       — Sea-green/teal Olympian theme
           #   sisyphus       — Earthy stone-and-moss theme
           #   charizard      — Fiery orange dragon theme
+
+          # See example 'config.yaml' > Skin / Theme for Custom Skin creation
 
 
       #-------------------------------------------
