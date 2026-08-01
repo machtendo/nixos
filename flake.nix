@@ -23,7 +23,6 @@
     ];
 
     extra-substituters = [
-      "https://cache.numtide.com"       # Numtide llm-agents Pinned Versioning
       "https://noctalia.cachix.org"     # Noctalia Pre-Compiled Binaries
     ];
 
@@ -32,7 +31,6 @@
     ];
 
     extra-trusted-public-keys = [
-      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="      # llm-agents
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="    # Noctalia
     ];
 
@@ -110,10 +108,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # numtide llm-agents
-    llm-agents = {
-      url = "github:numtide/llm-agents.nix";
+    # hermes-agent
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent/main";
     };
+
+    # ...
 
   };
 

@@ -6,14 +6,12 @@
 
   flake.nixosModules.llm = { pkgs, lib, ... }: {
     imports = [
-     # ...
+      inputs.hermes-agent.nixosModules.default
     ];
 
     environment = {
-      systemPackages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      systemPackages = with inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}; [
         hermes-agent
-        hermes-hud
-        hermes-desktop
         # ...
       ];
     };
