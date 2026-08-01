@@ -11,7 +11,7 @@
     modules = with self.nixosModules; [
       agent-cfg     # Configuration - Host: armvm
       agent-hw      # Configuration - Hardware: armvm
-      user-hermes   # Configuration - User: hermes
+      #user-hermes   # Configuration - User: hermes
       user-nix      # Configuration - User: nix
       core          # Configuration - Core: All Devices
       #desktop       # Configuration - Desktop Environment: Hyprland, Noctalia
