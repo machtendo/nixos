@@ -18,6 +18,7 @@
     # User Account
     users.users.hermes = {
       isSystemUser      = true;
+      group             = "hermes";
       description       = "hermes";
       initialPassword   = "password";
       extraGroups       = [ "hermes" ];
