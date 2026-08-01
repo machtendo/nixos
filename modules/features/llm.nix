@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.llm = { pkgs, lib, llm-agents, ... }: {
+  flake.nixosModules.llm = { pkgs, lib, ... }: {
     imports = [
       inputs.hermes-agent.nixosModules.default
     ];
