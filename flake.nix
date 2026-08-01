@@ -110,8 +110,9 @@
 
     # hermes-agent
     hermes-agent = {
-      url = "github:NousResearch/hermes-agent/main";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #url = "github:NousResearch/hermes-agent/main";
+      url = "github:NousResearch/hermes-agent/v0.9.x";
+    inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # ...
