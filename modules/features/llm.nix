@@ -36,6 +36,15 @@
     services.hermes-agent = {
         enable                            = true;
 
+        # User
+        user                = "hermes";
+        group               = "hermes";
+        createUser          = false;
+
+        # Directories
+        stateDir            = "/var/lib/hermes";
+        workingDirectory    = "/var/lib/hermes/workspace";
+
         settings = {
 
           updates = {
@@ -49,15 +58,6 @@
 
           # Service ---------
           #extraArgs           = [ "--verbose" ];
-
-          # User
-          user                = "hermes";
-          group               = "hermes";
-          createUser          = false;
-
-          # Directories
-          stateDir            = "/var/lib/hermes";
-          workingDirectory    = "/var/lib/hermes/workspace";
 
           # Environment -----
           environment         = {};
