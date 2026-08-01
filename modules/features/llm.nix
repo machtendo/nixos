@@ -37,6 +37,7 @@
         enable                            = true;
 
         settings = {
+
           updates = {
             pre_update_backup               = true;
             backup_keep                     = 5;
@@ -317,8 +318,6 @@
           # Model ------------------------------------
           #
           #-------------------------------------------
-
-          settings = {
 
           toolsets = [
             "all"
