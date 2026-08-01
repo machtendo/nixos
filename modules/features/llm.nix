@@ -36,7 +36,7 @@
     services.hermes-agent = {
         enable                            = true;
 
-        config = {
+        settings = {
           updates = {
             pre_update_backup               = true;
             backup_keep                     = 5;
@@ -47,10 +47,7 @@
           #configFile         = /var/lib/hermes/config.yaml;    # Overrides All Declared Settings
 
           # Service ---------
-          addToSystemPackages = true;
           #extraArgs           = [ "--verbose" ];
-          restart             = "always";
-          restartSec          = 5;
 
           # User
           user                = "hermes";
