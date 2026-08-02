@@ -10,8 +10,8 @@
     ];
 
     environment = {
-      systemPackages = with inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}; [
-        hermes-agent
+      systemPackages = [
+        inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.hermes-agent
         # ...
       ];
     };
