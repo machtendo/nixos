@@ -39,7 +39,7 @@
         # User
         user                = "hermes";
         group               = "hermes";
-        createUser          = false;
+        createUser          = true;
 
         # Directories
         stateDir            = "/var/lib/hermes";
