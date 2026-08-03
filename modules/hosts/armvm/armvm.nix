@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosConfigurations.armvm = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.armvm = inputs.nixpkgs-stable.lib.nixosSystem {
     system = "aarch64-linux";
     specialArgs = { inherit inputs; };
 

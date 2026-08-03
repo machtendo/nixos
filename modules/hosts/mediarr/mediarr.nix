@@ -4,7 +4,7 @@
 
 { self, inputs, config, sops-nix, nixflix, ... }: {
 
-flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
+flake.nixosConfigurations.mediarr = inputs.nixpkgs-stable.lib.nixosSystem {
   system = "x86_64-linux";
   specialArgs = { inherit inputs; };
 

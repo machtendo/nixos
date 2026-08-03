@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosConfigurations.agent = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.agent = inputs.nixpkgs-unstable.lib.nixosSystem {
     system = "aarch64-linux";
     specialArgs = { inherit inputs; };
 
