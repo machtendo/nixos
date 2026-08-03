@@ -52,7 +52,7 @@
 
     # nixpkgs: stable branch (26.05)
     nixpkgs-stable = {
-      url = "github:nixos/nixpkgs/nixos-26.05";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
     # nixpkgs: unstable branch
@@ -115,8 +115,8 @@
 
     # hermes-agent
     hermes-agent = {
-      url = "github:NousResearch/hermes-agent/v2026.7.30";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # ...
