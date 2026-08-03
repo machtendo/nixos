@@ -120,7 +120,7 @@
 
             "SOUL.md"     = "/var/lib/hermes/.hermes/personality/SOUL.md";
             "AGENTS.md"   = "/var/lib/hermes/.hermes/personality/AGENTS.md";
-            "USER.md"     = "/var/lib/hermes/.hermes/personality/USER.md"
+            "USER.md"     = "/var/lib/hermes/.hermes/personality/USER.md";
             "MEMORIES.md" = "/var/lib/hermes/.hermes/personality/MEMORIES.md";
 
           };
