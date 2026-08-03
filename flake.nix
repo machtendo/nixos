@@ -13,32 +13,33 @@
   # Binary Cache
   #-----------------------------------------------
 
-  nixConfig = {
-    substituters = [
-      "https://hyprland.cachix.org"     # Hyprland Pre-Compiled Binaries
-    ];
-
-    trusted-substituters = [
-      "https://hyprland.cachix.org"     # Hyprland Pre-Compiled Binaries
-    ];
-
-    extra-substituters = [
-      "https://noctalia.cachix.org"     # Noctalia Pre-Compiled Binaries
-    ];
-
-    trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="    # Hyprland
-    ];
-
-    extra-trusted-public-keys = [
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="    # Noctalia
-    ];
-
-    trusted-users = [
-      "root"
-      "@wheel"
-    ];
-  };
+#  nixConfig = {
+#    substituters = [
+#      "https://cache.nixos.org"         # Official NixOS Binary Cache
+#      "https://hyprland.cachix.org"     # Hyprland Pre-Compiled Binaries
+#    ];
+#
+#    trusted-substituters = [
+#      "https://hyprland.cachix.org"     # Hyprland Pre-Compiled Binaries
+#    ];
+#
+#    extra-substituters = [
+#      "https://noctalia.cachix.org"     # Noctalia Pre-Compiled Binaries
+#    ];
+#
+#    trusted-public-keys = [
+#      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="    # Hyprland
+#    ];
+#
+#    extra-trusted-public-keys = [
+#      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="    # Noctalia
+#    ];
+#
+#    trusted-users = [
+#      "root"
+#      "@wheel"
+#    ];
+#  };
 
 #---------------------------------------------------------------------------------------------------
 # Flake Inputs
