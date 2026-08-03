@@ -22,8 +22,6 @@
     # Time Zone
     time.timeZone = "America/Chicago";
 
-    services.timesyncd.enable = true;
-
     # Locale
     i18n.defaultLocale = "en_US.UTF-8";
 
