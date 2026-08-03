@@ -101,27 +101,27 @@
 
             # Inline Definitions
 
-            "SOUL.md"   = ''
-              # SOUL.md
-              You are a sharp, pragmatic AI assistant.
-            '';
+            #"SOUL.md"   = ''
+            #  # SOUL.md
+            #  You are a sharp, pragmatic AI assistant.
+            #'';
 
-            "AGENTS.md" = ''
-              # AGENTS.md
-              Read SOUL.md first. Then help the user.
-            '';
+            #"AGENTS.md" = ''
+            #  # AGENTS.md
+            #  Read SOUL.md first. Then help the user.
+            #'';
 
-            "USER.md"   = ''
-              # USER.md
-              Name: Your Human
-            '';
+            #"USER.md"   = ''
+            #  # USER.md
+            #  Name: Your Human
+            #'';
 
             # External Files
 
-            #"SOUL.md"     = ${workingDirectory}/SOUL.md;
-            #"AGENTS.md"   = ${workingDirectory}/AGENTS.md;
-            #"USER.md"     = ${workingDirectory}/USER.md;
-            #"MEMORIES.md" = ${workingDirectory}/MEMORIES.md
+            "SOUL.md"     = "/var/lib/hermes/.hermes/personality/SOUL.md";
+            "AGENTS.md"   = "/var/lib/hermes/.hermes/personality/AGENTS.md";
+            "USER.md"     = "/var/lib/hermes/.hermes/personality/USER.md"
+            "MEMORIES.md" = "/var/lib/hermes/.hermes/personality/MEMORIES.md";
 
           };
 
