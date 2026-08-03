@@ -11,7 +11,7 @@
 
     environment = {
       systemPackages = [
-        inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.hermes-agent
+        inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
         # ...
       ];
     };
