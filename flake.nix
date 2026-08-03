@@ -89,7 +89,7 @@
     # sops-nix
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     #---------------------------------------------
@@ -99,7 +99,7 @@
     # nixflix
     nixflix = {
       url = "github:kiriwalawren/nixflix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # hyprland
@@ -110,7 +110,7 @@
     # noctalia
     noctalia = {
       url = "github:noctalia-dev/noctalia/cachix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # hermes-agent
