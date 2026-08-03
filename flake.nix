@@ -52,7 +52,7 @@
 
     # nixpkgs: stable branch (26.05)
     nixpkgs-stable = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/nixos-26.05";
     };
 
     # nixpkgs: unstable branch
@@ -67,19 +67,19 @@
     # flake-parts
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # import-tree
     import-tree = {
       url = "github:vic/import-tree";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # nix-wrapper-modules
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     #---------------------------------------------
@@ -105,6 +105,7 @@
     # hyprland
     hyprland = {
       url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # noctalia
