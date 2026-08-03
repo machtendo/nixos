@@ -14,6 +14,10 @@
         inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
         # ...
       ];
+
+      variables = {
+        HERMES_HOME = "/var/lib/hermes";
+      };
     };
 
     sops = {
