@@ -14,7 +14,7 @@
         inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
 
         (pkgs.writeShellScriptBin "hermes-cli" ''
-          sudo -u hermes -D /var/lib/hermes hermes "$@"
+          sudo -u hermes sh -c "cd /var/lib/hermes && exec hermes \"\$@\"" -- "$@"
         '')
       ];
 
