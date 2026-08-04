@@ -9,9 +9,14 @@
       inputs.hermes-agent.nixosModules.default
     ];
 
+    nixpkgs.overlays = [
+      mcp-nixos.overlays.default
+    ];
+
     environment = {
       systemPackages = [
         inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
+        pkgs.mcp-nixos
 
         (pkgs.writeShellScriptBin "hermes-cli" ''
           sudo -u hermes sh -c "cd /var/lib/hermes && exec hermes \"\$@\"" -- "$@"
@@ -306,6 +311,13 @@
                 max_tool_rounds = 5;
                 log_level       = "info";
               };
+            };
+
+            nixos = {
+              command = "uvx";
+              args = [
+                "mcp-nixos"
+              ];
             };
 
             # ...
