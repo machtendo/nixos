@@ -12,7 +12,10 @@
     environment = {
       systemPackages = [
         inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
-        # ...
+
+        (pkgs.writeShellScriptBin "hermes-cli" ''
+          sudo -u hermes -w /var/lib/hermes hermes "$@"
+        '')
       ];
 
       variables = {
