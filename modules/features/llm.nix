@@ -9,9 +9,9 @@
       inputs.hermes-agent.nixosModules.default
     ];
 
-    nixpkgs.overlays = [
-      mcp-nixos.overlays.default
-    ];
+#    nixpkgs.overlays = [
+#      mcp-nixos.overlays.default
+#    ];
 
     environment = {
       systemPackages = [
