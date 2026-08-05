@@ -9,9 +9,9 @@
       inputs.hermes-agent.nixosModules.default
     ];
 
-#    nixpkgs.overlays = [
-#      mcp-nixos.overlays.default
-#    ];
+    nixpkgs.overlays = [
+      mcp-nixos.overlays.default
+    ];
 
     environment = {
       systemPackages = [
@@ -46,7 +46,7 @@
     #----------------------------------------------------------------------
 
     services.hermes-agent = {
-        enable                            = true;
+        enable              = true;
 
         # User
         user                = "hermes";
@@ -515,3 +515,5 @@
 #--------------------------------------------------------------------------------------------------#
 
 }
+
+#---------------------------------------------------------------------------------------------------
