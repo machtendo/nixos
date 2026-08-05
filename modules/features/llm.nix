@@ -354,7 +354,7 @@
 
           model = {
             provider              = "custom";                               # Ollama
-            base_url              = "http://192.168.86.23:11434/api/v1";
+            base_url              = "http://10.37.129.2:11434/api/v1";
             default               = "gemma4:31b-mlx";
           };
 

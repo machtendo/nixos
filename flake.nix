@@ -53,7 +53,7 @@
     #---------------------------------------------
 
     # nixpkgs: stable branch (26.05)
-    nixpkgs-stable = {
+    nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-26.05";
     };
 
@@ -69,19 +69,19 @@
     # flake-parts
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # import-tree
     import-tree = {
       url = "github:vic/import-tree";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # nix-wrapper-modules
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #---------------------------------------------
@@ -91,7 +91,7 @@
     # sops-nix
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #---------------------------------------------
