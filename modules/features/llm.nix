@@ -10,7 +10,7 @@
     ];
 
     nixpkgs.overlays = [
-      mcp-nixos.overlays.default
+      inputs.mcp-nixos.overlays.default
     ];
 
     environment = {
