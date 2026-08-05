@@ -116,9 +116,19 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    #---------------------------------------------
+    # Large Language Models
+    #---------------------------------------------
+
     # hermes-agent
     hermes-agent = {
       url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    # mcp-nixos
+    mcp-nixos = {
+      url = "github:utensils/mcp-nixos";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
