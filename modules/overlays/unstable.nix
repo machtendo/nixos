@@ -4,7 +4,7 @@
 
 { self, inputs, ... }: {
 
-  flake.nixopsModules.overlay-unstablePackages = {pkgs, lib, ... }: {
+  flake.nixopsModules.overlay-unstablePackages = {pkgs, config, lib, ... }: {
 
     imports = [
       # ...
@@ -22,6 +22,8 @@
       final: prev:
 
       let
+        pkgList = config.unstablePackages;
+
         unstable      = import inputs.nixpkgs-unstable {
           system      = pkgs.system;
           config      = {};
@@ -31,7 +33,7 @@
         overrides = builtins.listToAttr (map (name: {
           name        = name;
           value       = unstable.${name};
-        }) config.unstablePackages);
+        }) pkgList);
 
       in
         # Merge List into Package List
