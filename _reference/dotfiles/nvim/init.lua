@@ -9,6 +9,7 @@
 -- Install Plugins -------------------------------
 
 vim.pack.add({
+  "https://github.com/shaunsingh/nord.nvim",                      -- nord.nvim            : colorscheme
   "https://github.com/rebelot/kanagawa.nvim",                     -- kanagawa-paper.nvim  : colorscheme
   "https://github.com/nvim-tree/nvim-web-devicons",               -- nvim-web-devicons    : NerdFonts for Neovim Plugins
   "https://github.com/folke/which-key.nvim",                      -- which-key            : Keymapping Display
@@ -653,15 +654,15 @@ require("gitsigns").setup({
 
 require("mason").setup({})
 require("mason-tool-installer").setup({
-  ensure_installed = {
-    "nixfmt",
-  },
+--  ensure_installed = {
+--    "nixfmt",
+--  },
 })
 require("mason-lspconfig").setup({
-  ensure_installed = {
-    "nil_ls",        -- Nix Support
-  },
-  automatic_installation = true,
+--  ensure_installed = {
+--    "nixd",        -- Nix Support
+--  },
+--  automatic_installation = true,
 })
 
 -- Keymapping ------------------------------------
