@@ -654,7 +654,7 @@ require("gitsigns").setup({
 require("mason").setup({})
 require("mason-tool-installer").setup({
   ensure_installed = {
-    "nixpkgs-fmt",
+    "nixfmt",
   },
 })
 require("mason-lspconfig").setup({
