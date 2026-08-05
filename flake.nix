@@ -69,19 +69,19 @@
     # flake-parts
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      #inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # import-tree
     import-tree = {
       url = "github:vic/import-tree";
-      #inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # nix-wrapper-modules
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";
-      #inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     #---------------------------------------------
