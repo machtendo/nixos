@@ -262,10 +262,10 @@
           # Subagent Delegation
           delegation = {
             max_iterations        = 50;
-          # max_spawn_depth       = 1;
-          # orchestrator_enabled  = true;
-          # subagent_auto_approve = false;
-          # inherit_mcp_toolsets  = true;
+            max_spawn_depth       = 1;
+            orchestrator_enabled  = true;
+            subagent_auto_approve = false;
+            inherit_mcp_toolsets  = true;
           # model                 = "google/gemini-3-flash-preview";
           # provider              = "openrouter";
           };
