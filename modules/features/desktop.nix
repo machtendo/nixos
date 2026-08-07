@@ -10,9 +10,38 @@
       inputs.noctalia.nixosModules.default
     ];
 
-    # Desktop Environment -----------------------#
+    # Packages (System)
+    environment.systemPackages = [
+      # ...
+
+      # Hyprland
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
+
+      # Noctalia
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    ];
+
+    # Login Manager ------------------------------
+    # greetd + tuigreet
+    #---------------------------------------------
+
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          user = "greeter";
+          command = ''
+            tuigreet --time --remember --cmd uwsm start hyprland
+          '';
+        };
+      };
+    };
+
+    # Desktop Environment ------------------------
     # Hyprland - Wayland Compositor
-    #--------------------------------------------#
+    #---------------------------------------------
 
     programs.hyprland = {
       enable    = true;
@@ -28,6 +57,10 @@
 
     #xwayland.enable = false; # Xwayland can be disabled.
 
+    # Shell --------------------------------------
+    # Noctalia - Wayland Shell
+    #---------------------------------------------
+
     programs.noctalia = {
       enable = true;
 
@@ -40,22 +73,9 @@
       };
     };
 
-    # Packages (System)
-    environment.systemPackages = [
-      # ...
-
-      # Hyprland
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
-
-      # Noctalia
-      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-    ];
-
-    #--------------------------------------------#
-    #--------------------------------------------#
-    #--------------------------------------------#
+    #---------------------------------------------
+    #---------------------------------------------
+    #---------------------------------------------
 
   };
 }
