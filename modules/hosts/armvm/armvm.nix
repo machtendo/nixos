@@ -12,8 +12,8 @@
       armvm-cfg     # Configuration - Host: armvm
       armvm-hw      # Configuration - Hardware: armvm
       user-nix      # Configuration - User: nix
-      core          # Configuration - Core: All Devices
-
+      core          # Module - Core: All Devices
+      desktop       # Module - Desktop Environment
     ];
   };
 }

@@ -32,9 +32,7 @@
       settings = {
         default_session = {
           user = "greeter";
-          command = ''
-            tuigreet --time --remember --cmd uwsm start hyprland
-          '';
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --greeting "System Ready." --cmd uwsm start hyprland";
         };
       };
     };
