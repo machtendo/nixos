@@ -12,6 +12,7 @@
 
     # Packages (System)
     environment.systemPackages = [
+      ghostty
       # ...
 
       # Hyprland
@@ -32,7 +33,7 @@
       settings = {
         default_session = {
           user = "greeter";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --greeting 'System Ready.' --cmd uwsm start-hyprland";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --greeting 'System Ready.' --cmd \"sh -c 'uwsm start hyprland'\"";
         };
       };
     };
