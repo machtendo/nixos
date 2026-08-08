@@ -11,7 +11,7 @@
     ];
 
     # Packages (System)
-    environment.systemPackages = [
+    environment.systemPackages = with pkgs; [
       ghostty
       # ...
 
