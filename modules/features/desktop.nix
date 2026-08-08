@@ -33,7 +33,7 @@
       settings = {
         default_session = {
           user = "greeter";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --greeting 'System Ready.' --cmd \"${pkgs.uwsm}/bin/uwsm start hyprland-session\";
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --greeting 'System Ready.' --cmd \"${pkgs.uwsm}/bin/uwsm start hyprland-session\"";
         };
       };
     };
