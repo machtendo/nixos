@@ -46,7 +46,7 @@
     programs.hyprland = {
       enable    = true;
       withUWSM  = true; # Universal Wayland Session Manager
-      settings = [
+      settings = {
         bind = [
           # Window Management
           "SUPER, C, killactive"
@@ -74,7 +74,7 @@
           "SUPER, Q, exec, ghostty"
           "SUPER, B, exec, brave"
 
-        ];
+        };
 
         # ...
       ];
