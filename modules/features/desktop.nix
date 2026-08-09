@@ -73,11 +73,10 @@
           # Applications =========================
           "SUPER, Q, exec, ghostty"
           "SUPER, B, exec, brave"
-
-        };
+        ];
 
         # ...
-      ];
+      };
 
       #plugins = [
       #  # ...
