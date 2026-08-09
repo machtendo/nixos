@@ -26,7 +26,7 @@
       settings = {
         default_session = {
           user      = "greeter";
-          command   = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd \"sh -c '${pkgs.uwsm}/bin/uwsm start hyprland'\""
+          command   = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd \"sh -c '${pkgs.uwsm}/bin/uwsm start hyprland'\"";
         };
       };
     };
