@@ -30,7 +30,7 @@
           "SUPER, CTRL, left"   = "movewindow, l";
           "SUPER, CTRL, right"  = "movewindow, r";
           "SUPER, CTRL, up"     = "movewindow, u";
-          "SUPER, CTRL, down"   = "down, movewindow, d"
+          "SUPER, CTRL, down"   = "movewindow, d";
 
           # Workspaces
           "SUPER, 1"            = "workspace, 1";
