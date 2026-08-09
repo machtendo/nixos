@@ -15,10 +15,6 @@
       ghostty
       brave
       # ...
-
-      # Noctalia
-      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-
     ];
 
     # Login Manager ------------------------------
@@ -29,8 +25,8 @@
       enable = true;
       settings = {
         default_session = {
-          user = "greeter";
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd \"${pkgs.uwsm}/bin/uwsm start hyprland\"";
+          user      = "greeter";
+          command   = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd \"sh -c '${pkgs.uwsm}/bin/uwsm start hyprland'\""
         };
       };
     };
@@ -40,9 +36,9 @@
     #---------------------------------------------
 
     programs.hyprland = {
-      enable    = true;
-      withUWSM  = true;     # Universal Wayland Session Manager
-      package   = self.packages.${pkgs.stdenv.hostPlatform.system}.myHyprland;
+      enable        = true;
+      withUWSM      = true;     # Universal Wayland Session Manager
+      package       = self.packages.${pkgs.stdenv.hostPlatform.system}.myHyprland;
     };
 
     # Shell --------------------------------------
@@ -50,21 +46,16 @@
     #---------------------------------------------
 
     programs.noctalia = {
-      enable = true;
+      enable        = true;
 
       recommendedServices = {
-        enable = true;
+        enable      = true;
       };
 
       systemd = {
-        enable = true;
+        enable      = true;
       };
     };
-
-    #---------------------------------------------
-    #---------------------------------------------
-    #---------------------------------------------
-
   };
 }
 
