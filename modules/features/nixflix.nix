@@ -124,7 +124,6 @@
               _secret = config.sops.secrets."radarr/password".path;
             };
           };
-
         };
       };
 
@@ -209,6 +208,7 @@
         settings = {
 
           misc = {
+
             api_key = {
               _secret = config.sops.secrets."sabnzbd/api_key".path;
             };
@@ -263,23 +263,23 @@
       #------------------------------------------#
 
       jellyfin = {
-        enable = true;
+        enable                  = true;
 
-      apiKey = {
-        _secret = config.sops.secrets."jellyfin/api_key".path;
+        apiKey = {
+          _secret               = config.sops.secrets."jellyfin/api_key".path;
 
-        users = {
-          admin = {
-            mutable = false;
+          users = {
+            admin = {
+              mutable           = false;
 
-            policy = {
-              isAdministrator = true;
+              policy = {
+                isAdministrator = true;
+              };
+
+              password = {
+                _secret         = config.sops.secrets."jellyfin/alice_password".path;
+              };
             };
-
-            password = {
-              _secret = config.sops.secrets."jellyfin/alice_password".path;
-            };
-
           };
         };
       };
@@ -289,12 +289,11 @@
       #------------------------------------------#
 
       seerr = {
-        enable = true;
+        enable      = true;
 
         apiKey = {
-          _secret = config.sops.secrets."seerr/api_key".path;
+          _secret   = config.sops.secrets."seerr/api_key".path;
         };
-
       };
 
       # Wireguard #------------------------------#

@@ -12,42 +12,74 @@
 
     # Bootloader ---------------------------------
 
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.efi.efiSysMountPoint = "/boot";
+    boot = {
+      loader = {
+        systemd-boot = {
+          enable              = true;
+        };
+      };
+
+      efi = {
+        canTouchEfiVariables  = true;
+        efiSysMountPoint      = "/boot";
+      };
+    };
 
     # Networking ---------------------------------
 
     # Enable Networking
-    networking.networkmanager.enable = true;
+    networking = {
+      networkmanager = {
+        enable          = true;
+      };
 
-    # Hostname
-    networking.hostName = "agent";
+      # Hostname
+      hostName          = "agent";
 
-    # Network Proxy
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+      # Network Proxy
+      #proxy = {
+      #  default        = "http://user:password@proxy:port/";
+      #  noProxy        = "127.0.0.1,localhost,internal.domain";
+      #};
 
-    # Firewall
-    networking.firewall = {
-      enable = true;
-      allowedTCPPorts = [ 9119 8787 ];
-      allowedUDPPorts = [ 9119 8787 ];
+      firewall = {
+        enable          = true;
+        allowedTCPPorts = [ 9119 8787 ];
+        allowedUDPPorts = [ 9119 8787 ];
+      };
+
+      # ...
+
     };
 
-    # Packages  ----------------------------------
+    # System -------------------------------------
 
-    # System
-    environment.systemPackages = with pkgs; [
-     # ...
-    ];
+    system = {
+      stateVersion = "26.05";
+    };
+
+    environment = {
+
+      systemPackages = with pkgs; [
+        # ...
+      ];
+
+    };
 
     # Services -----------------------------------
 
-    services.openssh.enable = true;     # OpenSSH Server
+    services = {
+
+      # OpenSSH Server
+      openssh = {
+        enable = true;
+      };
+
+      # ...
+
+    };
 
     # System State Version -----------------------
-    system.stateVersion = "26.05";
 
     #--------------------------------------------#
     #--------------------------------------------#
