@@ -16,10 +16,6 @@
       brave
       # ...
 
-      # Hyprland
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
-
       # Noctalia
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
@@ -45,45 +41,9 @@
 
     programs.hyprland = {
       enable    = true;
-      withUWSM  = true; # Universal Wayland Session Manager
-      settings = {
-        bind = [
-          # Window Management
-          "SUPER, C, killactive"
-          "SUPER, F, togglefloating"
-          "SUPER, M, fullscreen"
-
-          "SUPER CTRL, left, movewindow, l"
-          "SUPER CTRL, right, movewindow, r"
-          "SUPER CTRL, up, movewindow, u"
-          "SUPER CTRL, down, movewindow, d"
-
-          "SUPER, 1, workspace, 1"
-          "SUPER, 2, workspace, 2"
-          "SUPER, 3, workspace, 3"
-          "SUPER, 4, workspace, 4"
-
-          "SUPER SHIFT, 1, movetoworkspace, 1"
-          "SUPER SHIFT, 2, movetoworkspace, 2"
-          "SUPER SHIFT, 3, movetoworkspace, 3"
-          "SUPER SHIFT, 4, movetoworkspace, 4"
-
-          "SUPER SHIFT, M, exit, hyprland"
-
-          # Applications =========================
-          "SUPER, Q, exec, ghostty"
-          "SUPER, B, exec, brave"
-        ];
-
-        # ...
-      };
-
-      #plugins = [
-      #  # ...
-      #];
+      withUWSM  = true;     # Universal Wayland Session Manager
+      package   = self.packages.${pkgs.stdenv.hostPlatform.system}.myHyprland;
     };
-
-    #xwayland.enable = false; # Xwayland can be disabled.
 
     # Shell --------------------------------------
     # Noctalia - Wayland Shell
