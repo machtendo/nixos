@@ -146,7 +146,7 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
-    };
+    }
 
     (inputs.import-tree ./modules);
 
