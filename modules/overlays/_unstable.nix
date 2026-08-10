@@ -25,7 +25,7 @@
         pkgList = config.unstablePackages;
 
         unstable      = import inputs.nixpkgs-unstable {
-          system      = pkgs.system;
+          #system      = pkgs.system;
           config      = {};
         };
 
