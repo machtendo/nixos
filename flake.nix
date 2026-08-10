@@ -77,7 +77,7 @@
     };
 
     # nix-wrapper-modules
-    wrappers = {
+    nix-wrapper-modules = {
       url = "github:BirdeeHub/nix-wrapper-modules";
     };
 
