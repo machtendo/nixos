@@ -6,7 +6,7 @@
   # ...
 
   perSystem = { pkgs, lib, ... }: {
-    packages.myHyprland = inputs.wrappers.wrappers.hyprland.wrap {
+    packages.myHyprland = inputs.wrappers.hyprland.wrap {
       inherit pkgs;
 
       settings = {
