@@ -354,8 +354,8 @@
 
           model = {
             provider              = "custom";                               # Ollama
-            base_url              = "http://192.168.86.23:11434/api/v1";
-            default               = "gemma4:31b-mlx";
+            base_url              = "http://10.211.55.2:8000/v1";
+            default               = "gemma-4-26b-a4b-it-8bit";
           };
 
           # Context Compression
