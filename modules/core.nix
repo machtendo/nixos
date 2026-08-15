@@ -64,6 +64,7 @@
       neovim        # Neovim - Text Editor
       sops          # Secrets Management
       age           # File Encryption
+      ssh-to-age    # File Encryption
       tree          # Directory Listing TUI
     ];
 
