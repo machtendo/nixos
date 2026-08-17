@@ -33,7 +33,7 @@
       defaultSopsFormat   = "yaml";
 
       age = {
-        keyFile           = "/home/nix/.config/sops/age/keys.txt";
+        keyFile           = "/home/hermes/.config/sops/age/keys.txt";
         sshKeyPaths       = [ "/etc/ssh/ssh_host_ed25519_key" ];
       };
 
@@ -76,7 +76,7 @@
           environment         = {};
 
           # Secrets ---------
-          # environmentFiles    = [ config.sops.secrets."hermes-env".path ];
+          environmentFiles    = [ config.sops.secrets."hermes-env".path ];
 
           # Container --------------------------------
           # Run in a Container (optional)
