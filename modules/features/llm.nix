@@ -40,7 +40,8 @@
       secrets = {
         "hermes-env" = {
           owner = config.users.users.hermes.name;
-          inherit (config.users.users.hermes) group;
+          group = config.users.users.hermes.group;
+          mode = "0550";  # Read and Execute Permissions
         };
 
         #"hermes/OPENAI_BASE_URL" = {};
