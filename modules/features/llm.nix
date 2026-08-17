@@ -65,80 +65,80 @@
         stateDir            = "/var/lib/hermes";
         workingDirectory    = "/var/lib/hermes/workspace";
 
+        # Environment -----
+        environment         = {};
+
+        # Secrets ---------
+        environmentFiles    = [ config.sops.secrets."hermes-env".path ];
+
+        # Override --------
+        #configFile         = /var/lib/hermes/config.yaml;    # Overrides All Declared Settings
+
+        # Service ---------
+        #extraArgs           = [ "--verbose" ];
+
+        # Container --------------------------------
+        # Run in a Container (optional)
+        #-------------------------------------------
+
+        container = {
+          enable                = false;
+          #container_cpu         = 1;         # CPU Cores
+          #container_memory      = 5120;      # Memory (MB)
+          #container_disk        = 51200;     # Disk (MB)
+          #container_persistent  = true;      # Persist Filesystem Across Sessions
+          #image                = "ubuntu:24.04";
+          #backend              = "docker";
+
+          #hostUsers = [
+          #  "your-username"
+          #];
+
+          #extraVolumes = [
+          #  "/home/user/projects:/projects:rw"
+          #];
+
+          #extraOptions         = [ "--gpus" "all" ];
+        };
+
+        # Personality ------------------------------
+        #
+        #-------------------------------------------
+
+        documents = {
+
+          # Inline Definitions
+
+          #"SOUL.md"   = ''
+          #  # SOUL.md
+          #  You are a sharp, pragmatic AI assistant.
+          #'';
+
+          #"AGENTS.md" = ''
+          #  # AGENTS.md
+          #  Read SOUL.md first. Then help the user.
+          #'';
+
+          #"USER.md"   = ''
+          #  # USER.md
+          #  Name: Your Human
+          #'';
+
+          # External Files
+
+          "SOUL.md"     = "/var/lib/hermes/.hermes/personality/SOUL.md";
+          "AGENTS.md"   = "/var/lib/hermes/.hermes/personality/AGENTS.md";
+          "USER.md"     = "/var/lib/hermes/.hermes/personality/USER.md";
+          "MEMORIES.md" = "/var/lib/hermes/.hermes/personality/MEMORIES.md";
+
+        };
+
         settings = {
 
           updates = {
             pre_update_backup               = true;
             backup_keep                     = 5;
             non_interactive_local_changes   = "stash";
-          };
-
-          # Override --------
-          #configFile         = /var/lib/hermes/config.yaml;    # Overrides All Declared Settings
-
-          # Service ---------
-          #extraArgs           = [ "--verbose" ];
-
-          # Environment -----
-          environment         = {};
-
-          # Secrets ---------
-          environmentFiles    = [ config.sops.secrets."hermes-env".path ];
-
-          # Container --------------------------------
-          # Run in a Container (optional)
-          #-------------------------------------------
-
-          container = {
-            enable                = false;
-            #container_cpu         = 1;         # CPU Cores
-            #container_memory      = 5120;      # Memory (MB)
-            #container_disk        = 51200;     # Disk (MB)
-            #container_persistent  = true;      # Persist Filesystem Across Sessions
-            #image                = "ubuntu:24.04";
-            #backend              = "docker";
-
-            #hostUsers = [
-            #  "your-username"
-            #];
-
-            #extraVolumes = [
-            #  "/home/user/projects:/projects:rw"
-            #];
-
-            #extraOptions         = [ "--gpus" "all" ];
-          };
-
-          # Personality ------------------------------
-          #
-          #-------------------------------------------
-
-          documents = {
-
-            # Inline Definitions
-
-            #"SOUL.md"   = ''
-            #  # SOUL.md
-            #  You are a sharp, pragmatic AI assistant.
-            #'';
-
-            #"AGENTS.md" = ''
-            #  # AGENTS.md
-            #  Read SOUL.md first. Then help the user.
-            #'';
-
-            #"USER.md"   = ''
-            #  # USER.md
-            #  Name: Your Human
-            #'';
-
-            # External Files
-
-            "SOUL.md"     = "/var/lib/hermes/.hermes/personality/SOUL.md";
-            "AGENTS.md"   = "/var/lib/hermes/.hermes/personality/AGENTS.md";
-            "USER.md"     = "/var/lib/hermes/.hermes/personality/USER.md";
-            "MEMORIES.md" = "/var/lib/hermes/.hermes/personality/MEMORIES.md";
-
           };
 
           # Tools ------------------------------------
