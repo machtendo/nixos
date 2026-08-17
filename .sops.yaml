@@ -4,11 +4,9 @@
 
 keys:
   # Personal / Public age key (~/.config/sops/age/keys.txt)
-  - &users:
-    - &personal_age_key age1l3hyd3u9ctutnnqtta0ctsw6xajw9ugleu53yegtcxfr9mpwr4tsa7vqfz
-    - &nix age1tnals7g967q9ky32erq3exntc6hdejdm0lmkyvx07vapltpl85tsr7s0hs
-  - &hosts:
-    - &agent age1k96u7qpqvv3ehsr3thzmaa39e85lkkdd4w6f6wr6hh5e4hmfmy7qckvhhn
+  - &personal_age_key age1l3hyd3u9ctutnnqtta0ctsw6xajw9ugleu53yegtcxfr9mpwr4tsa7vqfz
+  - &nix age1tnals7g967q9ky32erq3exntc6hdejdm0lmkyvx07vapltpl85tsr7s0hs
+  - &agent age1k96u7qpqvv3ehsr3thzmaa39e85lkkdd4w6f6wr6hh5e4hmfmy7qckvhhn
 
   # Personal / Public PGP Key (Format)
   #- &personal_pgp_key [PGP KEY]
