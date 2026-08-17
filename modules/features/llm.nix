@@ -76,7 +76,7 @@
           environment         = {};
 
           # Secrets ---------
-          environmentFiles    = [ inputs.sops.secrets."hermes-env".path ];
+          environmentFiles    = [ config.sops.secrets."hermes-env".path ];
 
           # Container --------------------------------
           # Run in a Container (optional)
