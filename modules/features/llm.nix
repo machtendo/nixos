@@ -29,7 +29,7 @@
     };
 
     sops = {
-      defaultSopsFile     = ../../../../secrets/llm.yaml;
+      defaultSopsFile     = ../../secrets/llm.yaml;
       defaultSopsFormat   = "yaml";
 
       age = {
