@@ -141,6 +141,18 @@
             non_interactive_local_changes   = "stash";
           };
 
+          # Providers --------------------------------
+          #
+          #-------------------------------------------
+
+          providers = {
+            omlx = {
+              base_url = "http://10.211.55.2:8000/v1";
+              key_env = "OMLX_API_KEY";
+              default_model = "gemma-4-26b-a4b-it-8bit";
+            };
+          };
+
           # Tools ------------------------------------
           # MCP, Packages, etc.
           #-------------------------------------------
@@ -361,8 +373,7 @@
           group_sessions_per_user = true;
 
           model = {
-            provider              = "custom";
-            base_url              = "http://10.211.55.2:8000/v1";
+            provider              = "omlx";
             default               = "gemma-4-26b-a4b-it-8bit";
           };
 
