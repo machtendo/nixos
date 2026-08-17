@@ -39,6 +39,8 @@
 
       secrets = {
         "hermes-env"      = {};
+        "hermes/OPENAI_BASE_URL" = {};
+        "hermes/OPENAI_API_KEY" = {};
       };
     };
 
@@ -354,8 +356,9 @@
           group_sessions_per_user = true;
 
           model = {
-            provider              = "custom";                               # Ollama
-            #base_url              = "http://10.211.55.2:8000/v1";
+            provider              = "custom";
+            api_key               = config.sops.secrets."hermes/OPENAI_API_KEY".path;
+            base_url              = config.sops.secrets."hermes/OPENAI_BASE_URL".path;
             default               = "gemma-4-26b-a4b-it-8bit";
           };
 
