@@ -362,7 +362,7 @@
 
           model = {
             provider              = "custom";
-            base_url              = "http://10.211.55.2/v1";
+            base_url              = "http://10.211.55.2:8000/v1";
             default               = "gemma-4-26b-a4b-it-8bit";
           };
 
