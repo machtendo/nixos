@@ -38,9 +38,13 @@
       };
 
       secrets = {
-        "hermes-env"      = {};
-        "hermes/OPENAI_BASE_URL" = {};
-        "hermes/OPENAI_API_KEY" = {};
+        "hermes-env" = {
+          owner = config.users.users.hermes.name;
+          inherit (config.users.users.hermes) group;
+        };
+
+        #"hermes/OPENAI_BASE_URL" = {};
+        #"hermes/OPENAI_API_KEY" = {};
       };
     };
 
@@ -357,8 +361,8 @@
 
           model = {
             provider              = "custom";
-            api_key               = "cat ${config.sops.secrets."hermes/OPENAI_API_KEY".path}";
-            base_url              = "cat ${config.sops.secrets."hermes/OPENAI_BASE_URL".path}";
+            #api_key               = "cat ${config.sops.secrets."hermes/OPENAI_API_KEY".path}";
+            #base_url              = "cat ${config.sops.secrets."hermes/OPENAI_BASE_URL".path}";
             default               = "gemma-4-26b-a4b-it-8bit";
           };
 
