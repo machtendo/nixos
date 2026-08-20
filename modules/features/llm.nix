@@ -38,15 +38,13 @@
       };
 
       secrets = {
-        "hermes-env" = {
-          owner = config.users.users.hermes.name;
-          group = config.users.users.hermes.group;
-          mode = "0550";  # Read and Execute Permissions
+        "hermes-env" = {                            # File: /run/secrets/hermes-env
+          owner = config.users.users.hermes.name;   # Owner: User
+          group = config.users.users.hermes.group;  # Owner: Group
+          mode  = "0550";                           # Permissions: Read and Execute
         };
-
-        #"hermes/OPENAI_BASE_URL" = {};
-        #"hermes/OPENAI_API_KEY" = {};
       };
+
     };
 
     # Hermes Agent --------------------------------------------------------
@@ -72,7 +70,8 @@
         environmentFiles    = [ config.sops.secrets."hermes-env".path ];
 
         # Override --------
-        #configFile         = /var/lib/hermes/config.yaml;    # Overrides All Declared Settings
+        # Bring your own config file, and override all declared settings
+        #configFile         = /var/lib/hermes/config.yaml;
 
         # Service ---------
         #extraArgs           = [ "--verbose" ];
@@ -126,9 +125,23 @@
 
           # External Files
 
-          "SOUL.md"     = "/var/lib/hermes/.hermes/personality/SOUL.md";
+          # SOUL.md - Identity of the Agent (Disabled for Hermes)
+          # Agent Voice, Tone, Personality, Behavioral Boundaries
+          #"SOUL.md"     = "/var/lib/hermes/.hermes/personality/SOUL.md";
+
+          # AGENTS.md - Information about Projects
+          # Coding Conventions, Tool Preferences, Workflow Instructions Per Project
+
           "AGENTS.md"   = "/var/lib/hermes/.hermes/personality/AGENTS.md";
+
+          # USER.md - Information about the End User
+          # Name, Communication Preferences, Goals
+
           "USER.md"     = "/var/lib/hermes/.hermes/personality/USER.md";
+
+          # MEMORIES.md - Curated Notes, Managed by the Agent
+          # Learned facts across sessions, Environment
+
           "MEMORIES.md" = "/var/lib/hermes/.hermes/personality/MEMORIES.md";
 
         };
@@ -142,10 +155,12 @@
           };
 
           # Providers --------------------------------
-          #
+          # LLM Provider Definitions
           #-------------------------------------------
 
           providers = {
+
+            # OMLX - Apple MLX Backend for M-Series Devices
             omlx = {
               base_url = "http://10.211.55.2:8000/v1";
               key_env = "OMLX_API_KEY";
@@ -525,6 +540,7 @@
           #"firecrawl"          # Firecrawl web search
           #"fal"                # FAL image generation
         ];
+
       };
     };
   };
