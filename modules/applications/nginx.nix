@@ -9,24 +9,26 @@
       # ...
     ];
 
-    # Systemd configuration
+    # Systemd Configuration
     systemd.services.nginx.serviceConfig.ProtectHome = false;
 
-    # User management
+    # User Management
     users.groups.searx.members = ["nginx"];
 
-    # Nginx configuration
+    # Nginx Configuration
     services.nginx = {
       enable = true;
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
+      recommendedGzipSettings     = true;
+      recommendedOptimisation     = true;
+      recommendedProxySettings    = true;
+      recommendedTlsSettings      = true;
+
       virtualHosts = {
         "search.example.com" = {
-          forceSSL = true;
-          sslCertificate = "...";
-          sslCertificateKey = "...";
+          forceSSL                = true;
+          sslCertificate          = "...";
+          sslCertificateKey       = "...";
+
           locations = {
             "/" = {
               extraConfig = ''
