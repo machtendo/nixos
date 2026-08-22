@@ -2,43 +2,41 @@
 # Module Configuration: nginx
 #--------------------------------------------------------------------------------------------------
 
-{ self, inputs, ... }: {
+{ pkgs, lib, config, ... }: {
+  imports = [
+    # ...
+  ];
 
-  flake.nixosModules.searxng = { pkgs, lib, config, ... }: {
-    imports = [
-      # ...
-    ];
+  # Systemd Configuration
+  systemd.services.nginx.serviceConfig.ProtectHome = false;
 
-    # Systemd Configuration
-    systemd.services.nginx.serviceConfig.ProtectHome = false;
+  # User Management
+  users.groups.searx.members = ["nginx"];
 
-    # User Management
-    users.groups.searx.members = ["nginx"];
+  # Nginx Configuration
+  services.nginx = {
+    enable = true;
+    recommendedGzipSettings     = true;
+    recommendedOptimisation     = true;
+    recommendedProxySettings    = true;
+    recommendedTlsSettings      = true;
 
-    # Nginx Configuration
-    services.nginx = {
-      enable = true;
-      recommendedGzipSettings     = true;
-      recommendedOptimisation     = true;
-      recommendedProxySettings    = true;
-      recommendedTlsSettings      = true;
+    virtualHosts = {
+      "search.example.com" = {
+        forceSSL                = true;
+        sslCertificate          = "...";
+        sslCertificateKey       = "...";
 
-      virtualHosts = {
-        "search.example.com" = {
-          forceSSL                = true;
-          sslCertificate          = "...";
-          sslCertificateKey       = "...";
-
-          locations = {
-            "/" = {
-              extraConfig = ''
-                uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
-              '';
-            };
+        locations = {
+          "/" = {
+            extraConfig = ''
+              uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
+            '';
           };
         };
       };
     };
+  };
 }
 
 #---------------------------------------------------------------------------------------------------
