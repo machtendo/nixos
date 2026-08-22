@@ -16,7 +16,7 @@
     #--------------------------------------------#
 
     sops = {
-      defaultSopsFile       = ../../../../secrets/nixflix.yaml;
+      defaultSopsFile       = ../../secrets/nixflix.yaml;
       defaultSopsFormat     = "yaml";
 
       age = {
