@@ -30,6 +30,13 @@
         options = [ "fmask=0077" "dmask=0077" ];
       };
 
+    # Share Hermes folder with Parallels Host
+    fileSystems."/mnt/psf/hermes" = {
+      device = "/var/lib/hermes";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
     swapDevices =
       [ { device = "/dev/disk/by-uuid/1b99bf18-7df9-40ef-9b72-e7452eec43d2"; }
       ];

@@ -3,7 +3,7 @@
 #---------------------------------------------------------------------------------------------------
 
 { self, inputs, ... }: {
-  flake.nixosModules.git = {pkgs, lib, ... }: {
+  flake.nixosModules.shell = {pkgs, lib, ... }: {
     imports = [
       # ...
     ];
