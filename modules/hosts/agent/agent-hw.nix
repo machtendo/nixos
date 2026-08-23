@@ -35,6 +35,7 @@
       device = "/var/lib/hermes";
       fsType = "none";
       options = [ "bind" ];
+      depends = [ "/mnt/psf" ];
     };
 
     swapDevices =
