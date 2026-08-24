@@ -352,9 +352,7 @@
                 "mcp-nixos"
               ];
             };
-
             # ...
-
           };
 
           # Skills -------------------------
@@ -513,7 +511,6 @@
             #   charizard      — Fiery orange dragon theme
 
             # See example 'config.yaml' > Skin / Theme for Custom Skin creation
-
 
         #-------------------------------------------
         # Extra Options

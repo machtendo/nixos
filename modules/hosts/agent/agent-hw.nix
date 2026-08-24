@@ -14,38 +14,38 @@
       # ...
     ];
 
-    boot.initrd.availableKernelModules = [ "ehci_pci" "xhci_pci" "usbhid" "sr_mod" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ ];
-    boot.extraModulePackages = [ ];
+    boot.initrd.availableKernelModules  = [ "ehci_pci" "xhci_pci" "usbhid" "sr_mod" ];
+    boot.initrd.kernelModules           = [ ];
+    boot.kernelModules                  = [ ];
+    boot.extraModulePackages            = [ ];
 
     fileSystems."/" =
-      { device = "/dev/disk/by-uuid/5656d531-06f6-4746-a80d-6a8b6b36acc7";
-        fsType = "ext4";
+      { device      = "/dev/disk/by-uuid/5656d531-06f6-4746-a80d-6a8b6b36acc7";
+        fsType      = "ext4";
       };
 
     fileSystems."/boot" =
-      { device = "/dev/disk/by-uuid/18E0-E82A";
-        fsType = "vfat";
-        options = [ "fmask=0077" "dmask=0077" ];
+      { device      = "/dev/disk/by-uuid/18E0-E82A";
+        fsType      = "vfat";
+        options     = [ "fmask=0077" "dmask=0077" ];
       };
 
     # Share Hermes folder with Parallels Host
     fileSystems."/mnt/psf/hermes" = {
-      device = "/var/lib/hermes";
-      fsType = "none";
-      options = [ "bind" ];
-      depends = [ "/mnt/psf" ];
+      device        = "/var/lib/hermes";
+      fsType        = "none";
+      options       = [ "bind" ];
+      depends       = [ "/mnt/psf" ];
     };
 
     swapDevices =
-      [ { device = "/dev/disk/by-uuid/1b99bf18-7df9-40ef-9b72-e7452eec43d2"; }
+      [ { device    = "/dev/disk/by-uuid/1b99bf18-7df9-40ef-9b72-e7452eec43d2"; }
       ];
 
-    nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-    hardware.parallels.enable = true;
-    nixpkgs.config.allowUnfreePackages = [ "prl-tools" ];
- };
+    nixpkgs.hostPlatform                = lib.mkDefault "aarch64-linux";
+    hardware.parallels.enable           = true;
+    nixpkgs.config.allowUnfreePackages  = [ "prl-tools" ];
+  };
 }
 
 #---------------------------------------------------------------------------------------------------
