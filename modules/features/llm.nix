@@ -53,33 +53,33 @@
 
     services.hermes-agent = {
         enable              = true;
-    
+
         # User
         user                = "hermes";
         group               = "hermes";
         createUser          = true;
-    
+
         # Directories
         stateDir            = "/var/lib/hermes";
         workingDirectory    = "/var/lib/hermes/workspace";
-    
+
         # Environment -----
         environment         = {};
-    
+
         # Secrets ---------
         environmentFiles    = [ config.sops.secrets."hermes-env".path ];
-    
+
         # Override --------
         # Bring your own config file, and override all declared settings
         #configFile         = /var/lib/hermes/config.yaml;
-    
+
         # Service ---------
         #extraArgs           = [ "--verbose" ];
-    
+
         # Container --------------------------------
         # Run in a Container (optional)
         #-------------------------------------------
-    
+
         container = {
           enable                = false;
           #container_cpu         = 1;         # CPU Cores
