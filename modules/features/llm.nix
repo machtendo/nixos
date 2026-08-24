@@ -44,7 +44,6 @@
           mode  = "0550";                           # Permissions: Read and Execute
         };
       };
-
     };
 
     # Hermes Agent --------------------------------------------------------
@@ -75,13 +74,6 @@
 
         # Service ---------
         #extraArgs           = [ "--verbose" ];
-
-        # Gateway ---------
-        gateway.enable      = true;
-        backend = {
-          mode              = "dashboard";
-          port              = 9119;
-        };
 
         # Container --------------------------------
         # Run in a Container (optional)
