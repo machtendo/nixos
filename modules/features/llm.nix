@@ -53,33 +53,33 @@
 
     services.hermes-agent = {
         enable              = true;
-
+    
         # User
         user                = "hermes";
         group               = "hermes";
         createUser          = true;
-
+    
         # Directories
         stateDir            = "/var/lib/hermes";
         workingDirectory    = "/var/lib/hermes/workspace";
-
+    
         # Environment -----
         environment         = {};
-
+    
         # Secrets ---------
         environmentFiles    = [ config.sops.secrets."hermes-env".path ];
-
+    
         # Override --------
         # Bring your own config file, and override all declared settings
         #configFile         = /var/lib/hermes/config.yaml;
-
+    
         # Service ---------
         #extraArgs           = [ "--verbose" ];
-
+    
         # Container --------------------------------
         # Run in a Container (optional)
         #-------------------------------------------
-
+    
         container = {
           enable                = false;
           #container_cpu         = 1;         # CPU Cores
@@ -143,7 +143,6 @@
           # Learned facts across sessions, Environment
 
           "MEMORIES.md" = "/var/lib/hermes/.hermes/personality/MEMORIES.md";
-
         };
 
         settings = {
@@ -547,46 +546,45 @@
     # Hermes Dashboard
     #----------------------------------------------------------------------
 
-    services.hermes-dashboard = {
-        enable              = true;
-        user                = "hermes";
-        group               = "hermes";
-
-        # Requirements
-        after               = [ "hermes-agent.service" ];
-        requires            = [ "hermes-agent.service" ];
-
-        # Environment
-        environment = {
-          HERMES_HOME       = "/var/lib/hermes";
-          # ...
-        };
-    };
-
-      # Hermes Dashboard (systemd)
-      systemd.services.hermes-dashboard = {
-        description         = "Hermes Agent Web Dashboard";
-        after               = [ "hermes-agent.service" ];
-        requires            = [ "hermes-agent.service" ];
-        wantedBy            = [ "multi-user.target" ];
-
-        serviceConfig = {
-          User              = "hermes";
-          Group             = "hermes";
-          WorkingDirectory  = "/var/lib/hermes";
-
-          # Use the absolute path to the hermes binary
-          # Note: Depending on how the package is installed,
-          # you might need to point to the specific bin path.
-          ExecStart         = "${pkgs.hermes-agent}/bin/hermes dashboard --host 0.0.0.0 --port 9119";
-          Restart           = "always";
-          RestartSec        = "5s";
-
-          # Environment
-          EnvironmentFile   = [ config.sops.secrets."hermes-env".path ];
-        };
-      };
-
+    #services.hermes-dashboard = {
+    #    enable              = true;
+    #    user                = "hermes";
+    #    group               = "hermes";
+    #
+    #    # Requirements
+    #    after               = [ "hermes-agent.service" ];
+    #    requires            = [ "hermes-agent.service" ];
+    #
+    #    # Environment
+    #    environment = {
+    #      HERMES_HOME       = "/var/lib/hermes";
+    #      # ...
+    #    };
+    #};
+    #
+    #  # Hermes Dashboard (systemd)
+    #  systemd.services.hermes-dashboard = {
+    #    description         = "Hermes Agent Web Dashboard";
+    #    after               = [ "hermes-agent.service" ];
+    #    requires            = [ "hermes-agent.service" ];
+    #    wantedBy            = [ "multi-user.target" ];
+    #
+    #    serviceConfig = {
+    #      User              = "hermes";
+    #      Group             = "hermes";
+    #      WorkingDirectory  = "/var/lib/hermes";
+    #
+    #      # Use the absolute path to the hermes binary
+    #      # Note: Depending on how the package is installed,
+    #      # you might need to point to the specific bin path.
+    #      ExecStart         = "${pkgs.hermes-agent}/bin/hermes dashboard --host 0.0.0.0 --port 9119";
+    #      Restart           = "always";
+    #      RestartSec        = "5s";
+    #
+    #      # Environment
+    #      EnvironmentFile   = [ config.sops.secrets."hermes-env".path ];
+    #    };
+    #  };
   };
 
 #--------------------------------------------------------------------------------------------------#
