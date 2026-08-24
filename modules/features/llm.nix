@@ -537,50 +537,6 @@
         ];
       };
     };
-
-    #----------------------------------------------------------------------
-    # Hermes Dashboard
-    #----------------------------------------------------------------------
-
-    #services.hermes-dashboard = {
-    #    enable              = true;
-    #    user                = "hermes";
-    #    group               = "hermes";
-    #
-    #    # Requirements
-    #    after               = [ "hermes-agent.service" ];
-    #    requires            = [ "hermes-agent.service" ];
-    #
-    #    # Environment
-    #    environment = {
-    #      HERMES_HOME       = "/var/lib/hermes";
-    #      # ...
-    #    };
-    #};
-    #
-    #  # Hermes Dashboard (systemd)
-    #  systemd.services.hermes-dashboard = {
-    #    description         = "Hermes Agent Web Dashboard";
-    #    after               = [ "hermes-agent.service" ];
-    #    requires            = [ "hermes-agent.service" ];
-    #    wantedBy            = [ "multi-user.target" ];
-    #
-    #    serviceConfig = {
-    #      User              = "hermes";
-    #      Group             = "hermes";
-    #      WorkingDirectory  = "/var/lib/hermes";
-    #
-    #      # Use the absolute path to the hermes binary
-    #      # Note: Depending on how the package is installed,
-    #      # you might need to point to the specific bin path.
-    #      ExecStart         = "${pkgs.hermes-agent}/bin/hermes dashboard --host 0.0.0.0 --port 9119";
-    #      Restart           = "always";
-    #      RestartSec        = "5s";
-    #
-    #      # Environment
-    #      EnvironmentFile   = [ config.sops.secrets."hermes-env".path ];
-    #    };
-    #  };
   };
 
 #--------------------------------------------------------------------------------------------------#
