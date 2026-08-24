@@ -5,13 +5,11 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.agent-cfg = { pkgs, lib, ... }: {
-
     imports = [
       # ...
     ];
 
     # Bootloader ---------------------------------
-
     boot = {
       loader = {
         systemd-boot = {
@@ -26,8 +24,6 @@
     };
 
     # Networking ---------------------------------
-
-    # Enable Networking
     networking = {
       networkmanager = {
         enable          = true;
@@ -59,11 +55,9 @@
     };
 
     environment = {
-
       systemPackages = with pkgs; [
         # ...
       ];
-
     };
 
     # Services -----------------------------------
