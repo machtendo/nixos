@@ -66,7 +66,7 @@
 
       # OpenSSH Server
       openssh = {
-        enable = true;
+        enable                    = true;
       };
 
       # ...
