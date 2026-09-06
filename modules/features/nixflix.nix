@@ -7,6 +7,7 @@
   flake.nixosModules.nixflix = { pkgs, lib, ... }: {
     specialArgs = { inherit inputs; };
     imports = [
+      inputs.sops-nix.nixosModules.default
       #...
     ];
 
