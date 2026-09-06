@@ -39,14 +39,14 @@
         "jellyfin/api_key"                = {};
         "seerr/api_key"                   = {};
         "wireguard/conf"                  = {};
-        "sabnzbd/api_key"                 = {};
-        "sabnzbd/nzb_key"                 = {};
-        "sabnzbd/username"                = {};
-        "sabnzbd/password"                = {};
-        "usenet/eweka/username"           = {};
-        "usenet/eweka/password"           = {};
-        "usenet/newsgroupdirect/username" = {};
-        "usenet/newsgroupdirect/password" = {};
+        #"sabnzbd/api_key"                 = {};
+        #"sabnzbd/nzb_key"                 = {};
+        #"sabnzbd/username"                = {};
+        #"sabnzbd/password"                = {};
+        #"usenet/eweka/username"           = {};
+        #"usenet/eweka/password"           = {};
+        #"usenet/newsgroupdirect/username" = {};
+        #"usenet/newsgroupdirect/password" = {};
       };
     };
 
