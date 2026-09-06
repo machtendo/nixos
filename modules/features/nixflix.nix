@@ -145,6 +145,7 @@
           };
 
           hostConfig = {
+            bindAddress = config.nixflix.bindAddress;
             password = {
               _secret = config.sops.secrets."sonarr/password".path;
             };
@@ -167,6 +168,7 @@
           };
 
           hostConfig = {
+            bindAddress = config.nixflix.bindAddress;
             password = {
               _secret = config.sops.secrets."radarr/password".path;
             };
@@ -188,6 +190,7 @@
           };
 
           hostConfig = {
+            bindAddress = config.nixflix.bindAddress;
             password = {
               _secret = config.sops.secrets."lidarr/password".path;
             };
@@ -219,6 +222,7 @@
           };
 
           hostConfig = {
+            bindAddress = config.nixflix.bindAddress;
             password = {
               _secret = config.sops.secrets."prowlarr/password".path;
             };
@@ -312,6 +316,10 @@
       jellyfin = {
         enable                  = true;
 
+        hostConfig = {
+          bindAddress = config.nixflix.bindAddress;
+        };
+
         apiKey = {
           _secret               = config.sops.secrets."jellyfin/api_key".path;
         };
@@ -337,6 +345,10 @@
 
       seerr = {
         enable      = true;
+
+        hostConfig = {
+          bindAddress = config.nixflix.bindAddress;
+        };
 
         apiKey = {
           _secret   = config.sops.secrets."seerr/api_key".path;
