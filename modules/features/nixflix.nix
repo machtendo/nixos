@@ -10,6 +10,16 @@
       # ...
     ];
 
+    options = {
+      nixflix = {
+        enable = lib.mkEnableOption "Nixflix";
+        bindAddress = lib.mkOption {
+          type = lib.types.str;
+          default = "127.0.0.1";
+        };
+      };
+    };
+
     # sops-nix -----------------------------------
     # Importing secrets
     #---------------------------------------------
@@ -70,16 +80,16 @@
         ];
 
         allowedUDPPorts = [ 
-          8989 
-          8990 
-          7878 
-          8686 
-          9696 
-          8080 
-          8282 
-          8096 
-          5055 
-          4533 
+          8989
+          8990
+          7878
+          8686
+          9696
+          8080
+          8282
+          8096
+          5055
+          4533
         ];
       };
     };
@@ -93,6 +103,8 @@
       mediaDir    = "/data/media";
       stateDir    = "/data/.state";
       mediaUsers  = ["nixflix"];
+
+      bindAddress = "0.0.0.0";
 
       # Theme Park -------------------------------
       # Unified Appearance
