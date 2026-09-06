@@ -22,7 +22,6 @@
         type = lib.types.submodule {
           options = {
             enable = lib.mkEnableOption "Jellyfin";
-            apiKey = lib.mkOption { ... };
             hostConfig = lib.mkOption {
               type = lib.types.submodule {
                 options = {
