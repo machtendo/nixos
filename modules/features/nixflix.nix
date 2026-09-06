@@ -4,14 +4,13 @@
 
 { self, inputs, config, lib, ... }: {
 
+let
+  with lib;
+  cfg = config.nixflix;
+in
+
   flake.nixosModules.nixflix = { pkgs, lib, ... }: {
     specialArgs = { inherit inputs; };
-
-    let
-      with lib;
-      cfg = config.nixflix;
-    in
-
     imports = [
       #...
     ];
