@@ -198,7 +198,6 @@
           ];
         };
       };
-    
 
       # SABnzbd ----------------------------------
       # Automation of Usenet Transfers
@@ -268,18 +267,18 @@
 
         apiKey = {
           _secret               = config.sops.secrets."jellyfin/api_key".path;
+        };
 
-          users = {
-            admin = {
-              mutable           = false;
+        users = {
+          admin = {
+            mutable           = false;
 
-              policy = {
-                isAdministrator = true;
-              };
+            policy = {
+              isAdministrator = true;
+            };
 
-              password = {
-                _secret         = config.sops.secrets."jellyfin/alice_password".path;
-              };
+            password = {
+              _secret         = config.sops.secrets."jellyfin/alice_password".path;
             };
           };
         };
