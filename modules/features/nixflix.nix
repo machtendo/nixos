@@ -17,12 +17,20 @@
         type = lib.types.str;
         default = "127.0.0.1";
       };
-    };
 
-    hostConfig = lib.mkOption {
-      type = lib.types.submodule {
-        options = {
-          bindAddress = lib.mkOption { type = lib.types.str; };
+      jellyfin = lib.mkOption {
+        type = lib.types.submodule {
+          options = {
+            enable = lib.mkEnableOption "Jellyfin";
+            apiKey = lib.mkOption { ... };
+            hostConfig = lib.mkOption {
+              type = lib.types.submodule {
+                options = {
+                  bindAddress = lib.mkOption { type = lib.types.str; };
+                };
+              };
+            };
+          };
         };
       };
     };
