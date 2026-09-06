@@ -12,9 +12,10 @@ flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
     mediarr-hw    # Configuration - Hardware: mediarr
     user-nix      # Configuration - User: nix
     core          # Applications - Core: All Devices
-    nixflix       # Feature - Nixflix
 
     inputs.sops-nix.nixosModules.sops     # Security - Tools: sops-nix
+    nixflix       # Feature - Nixflix
+
     ];
   };
 }
