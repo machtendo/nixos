@@ -18,6 +18,14 @@
         default = "127.0.0.1";
       };
     };
+
+    hostConfig = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          bindAddress = lib.mkOption { type = lib.types.str; };
+        };
+      };
+    };
   };
 
   config = {
@@ -316,14 +324,14 @@
       #-------------------------------------------
 
       jellyfin = {
-        enable                  = true;
+        enable                = true;
 
         hostConfig = {
-          bindAddress = config.nixflix.bindAddress;
+          bindAddress         = config.nixflix.bindAddress;
         };
 
         apiKey = {
-          _secret               = config.sops.secrets."jellyfin/api_key".path;
+          _secret             = config.sops.secrets."jellyfin/api_key".path;
         };
 
         users = {
