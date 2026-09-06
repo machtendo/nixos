@@ -155,7 +155,9 @@
 
       recyclarr = {
         enable = true;
-        cleanupUnmanagedProfiles = true;
+        cleanupUnmanagedProfiles = {
+          enable = true;
+        };
       };
 
       # Prowlarr ---------------------------------
