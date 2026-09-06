@@ -175,30 +175,30 @@
             password = {
               _secret = config.sops.secrets."prowlarr/password".path;
             };
-
-            indexers = [
-
-              # Usenet Indexers
-
-              #{
-              #  name = "DrunkenSlug";
-              #  apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
-              #}
-
-              #{
-              #  name = "NZBFinder";
-              #  apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
-              #}
-
-              #{
-              #  name = "NzbPlanet";
-              #  apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
-              #}
-
-            ];
           };
+          indexers = [
+
+            # Usenet Indexers
+
+            #{
+            #  name = "DrunkenSlug";
+            #  apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
+            #}
+
+            #{
+            #  name = "NZBFinder";
+            #  apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
+            #}
+
+            #{
+            #  name = "NzbPlanet";
+            #  apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
+            #}
+
+          ];
         };
       };
+    };
 
       # SABnzbd ----------------------------------
       # Automation of Usenet Transfers
