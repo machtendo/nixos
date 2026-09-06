@@ -14,34 +14,6 @@
     # Importing secrets
     #---------------------------------------------
 
-    config = mkIf config.nixflix.enable {
-
-      nixflix.jellyfin.apiKey._secret = config.sops.secrets."jellyfin/api_key".path;
-      nixflix.jellyfin.users.admin.password._secret = config.sops.secrets."jellyfin/alice_password".path;
-
-      nixflix.sonarr.apiKey._secret = config.sops.secrets."sonarr/api_key".path;
-      nixflix.sonarr.hostConfig.password._secret = config.sops.secrets."sonarr/password".path;
-
-      nixflix.radarr.apiKey._secret = config.sops.secrets."radarr/api_key".path;
-      nixflix.radarr.hostConfig.password._secret = config.sops.secrets."radarr/password".path;
-
-      nixflix.lidarr.apiKey._secret = config.sops.secrets."lidarr/api_key".path;
-      nixflix.lidarr.hostConfig.password._secret = config.sops.secrets."lidarr/password".path;
-
-      nixflix.prowlarr.apiKey._secret = config.sops.secrets."prowlarr/api_key".path;
-      nixflix.prowlarr.hostConfig.password._secret = config.sops.secrets."prowlarr/password".path;
-
-      nixflix.seerr.apiKey._secret = config.sops.secrets."seerr/api_key".path;
-
-      nixflix.sabnzbd.settings.misc.api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
-      nixflix.sabnzbd.settings.misc.nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;
-      nixflix.sabnzbd.settings.misc.username._secret = config.sops.secrets."sabnzbd/username".path;
-      nixflix.sabnzbd.settings.misc.password._secret = config.sops.secrets."sabnzbd/password".path;
-
-      nixflix.vpn.wgConfFile = config.sops.secrets."wireguard/conf".path;
-
-    };
-
     sops = {
       defaultSopsFile       = ../../secrets/nixflix.yaml;
       defaultSopsFormat     = "yaml";
