@@ -15,7 +15,6 @@ flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
     nixflix       # Feature - Nixflix
 
     inputs.sops-nix.nixosModules.sops     # Security - Tools: sops-nix
-    inputs.nixflix.nixosModules.nixflix   # Feature - Configuration: Nixflix
     ];
   };
 }
