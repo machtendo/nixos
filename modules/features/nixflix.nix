@@ -10,15 +10,17 @@
       # ...
     ];
 
-    options = {
-      nixflix = {
-        enable = lib.mkEnableOption "Nixflix";
-        bindAddress = lib.mkOption {
-          type = lib.types.str;
-          default = "127.0.0.1";
-        };
+  options = {
+    nixflix = {
+      enable = lib.mkEnableOption "Nixflix";
+      bindAddress = lib.mkOption {
+        type = lib.types.str;
+        default = "127.0.0.1";
       };
     };
+  };
+
+  config = {
 
     # sops-nix -----------------------------------
     # Importing secrets
@@ -366,6 +368,7 @@
       };
     };
   };
+};
 }
 
 #---------------------------------------------------------------------------------------------------
