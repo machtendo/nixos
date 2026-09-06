@@ -198,7 +198,7 @@
           ];
         };
       };
-    };
+    
 
       # SABnzbd ----------------------------------
       # Automation of Usenet Transfers
