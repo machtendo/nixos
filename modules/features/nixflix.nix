@@ -2,10 +2,15 @@
 # Module: Nixflix
 #---------------------------------------------------------------------------------------------------
 
-{ self, inputs, config, ... }: {
+{ self, inputs, config, lib, ... }: {
 
   flake.nixosModules.nixflix = { pkgs, lib, ... }: {
     specialArgs = { inherit inputs; };
+
+    let
+      with lib;
+      cfg = config.nixflix;
+    in
 
     imports = [
       #...
