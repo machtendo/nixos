@@ -36,6 +36,7 @@
         "indexer-api-keys/NZBFinder"      = {};
         "indexer-api-keys/NzbPlanet"      = {};
         "jellyfin/alice_password"         = {};
+        "jellyfin/api_key"                = {};
         "seerr/api_key"                   = {};
         "wireguard/conf"                  = {};
         "sabnzbd/api_key"                 = {};
