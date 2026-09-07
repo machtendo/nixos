@@ -10,44 +10,17 @@
       # ...
     ];
 
-  options = {
-    nixflix = {
-      enable = lib.mkEnableOption "Nixflix";
-      bindAddress = lib.mkOption {
-        type = lib.types.str;
-        default = "127.0.0.1";
-      };
-
-      jellyfin = lib.mkOption {
-        type = lib.types.submodule {
-          options = {
-            enable = lib.mkEnableOption "Jellyfin";
-            hostConfig = lib.mkOption {
-              type = lib.types.submodule {
-                options = {
-                  bindAddress = lib.mkOption { type = lib.types.str; };
-                };
-              };
-            };
-          };
-        };
-      };
-    };
-  };
-
-  config = {
-
     # sops-nix -----------------------------------
     # Importing secrets
     #---------------------------------------------
 
     sops = {
-      defaultSopsFile       = ../../secrets/nixflix.yaml;
-      defaultSopsFormat     = "yaml";
+      defaultSopsFile           = ../../secrets/nixflix.yaml;
+      defaultSopsFormat         = "yaml";
 
       age = {
-        keyFile             = "/home/nix/.config/sops/age/keys.txt";
-        sshKeyPaths         = [ "/etc/ssh/ssh_host_ed25519_key" ];
+        keyFile                 = "/home/nix/.config/sops/age/keys.txt";
+        sshKeyPaths             = [ "/etc/ssh/ssh_host_ed25519_key" ];
       };
 
       secrets = {
@@ -66,14 +39,15 @@
         "jellyfin/api_key"                = {};
         "seerr/api_key"                   = {};
         "wireguard/conf"                  = {};
-        #"sabnzbd/api_key"                 = {};
-        #"sabnzbd/nzb_key"                 = {};
-        #"sabnzbd/username"                = {};
-        #"sabnzbd/password"                = {};
-        #"usenet/eweka/username"           = {};
-        #"usenet/eweka/password"           = {};
-        #"usenet/newsgroupdirect/username" = {};
-        #"usenet/newsgroupdirect/password" = {};
+        "sabnzbd/api_key"                 = {};
+        "sabnzbd/nzb_key"                 = {};
+        "sabnzbd/username"                = {};
+        "sabnzbd/password"                = {};
+        "usenet/eweka/username"           = {};
+        "usenet/eweka/password"           = {};
+        "usenet/newsgroupdirect/username" = {};
+        "usenet/newsgroupdirect/password" = {};
+        "navidrome/password"              = {};
       };
     };
 
@@ -83,7 +57,7 @@
 
     networking = {
       firewall = {
-        allowedTCPPorts = [ 
+        allowedTCPPorts = [
           8989
           8990
           7878
@@ -96,7 +70,7 @@
           4533
         ];
 
-        allowedUDPPorts = [ 
+        allowedUDPPorts = [
           8989
           8990
           7878
@@ -116,20 +90,18 @@
     #---------------------------------------------
 
     nixflix = {
-      enable      = true;
-      mediaDir    = "/data/media";
-      stateDir    = "/data/.state";
-      mediaUsers  = ["nixflix"];
+      enable                    = true;
+      mediaDir                  = "/data/media";
+      stateDir                  = "/data/.state";
+      mediaUsers                = ["nixflix"];
 
-      bindAddress = "0.0.0.0";
-
-      # Theme Park -------------------------------
-      # Unified Appearance
+      # Theme ------------------------------------
+      # Unified Appearance (Theme Park)
       #-------------------------------------------
 
       theme = {
-        enable  = true;
-        name    = "overseerr";
+        enable                  = true;
+        name                    = "overseerr";
       };
 
       # Nginx ------------------------------------
@@ -137,8 +109,8 @@
       #-------------------------------------------
 
       nginx = {
-        enable            = true;
-        addHostsEntries   = true; # Disable this if you have your own DNS configuration
+        enable                  = true;
+        addHostsEntries         = true; # Disable this if you have your own DNS configuration
       };
 
       # PostgreSQL -------------------------------
@@ -146,7 +118,7 @@
       #-------------------------------------------
 
       postgres = {
-        enable = true;
+        enable                  = true;
       };
 
       # Sonarr -----------------------------------
@@ -154,17 +126,17 @@
       #-------------------------------------------
 
       sonarr = {
-        enable        = true;
+        enable                  = true;
         config = {
 
           apiKey = {
-            _secret   = config.sops.secrets."sonarr/api_key".path;
+            _secret             = config.sops.secrets."sonarr/api_key".path;
           };
 
           hostConfig = {
-            bindAddress = config.nixflix.bindAddress;
+            bindAddress         = "0.0.0.0";
             password = {
-              _secret = config.sops.secrets."sonarr/password".path;
+              _secret           = config.sops.secrets."sonarr/password".path;
             };
           };
 
@@ -176,18 +148,18 @@
       #-------------------------------------------
 
       radarr = {
-        enable = true;
+        enable                  = true;
 
         config = {
 
           apiKey = {
-            _secret   = config.sops.secrets."radarr/api_key".path;
+            _secret             = config.sops.secrets."radarr/api_key".path;
           };
 
           hostConfig = {
-            bindAddress = config.nixflix.bindAddress;
+            bindAddress         = "0.0.0.0";
             password = {
-              _secret = config.sops.secrets."radarr/password".path;
+              _secret           = config.sops.secrets."radarr/password".path;
             };
           };
         };
@@ -198,18 +170,18 @@
       #-------------------------------------------
 
       lidarr = {
-        enable = true;
+        enable                  = true;
 
         config = {
 
           apiKey = {
-            _secret   = config.sops.secrets."lidarr/api_key".path;
+            _secret             = config.sops.secrets."lidarr/api_key".path;
           };
 
           hostConfig = {
-            bindAddress = config.nixflix.bindAddress;
+            bindAddress         = "0.0.0.0";
             password = {
-              _secret = config.sops.secrets."lidarr/password".path;
+              _secret           = config.sops.secrets."lidarr/password".path;
             };
           };
         };
@@ -220,9 +192,9 @@
       #-------------------------------------------
 
       recyclarr = {
-        enable = true;
+        enable                  = true;
         cleanupUnmanagedProfiles = {
-          enable = true;
+          enable                = true;
         };
       };
 
@@ -231,37 +203,40 @@
       #-------------------------------------------
 
       prowlarr = {
-        enable = true;
+        enable                  = true;
+        vpn = {
+          enable                = true;
+        };
 
         config = {
           apiKey = {
-            _secret = config.sops.secrets."prowlarr/api_key".path;
+            _secret             = config.sops.secrets."prowlarr/api_key".path;
           };
 
           hostConfig = {
-            bindAddress = config.nixflix.bindAddress;
+            bindAddress         = "0.0.0.0";
             password = {
-              _secret = config.sops.secrets."prowlarr/password".path;
+              _secret           = config.sops.secrets."prowlarr/password".path;
             };
           };
           indexers = [
 
             # Usenet Indexers
 
-            #{
-            #  name = "DrunkenSlug";
-            #  apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
-            #}
-
-            #{
-            #  name = "NZBFinder";
-            #  apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
-            #}
-
-            #{
-            #  name = "NzbPlanet";
-            #  apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
-            #}
+      #      {
+      #        name = "DrunkenSlug";
+      #        apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
+      #      }
+      #
+      #      {
+      #        name = "NZBFinder";
+      #        apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
+      #      }
+      #
+      #      {
+      #        name = "NzbPlanet";
+      #        apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
+      #      }
 
           ];
         };
@@ -271,60 +246,60 @@
       # Automation of Usenet Transfers
       #-------------------------------------------
 
-      #sabnzbd = {
-      #  enable = false;
-      #
-      #  settings = {
-      #    misc = {
-      #
-      #      api_key = {
-      #        _secret = config.sops.secrets."sabnzbd/api_key".path;
-      #      };
-      #
-      #      nzb_key = {
-      #        _secret = config.sops.secrets."sabnzbd/nzb_key".path;
-      #      };
-      #
-      #      username = {
-      #        _secret = config.sops.secrets."sabnzbd/username".path;
-      #      };
-      #
-      #      password = {
-      #        _secret = config.sops.secrets."sabnzbd/password".path;
-      #      };
-      #
-      #    };
-      #
-      #    servers = [
+      sabnzbd = {
+        enable                  = false;
+      
+        settings = {
+          misc = {
+      
+            api_key = {
+              _secret           = config.sops.secrets."sabnzbd/api_key".path;
+            };
+      
+            nzb_key = {
+              _secret           = config.sops.secrets."sabnzbd/nzb_key".path;
+            };
+      
+            username = {
+              _secret           = config.sops.secrets."sabnzbd/username".path;
+            };
+      
+            password = {
+              _secret           = config.sops.secrets."sabnzbd/password".path;
+            };
+      
+          };
+      
+          servers = [
       #
       #      {
-      #        name = "Eweka";
-      #        host = "sslreader.eweka.nl";
-      #        port = 563;
+      #        name             = "Eweka";
+      #        host             = "sslreader.eweka.nl";
+      #        port             = 563;
       #        username._secret = config.sops.secrets."usenet/eweka/username".path;
       #        password._secret = config.sops.secrets."usenet/eweka/password".path;
-      #        connections = 20;
-      #        ssl = true;
-      #        priority = 0;
-      #        retention = 3000;
+      #        connections      = 20;
+      #        ssl              = true;
+      #        priority         = 0;
+      #        retention        = 3000;
       #      }
       #
       #      {
-      #        name = "NewsgroupDirect";
-      #        host = "news.newsgroupdirect.com";
-      #        port = 563;
+      #        name             = "NewsgroupDirect";
+      #        host             = "news.newsgroupdirect.com";
+      #        port             = 563;
       #        username._secret = config.sops.secrets."usenet/newsgroupdirect/username".path;
       #        password._secret = config.sops.secrets."usenet/newsgroupdirect/password".path;
-      #        connections = 10;
-      #        ssl = true;
-      #        priority = 1;
-      #        optional = true;
-      #        backup = true;
+      #        connections      = 10;
+      #        ssl              = true;
+      #        priority         = 1;
+      #        optional         = true;
+      #        backup           = true;
       #      }
       #
-      #    ];
-      #  };
-      #};
+          ];
+        };
+      };
 
       # Jellyfin ---------------------------------
       # Media Streaming Server
@@ -334,7 +309,7 @@
         enable                = true;
 
         hostConfig = {
-          bindAddress         = config.nixflix.bindAddress;
+          bindAddress         = "0.0.0.0";
         };
 
         apiKey = {
@@ -361,14 +336,32 @@
       #-------------------------------------------
 
       seerr = {
-        enable      = true;
+        enable                = true;
 
         hostConfig = {
-          bindAddress = config.nixflix.bindAddress;
+          bindAddress         = "0.0.0.0";
         };
 
         apiKey = {
-          _secret   = config.sops.secrets."seerr/api_key".path;
+          _secret             = config.sops.secrets."seerr/api_key".path;
+        };
+      };
+
+      # Navidrome --------------------------------
+      # Music Streaming
+      #-------------------------------------------
+
+      navidrome = {
+        enable                = true;
+        users = {
+          "User" = {
+            userName          = "user";
+            isAdmin           = true;
+            password._secret  = config.sops.secrets."navidrome/password".path;
+          };
+        };
+        settings = {
+          MusicFolder         = "/data/media/music";
         };
       };
 
@@ -377,13 +370,12 @@
       #-------------------------------------------
 
       vpn = {
-        enable          = true;
-        wgConfFile      = config.sops.secrets."wireguard/conf".path;
-        accessibleFrom  = [ "192.168.86.0/24" ];
+        enable                = true;
+        wgConfFile            = config.sops.secrets."wireguard/conf".path;
+        accessibleFrom        = [ "192.168.86.0/24" ];
       };
     };
   };
-};
 }
 
 #---------------------------------------------------------------------------------------------------
