@@ -372,7 +372,7 @@
             };
           };
         };
-        libraries = 
+        libraries =
 
           let
             subtitleSettings = {
