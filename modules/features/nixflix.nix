@@ -378,7 +378,6 @@
             subtitleSettings = {
               subtitleDownloadLanguages = [
                 "eng"
-                "spa"
               ];
               requirePerfectSubtitleMatch = true;
             };
@@ -501,7 +500,6 @@
             };
           };
         };
-      };
 
       # Seerr ------------------------------------
       # Media Request and Discovery
