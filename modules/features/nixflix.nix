@@ -406,7 +406,6 @@
               "/mnt/tv"
             ];
           };
-        };
 
         plugins = {
           subbuzz = {
