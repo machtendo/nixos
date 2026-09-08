@@ -388,7 +388,6 @@
             Anime                         = subtitleSettings;
             Movies                        = subtitleSettings;
             Music                         = lib.mkForce null;
-          };
 
           Movies = {
             collectionType                = "movies";
