@@ -8,6 +8,7 @@
 
   let
     inherit (inputs.nixflix.lib.jellyfinPlugins) fromRepo;
+    qbCfg = config.nixflix.torrentClients.qbittorrent;
   in
 
   {
