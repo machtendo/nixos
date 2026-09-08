@@ -372,7 +372,7 @@
             };
           };
         };
-        libraries = {
+        libraries = 
 
           let
             subtitleSettings = {
@@ -383,6 +383,7 @@
               requirePerfectSubtitleMatch = true;
             };
           in
+
           {
             Shows = subtitleSettings;
             Anime = subtitleSettings;
