@@ -434,8 +434,8 @@
           in
 
           {
-          Anime                         = subtitleSettings;
-          Music                         = lib.mkForce null;
+          #Anime                         = subtitleSettings;
+          #Music                         = lib.mkForce null;
 
           Movies      = subtitleSettings // {
             collectionType                = "movies";
