@@ -63,6 +63,19 @@
       };
     };
 
+    # ACME ------------------------------------
+    # Let's Encrpyt SSL
+    #---------------------------------------------
+
+    security = {
+      acme = {
+        acceptTerms = true;
+        certs = {
+          nixflix = 
+        };
+      };
+    };
+
     # Nixflix ------------------------------------
     # Global Configuration
     #---------------------------------------------
@@ -232,9 +245,6 @@
       prowlarr = {
         enable                  = true;
         subdomain               = "index";
-        vpn = {
-          enable                = true;
-        };
         config = {
           apiKey = {
             _secret             = config.sops.secrets."prowlarr/api_key".path;
