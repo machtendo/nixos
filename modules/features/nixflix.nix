@@ -57,9 +57,9 @@
         "usenet/newsgroupdirect/username" = {};
         "usenet/newsgroupdirect/password" = {};
         "navidrome/password"              = {};
-        "opensubtitles-com/api-key"       = {};
-        "opensubtitles-com/username"      = {};
-        "opensubtitles-com/password"      = {};
+        "opensubtitles/api-key"           = {};
+        "opensubtitles/username"          = {};
+        "opensubtitles/password"          = {};
       };
     };
 
@@ -463,13 +463,13 @@
             enable                        = true;
             config = {
               OpenSubApiKey = {
-                _secret                   = config.sops.secrets."opensubtitles-com/api-key".path;
+                _secret                   = config.sops.secrets."opensubtitles/api-key".path;
               };
               OpenSubUserName = {
-                _secret                   = config.sops.secrets."opensubtitles-com/user".path;
+                _secret                   = config.sops.secrets."opensubtitles/user".path;
               };
               OpenSubPassword = {
-                _secret                   = config.sops.secrets."opensubtitles-com/password".path;
+                _secret                   = config.sops.secrets."opensubtitles/password".path;
               };
               EnableOpenSubtitles         = true;
               EnableYifySubtitles         = true;
