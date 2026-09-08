@@ -53,6 +53,7 @@
         "usenet/newsgroupdirect/password" = {};
         "navidrome/password"              = {};
         "opensubtitles-com/api-key"       = {};
+        "opensubtitles-com/username"      = {};
         "opensubtitles-com/password"      = {};
       };
     };
