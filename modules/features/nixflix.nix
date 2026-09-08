@@ -500,6 +500,7 @@
             };
           };
         };
+      };
 
       # Seerr ------------------------------------
       # Media Request and Discovery
@@ -531,7 +532,7 @@
       #    MusicFolder         = "/data/media/music";
       #  };
       #};
-
+    };
   };
 }
 
