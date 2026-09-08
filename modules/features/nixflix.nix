@@ -384,12 +384,10 @@
           in
 
           {
-            Shows                         = subtitleSettings;
-            Anime                         = subtitleSettings;
-            Movies                        = subtitleSettings;
-            Music                         = lib.mkForce null;
+          Anime                         = subtitleSettings;
+          Music                         = lib.mkForce null;
 
-          Movies = {
+          Movies = subtitleSettings; // {
             collectionType                = "movies";
             enableRealtimeMonitor         = true;
             metadataCountryCode           = "US";
@@ -398,13 +396,14 @@
               "/mnt/movies"
             ];
           };
-          Shows = {
+          Shows = subtitleSettings; // {
             collectionType                = "tvshows";
             seasonZeroDisplayName         = "Specials";
             paths = [
               "/mnt/tv"
             ];
           };
+        };
 
         plugins = {
           subbuzz = {
