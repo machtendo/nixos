@@ -387,7 +387,7 @@
           Anime                         = subtitleSettings;
           Music                         = lib.mkForce null;
 
-          Movies = subtitleSettings; // {
+          Movies      = subtitleSettings // {
             collectionType                = "movies";
             enableRealtimeMonitor         = true;
             metadataCountryCode           = "US";
@@ -396,8 +396,11 @@
               "/mnt/movies"
             ];
           };
-          Shows = subtitleSettings; // {
+          Television  = subtitleSettings // {
             collectionType                = "tvshows";
+            enableRealtimeMonitor         = true;
+            metadataCountryCode           = "US";
+            preferredMetadataLanguage     = "en";
             seasonZeroDisplayName         = "Specials";
             paths = [
               "/mnt/tv"
