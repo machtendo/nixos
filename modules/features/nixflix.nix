@@ -139,17 +139,17 @@
           };
           delayProfiles = [
             {
-              enableUsenet = false;
-              enableTorrent = true;
-              preferredProtocol = "torrent";
-              usenetDelay = 0;
-              torrentDelay = 0;
-              bypassIfHighestQuality = true;
-              bypassIfAboveCustomFormatScore = false;
-              minimumCustomFormatScore = 0;
-              order = 2147483647;
-              tags = [ ];
-              id = 1;
+              enableUsenet                    = false;
+              enableTorrent                   = true;
+              preferredProtocol               = "torrent";
+              usenetDelay                     = 0;
+              torrentDelay                    = 0;
+              bypassIfHighestQuality          = true;
+              bypassIfAboveCustomFormatScore  = false;
+              minimumCustomFormatScore        = 0;
+              order                           = 2147483647;
+              tags                            = [];
+              id                              = 1;
             }
           ];
         };
@@ -173,17 +173,17 @@
           };
           delayProfiles = [
             {
-              enableUsenet = false;
-              enableTorrent = true;
-              preferredProtocol = "torrent";
-              usenetDelay = 0;
-              torrentDelay = 0;
-              bypassIfHighestQuality = true;
-              bypassIfAboveCustomFormatScore = false;
-              minimumCustomFormatScore = 0;
-              order = 2147483647;
-              tags = [ ];
-              id = 1;
+              enableUsenet                    = false;
+              enableTorrent                   = true;
+              preferredProtocol               = "torrent";
+              usenetDelay                     = 0;
+              torrentDelay                    = 0;
+              bypassIfHighestQuality          = true;
+              bypassIfAboveCustomFormatScore  = false;
+              minimumCustomFormatScore        = 0;
+              order                           = 2147483647;
+              tags                            = [];
+              id                              = 1;
             }
           ];
         };
@@ -385,24 +385,24 @@
           in
 
           {
-            Shows = subtitleSettings;
-            Anime = subtitleSettings;
-            Movies = subtitleSettings;
-            Music = lib.mkForce null;
+            Shows                         = subtitleSettings;
+            Anime                         = subtitleSettings;
+            Movies                        = subtitleSettings;
+            Music                         = lib.mkForce null;
           };
 
           Movies = {
-            collectionType              = "movies";
-            enableRealtimeMonitor       = true;
-            metadataCountryCode         = "US";
-            preferredMetadataLanguage   = "en";
+            collectionType                = "movies";
+            enableRealtimeMonitor         = true;
+            metadataCountryCode           = "US";
+            preferredMetadataLanguage     = "en";
             paths = [
               "/mnt/movies"
             ];
           };
           Shows = {
-            collectionType              = "tvshows";
-            seasonZeroDisplayName       = "Specials";
+            collectionType                = "tvshows";
+            seasonZeroDisplayName         = "Specials";
             paths = [
               "/mnt/tv"
             ];
@@ -519,21 +519,23 @@
       # Music Streaming
       #-------------------------------------------
 
-      navidrome = {
-        enable                = true;
-        users = {
-          "User" = {
-            userName          = "user";
-            isAdmin           = true;
-            password._secret  = config.sops.secrets."navidrome/password".path;
-          };
-        };
+      #navidrome = {
+      #  enable                = true;
+      #  users = {
+      #    "User" = {
+      #      userName          = "user";
+      #      isAdmin           = true;
+      #      password._secret  = config.sops.secrets."navidrome/password".path;
+      #    };
+      #  };
+      #
+      #  settings = {
+      #    MusicFolder         = "/data/media/music";
+      #  };
+      #};
 
-        settings = {
-          MusicFolder         = "/data/media/music";
-        };
-      };
     };
+  };
 }
 
 #---------------------------------------------------------------------------------------------------
