@@ -465,9 +465,7 @@
               OpenSubApiKey = {
                 _secret                   = config.sops.secrets."opensubtitles/api-key".path;
               };
-              OpenSubUserName = {
-                _secret                   = config.sops.secrets."opensubtitles/username".path;
-              };
+              OpenSubUserName =           = "username";
               OpenSubPassword = {
                 _secret                   = config.sops.secrets."opensubtitles/password".path;
               };
