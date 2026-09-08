@@ -67,14 +67,14 @@
     # Let's Encrpyt SSL
     #---------------------------------------------
 
-    security = {
-      acme = {
-        acceptTerms = true;
-        certs = {
-          nixflix = "";
-        };
-      };
-    };
+    #security = {
+    #  acme = {
+    #    acceptTerms = true;
+    #    certs = {
+    #      nixflix = "";
+    #    };
+    #  };
+    #};
 
     # Nixflix ------------------------------------
     # Global Configuration
@@ -113,8 +113,8 @@
         enable                  = true;
         addHostsEntries         = true; # Disable this if you have your own DNS configuration
         #inherit (config.system.ddns) domain;
-        forceSSL                = true;
-        enableACME              = true;
+        #forceSSL                = true;
+        #enableACME              = true;
       };
 
       # PostgreSQL -------------------------------
