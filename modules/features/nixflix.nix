@@ -4,15 +4,18 @@
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.nixflix = { pkgs, lib, config, ... }: {
+  flake.nixosModules.nixflix = { pkgs, lib, config, ... }:
+
+  let
+    inherit (inputs.nixflix.lib.jellyfinPlugins) fromRepo;
+  in
+
+  {
     imports = [
       inputs.nixflix.nixosModules.default
       # ...
     ];
 
-    let
-      inherit (inputs.nixflix.lib.jellyfinPlugins) fromRepo;
-    in
 
     # sops-nix -----------------------------------
     # Importing secrets
