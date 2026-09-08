@@ -71,7 +71,7 @@
       acme = {
         acceptTerms = true;
         certs = {
-          nixflix = 
+          nixflix = "";
         };
       };
     };
