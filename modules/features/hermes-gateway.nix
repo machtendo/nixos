@@ -17,9 +17,15 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    config.networking.firewall.allowedTCPPorts = [ cfg.port.number ];
+    # REMOVED the 'config.' prefix.
+    # 'services' and 'networking' are directly available on the 'config' object.
+    services.hermes-gateway = {
+      # This is redundant but ensures the sub-module recognizes its own name
+    };
 
-    config.systemd.services.hermes-gateway = {
+    networking.firewall.allowedTCPPorts = [ cfg.port.number ];
+
+    systemd.services.hermes-gateway = {
       description = "Hermes Desktop Gateway Backend";
       after = [ "hermes-agent.service" ];
       requires = [ "hermes-agent.service" ];
