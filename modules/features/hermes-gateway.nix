@@ -1,4 +1,3 @@
-nix
 { config, lib, pkgs, inputs, ... }:
 
 let
