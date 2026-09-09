@@ -19,10 +19,10 @@ in {
 
   config = lib.mkIf cfg.enable {
     # 1. Open the Firewall
-    networking.firewall.allowedTCPPorts = [ cfg.port.number ];
+    config.networking.firewall.allowedTCPPorts = [ cfg.port.number ];
 
     # 2. Define the Systemd Service
-    systemd.services.hermes-gateway = {
+    config.systemd.services.hermes-gateway = {
       description = "Hermes Desktop Gateway Backend";
       after = [ "hermes-agent.service" ];
       requires = [ "hermes-agent.service" ];
