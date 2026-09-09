@@ -57,8 +57,24 @@
     #
     #----------------------------------------------------------------------
 
-    services.hermes-gateway = {
-        enable = true;
+    config = lib.mkIf config.services.hermes-gateway.enable {
+
+      networking.firewall.allowedTCPPorts = [ config.services.hermes-gateway.port.number ];
+
+      systemd.services.hermes-gateway = {
+        description = "Hermes Desktop Gateway Backend";
+        after = [ "hermes-agent.service" ];
+        requires = [ "hermes-agent.service" ];
+        wantedBy = [ "multi-user.target" ];
+
+        serviceConfig = {
+          User = "hermes";
+          Group = "hermes";
+          # We use inputs and pkgs from the module header
+          ExecStart = "${inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/hermes-backend --port ${toString config.services.hermes-gateway.port.number} --host ${config.services.hermes-gateway.port.host} --state-dir ${config.services.hermes-gateway.stateDir}";
+          Restart = "always";
+        };
+      };
     };
 
     # Hermes Agent --------------------------------------------------------
