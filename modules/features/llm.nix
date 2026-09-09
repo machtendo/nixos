@@ -29,9 +29,10 @@
     };
 
     networking = {
-      firewall
+      firewall  = {
         allowedTCPPorts = [ 8080 ];
       };
+    };
 
     sops = {
       defaultSopsFile     = ../../secrets/llm.yaml;
