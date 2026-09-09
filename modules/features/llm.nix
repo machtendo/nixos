@@ -28,6 +28,11 @@
       };
     };
 
+    networking = {
+      firewall
+        allowedTCPPorts = [ 8080 ];
+      };
+
     sops = {
       defaultSopsFile     = ../../secrets/llm.yaml;
       defaultSopsFormat   = "yaml";
@@ -454,7 +459,7 @@
 
           # Gateway Streaming
           streaming = {
-            enabled               = false;
+            enabled               = true;
             #transport            = "edit";
             #edit_interval        = 0.3;
             #buffer_threshold     = 40;
