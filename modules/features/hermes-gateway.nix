@@ -2,12 +2,10 @@
 
 let
   cfg = config.services.hermes-gateway;
-
-1. Construct the ExecStart string HERE, in the local scope where pkgs/inputs exist.
-This prevents the "attribute pkgs missing" error during config evaluation.
   execStartCmd = "${inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/hermes-backend --port ${toString cfg.port.number} --host ${cfg.port.host} --state-dir ${cfg.stateDir}";
+in 
 
-in {
+{
   options.services.hermes-gateway = {
     enable = lib.mkEnableOption "Hermes Desktop Gateway";
     port = lib.mkOption {
