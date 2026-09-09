@@ -81,12 +81,6 @@
         # Service ---------
         #extraArgs           = [ "--verbose" ];
 
-        gateway = {
-          enable = true;
-          host = "0.0.0.0";
-          port = 8080; # Or your preferred port
-        };
-
         # Container --------------------------------
         # Run in a Container (optional)
         #-------------------------------------------
@@ -162,6 +156,16 @@
             pre_update_backup               = true;
             backup_keep                     = 5;
             non_interactive_local_changes   = "stash";
+          };
+
+          # Gateway ----------------------------------
+          # Gatway used for Hermes Desktop App
+          #-------------------------------------------
+
+          gateway = {
+            enable = true;
+            host = "0.0.0.0";
+            port = 8080; # Or your preferred port
           };
 
           # Providers --------------------------------
