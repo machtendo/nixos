@@ -75,6 +75,12 @@
         # Service ---------
         #extraArgs           = [ "--verbose" ];
 
+        gateway = {
+          enable = true;
+          host = "0.0.0.0";
+          port = 8080; # Or your preferred port
+        };
+
         # Container --------------------------------
         # Run in a Container (optional)
         #-------------------------------------------
