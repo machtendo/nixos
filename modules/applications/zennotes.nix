@@ -27,6 +27,7 @@
       secrets = {
         "zennotes/authToken" = {};
       };
+    };
 
     services.zennotes = {
       enable            = true;
