@@ -129,6 +129,15 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    #---------------------------------------------
+    # Applications
+    #---------------------------------------------
+
+    # zennotes
+    zennotes = {
+      url = "github:ZenNotes/zennotes";
+    };
+
     # ...
 
   };
