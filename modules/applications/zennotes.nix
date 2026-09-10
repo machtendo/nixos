@@ -17,8 +17,8 @@
 
     services.zennotes = {
       enable            = true;
-      vault             = "/home/user/my-vault";
-      authToken         = "your-super-secret-token";
+      vault             = "/var/lib/zennotes/vault";
+      authToken         = config.sops.secrets."zennotes/authToken".path;
       port              = 7878;
       persistSessions   = true;
       disableWatcher    = false;
