@@ -6,7 +6,7 @@
 
   flake.nixosModules.llm = { pkgs, lib, config, ... }: {
     imports = [
-      ./hermes-gateway.nix
+      #../applications/hermes-gateway.nix
       inputs.hermes-agent.nixosModules.default
     ];
 
@@ -52,10 +52,6 @@
         };
       };
     };
-
-    # Hermes Gateway ------------------------------------------------------
-    #
-    #----------------------------------------------------------------------
 
     # Hermes Agent --------------------------------------------------------
     #
