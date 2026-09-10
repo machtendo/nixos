@@ -15,6 +15,19 @@
       };
     };
 
+    sops = {
+      defaultSopsFile     = ../../secrets/llm.yaml;
+      defaultSopsFormat   = "yaml";
+
+      age = {
+        keyFile           = "/home/hermes/.config/sops/age/keys.txt";
+        sshKeyPaths       = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      };
+
+      secrets = {
+        "zennotes/authToken" = {};
+      };
+
     services.zennotes = {
       enable            = true;
       vault             = "/var/lib/zennotes/vault";
