@@ -13,7 +13,11 @@
       user-nix      # Configuration - User: nix
       core          # Configuration - Core: All Devices
       #desktop      # Configuration - Desktop Environment: Hyprland, Noctalia
+<<<<<<< HEAD
       hermes        # Configuration - LLM - Hermes Agent
+=======
+      zennotes      # Application - Zen Notes
+>>>>>>> refs/remotes/origin/main
 
       inputs.sops-nix.nixosModules.sops     # Security - Tools: sops-nix
     ];

@@ -2,7 +2,7 @@
 # Host Definition: mediarr
 #---------------------------------------------------------------------------------------------------
 
-{ self, inputs, config, sops-nix, nixflix, ... }: {
+{ self, inputs, config, sops-nix, ... }: {
 
 flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
   specialArgs = { inherit inputs; };
@@ -14,7 +14,8 @@ flake.nixosConfigurations.mediarr = inputs.nixpkgs.lib.nixosSystem {
     core          # Applications - Core: All Devices
 
     inputs.sops-nix.nixosModules.sops     # Security - Tools: sops-nix
-    inputs.nixflix.nixosModules.nixflix   # Feature - Configuration: Nixflix
+    nixflix       # Feature - Nixflix
+
     ];
   };
 }

@@ -6,6 +6,7 @@
 
   flake.nixosModules.llm = { pkgs, lib, config, ... }: {
     imports = [
+      #../applications/hermes-gateway.nix
       inputs.hermes-agent.nixosModules.default
     ];
 
@@ -25,6 +26,12 @@
 
       variables = {
         HERMES_HOME = "/var/lib/hermes";
+      };
+    };
+
+    networking = {
+      firewall  = {
+        allowedTCPPorts = [ 8080 ];
       };
     };
 
@@ -151,6 +158,16 @@
             backup_keep                     = 5;
             non_interactive_local_changes   = "stash";
           };
+
+          # Gateway ----------------------------------
+          # Gatway used for Hermes Desktop App
+          #-------------------------------------------
+
+          #gateway = {
+          #  enable = true;
+          #  host = "0.0.0.0";
+          #  port = 8080; # Or your preferred port
+          #};
 
           # Providers --------------------------------
           # LLM Provider Definitions
@@ -448,7 +465,7 @@
 
           # Gateway Streaming
           streaming = {
-            enabled               = false;
+            enabled               = true;
             #transport            = "edit";
             #edit_interval        = 0.3;
             #buffer_threshold     = 40;
