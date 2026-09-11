@@ -2,8 +2,6 @@
 # Module Configuration: Systems
 #---------------------------------------------------------------------------------------------------
 
-#{ self, inputs, ... }: {
-
 {
   config = {
     systems = [
@@ -12,6 +10,15 @@
       "aarch64-darwin"
       "x86_64-darwin"
     ];
+
+    perSystem = { pkgs, system, ... }: {
+      formatter = pkgs.nixpkgs-fmt;
+      devShells = {
+        default = pkgs.mkShell {
+          buildInputs = with pkgs; [ git ];
+        };
+      };
+    };
   };
 }
 
