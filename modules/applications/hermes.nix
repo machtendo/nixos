@@ -1,10 +1,10 @@
 #---------------------------------------------------------------------------------------------------
-# Configuration: LLM
+# Application: Hermes Agent
 #---------------------------------------------------------------------------------------------------
 
 { self, inputs, ... }: {
 
-  flake.nixosModules.llm = { pkgs, lib, config, ... }: {
+  flake.nixosModules.hermes = { pkgs, lib, config, ... }: {
     imports = [
       #../applications/hermes-gateway.nix
       inputs.hermes-agent.nixosModules.default
