@@ -138,6 +138,11 @@
       url = "github:ZenNotes/zennotes";
     };
 
+    # pi.nix
+    pi = {
+      url = "github:lukasl-dev/pi.nix";
+    };
+
     # ...
 
   };
