@@ -2,9 +2,9 @@
 # Application Module: ZenNotes
 #---------------------------------------------------------------------------------------------------
 
-{ self, inputs, ... }: {
+{ self, inputs, system, ... }: {
 
-  flake.nixosModules.zennotes = { pkgs, lib, config, system, ... }: {
+  flake.nixosModules.zennotes = { pkgs, lib, config, ... }: {
     imports = [
       #inputs.zennotes.nixosModules.default
       inputs.zennotes.packages.${system}.server
