@@ -7,7 +7,7 @@
   flake.nixosModules.zennotes = { pkgs, lib, config, ... }: {
     imports = [
       #inputs.zennotes.nixosModules.default
-      inputs.zennotes.packages.${pkgs.stdenv.hostPlatform.system}.server
+      #inputs.zennotes.packages.${pkgs.stdenv.hostPlatform.system}.server
       # ...
     ];
 
