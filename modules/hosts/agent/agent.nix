@@ -14,7 +14,7 @@
       core          # Configuration - Core: All Devices
       #desktop      # Configuration - Desktop Environment: Hyprland, Noctalia
       hermes        # Configuration - Hermes Agent
-      zennotes      # Application - Zen Notes
+      #zennotes      # Application - Zen Notes
 
       inputs.sops-nix.nixosModules.sops     # Security - Tools: sops-nix
     ];
